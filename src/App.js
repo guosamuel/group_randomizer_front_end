@@ -10,7 +10,8 @@ function App() {
 
   const handleOptionSubmit = e => {
     e.preventDefault()
-    setOption(option.push(input))
+    setOption([...option, input])
+    setInput("")
   }
 
   return (

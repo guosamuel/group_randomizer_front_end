@@ -1,34 +1,18 @@
 import React, { useState } from 'react';
+import Form from './components/Form'
 
 function App() {
-  const [ option, setOption ] = useState([])
-  const [ input, setInput ] = useState("")
+  const [ options, setOptions ] = useState([])
 
-  const handleOptionInput = e => {
-    setInput(e.target.value)
-  }
-
-  const handleOptionSubmit = e => {
+  const handleOptionSubmit = (e, input) => {
     e.preventDefault()
-    setOption([...option, input])
-    setInput("")
+    setOptions([...options, input])
   }
-
+  
   return (
     <div>
       <h1>Group Randomizer</h1>
-      <form onSubmit={handleOptionSubmit}>
-        <textarea
-          placeholder="Please input options here"
-          value={input}
-          onChange={handleOptionInput}
-          rows='5'
-          cols='50'
-          >
-        </textarea>
-        <br />
-        <button type="Submit">Submit</button>
-      </form>
+      <Form handleOptionSubmit={handleOptionSubmit}/>
     </div>
   )
 }

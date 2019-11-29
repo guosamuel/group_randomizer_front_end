@@ -8,7 +8,7 @@ function App() {
     e.preventDefault()
     setOptions([...options, input])
   }
-  
+
   return (
     <div>
       <h1>Group Randomizer</h1>

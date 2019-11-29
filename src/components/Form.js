@@ -11,8 +11,13 @@ function Form(props) {
     setInput("")
   }
 
+  const clearAndSubmitInput = (e, option, clearCallback) => {
+    props.handleOptionSubmit(e, option)
+    clearCallback()
+  }
+
   return(
-    <form onSubmit={(e, option, clear) => props.handleOptionSubmit(e, input, clearOptionInput())}>
+    <form onSubmit={(e, option, clearCallback) => clearAndSubmitInput(e, input, clearOptionInput)}>
       <textarea
         type="text"
         placeholder="Please input options here"

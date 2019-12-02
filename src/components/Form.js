@@ -28,7 +28,12 @@ function Form(props) {
         >
       </textarea>
       <br />
-      <button type="Submit">Submit</button>
+      <button
+        type="Submit"
+        disabled={!input}
+        >
+        Submit
+      </button>
     </form>
   )
 }

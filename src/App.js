@@ -16,8 +16,8 @@ function App() {
   }
 
   const randomizeGroups = (number, choices) => {
-    const convertedTypeNumber = parseInt(number, 10)
-    console.log(convertedTypeNumber, choices)
+    const convertedToIntegerNumber = parseInt(number, 10)
+    console.log(convertedToIntegerNumber, choices)
   }
 
   const listOfOptions = options.map( (option, index) => <li key={index}>{option}</li>)

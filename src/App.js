@@ -5,7 +5,7 @@ import GroupNumberInput from './components/GroupNumberInput';
 function App() {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
   const [ numberOfGroups, setNumberOfGroups ] = useState("1")
-  const [ groupCards, setGroupCards ] = useState([])
+  const [ groups, setGroups ] = useState([])
 
 
   const handleOptionSubmit = (e, input) => {
@@ -33,9 +33,12 @@ function App() {
       squares.push(renderGroupCard(j))
     }
 
-    setGroupCards(squares)
+    setGroups(squares)
   }
 
+  const clearGroups = () => {
+    setGroups([])
+  }
   const listOfOptions = options.map( (option, index) => <li key={index}>{option}</li>)
 
   return (
@@ -47,9 +50,10 @@ function App() {
       <h2>Current List of Options</h2>
       <ol>{listOfOptions}</ol>
       <button onClick={(number, choices) => randomizeGroups(numberOfGroups, options)}>Randomize Into Groups!</button>
+      <button onClick={clearGroups}>Clear Groups</button>
       <br />
       <br />
-      {groupCards.length === 0 ? "Yet to be randomized" :
+      {groups.length === 0 ? "Yet to be randomized" :
       <div
       style={{
           width: '100%',
@@ -58,7 +62,7 @@ function App() {
           flexWrap: 'wrap'
         }}
         >
-        {groupCards}
+        {groups}
         </div>}
     </div>
   )

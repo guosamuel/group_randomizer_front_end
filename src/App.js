@@ -4,7 +4,7 @@ import GroupNumberInput from './components/GroupNumberInput'
 
 function App() {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
-  const [ numberOfGroups, setNumberOfGroups ] = useState()
+  const [ numberOfGroups, setNumberOfGroups ] = useState("1")
 
   const handleOptionSubmit = (e, input) => {
     e.preventDefault()
@@ -13,6 +13,11 @@ function App() {
 
   const handleNumberOfGroups = e => {
     setNumberOfGroups(e.target.value)
+  }
+
+  const randomizeGroups = (number, choices) => {
+    const convertedTypeNumber = parseInt(number, 10)
+    console.log(convertedTypeNumber, choices)
   }
 
   const listOfOptions = options.map( (option, index) => <li key={index}>{option}</li>)
@@ -25,6 +30,7 @@ function App() {
       <GroupNumberInput maxNumberOfGroups={options.length} handleNumberOfGroups={handleNumberOfGroups}/>
       <h2>Current List of Options</h2>
       <ol>{listOfOptions}</ol>
+      <button onClick={(number, choices) => randomizeGroups(numberOfGroups, options)}>Randomize Into Groups!</button>
     </div>
   )
 }

@@ -8,6 +8,8 @@ function GroupNumberInput(props) {
         type="number"
         min="1"
         max={props.maxNumberOfGroups}
+        defaultValue="1"
+        onChange={props.handleNumberOfGroups}
       >
       </input>
     </div>

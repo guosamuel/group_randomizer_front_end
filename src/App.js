@@ -6,6 +6,7 @@ function App() {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
   const [ numberOfGroups, setNumberOfGroups ] = useState("1")
   const [ groups, setGroups ] = useState([])
+  const [ groupSize, setGroupSize ] = useState()
 
 
   const handleOptionSubmit = (e, input) => {
@@ -17,7 +18,12 @@ function App() {
     setNumberOfGroups(e.target.value)
   }
 
-  function renderGroupCard(i) {
+  function renderGroupCard(i, currentNumberOfGroups) {
+    console.log("I AM IN THE RENDER GROUP CARD", options.length, groupSize)
+    if (options.length > groupSize) {
+      const selectedOptions = []
+      const randomIndex = Math.floor(Math.random() * options.length)
+    }
     return (
       <div key={i} style={{width: '25%'}}>
         <h1>Group {i}</h1>
@@ -27,10 +33,12 @@ function App() {
 
   const randomizeGroups = (number, choices) => {
     const convertedToIntegerNumber = parseInt(number, 10)
+    const bleh = Math.floor(options.length/convertedToIntegerNumber)
+    setGroupSize(bleh)
     const squares = []
 
     for (let j = 1; j < convertedToIntegerNumber + 1; j++) {
-      squares.push(renderGroupCard(j))
+      squares.push(renderGroupCard(j, number))
     }
 
     setGroups(squares)
@@ -41,6 +49,7 @@ function App() {
   }
   const listOfOptions = options.map( (option, index) => <li key={index}>{option}</li>)
 
+  // console.log(groupSize)
   return (
     <div>
       <h1>Group Randomizer</h1>

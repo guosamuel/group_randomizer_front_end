@@ -4,6 +4,7 @@ import GroupNumberInput from './components/GroupNumberInput';
 
 function App() {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
+  const [ copyOfOptions, setCopyOfOptions ] = useState([])
   const [ numberOfGroups, setNumberOfGroups ] = useState("1")
   const [ groups, setGroups ] = useState([])
   const [ groupSize, setGroupSize ] = useState(1)
@@ -11,6 +12,10 @@ function App() {
   useEffect(() => {
     setGroupSize(Math.floor(options.length/parseInt(numberOfGroups, 10)))
   }, [options.length, numberOfGroups])
+
+  useEffect(() => {
+    setCopyOfOptions([...options])
+  }, [options])
 
 
   const handleOptionSubmit = (e, input) => {
@@ -23,11 +28,10 @@ function App() {
   }
 
   function renderGroupCard(i, currentNumberOfGroups) {
-    // console.log("I AM IN THE RENDER GROUP CARD", options.length, groupSize)
-    if (options.length > groupSize) {
-      const selectedOptions = []
-      const randomIndex = Math.floor(Math.random() * options.length)
-    }
+    console.log("I'M IN THE RENDER GROUP CARD", copyOfOptions)
+    const selectedOptions = []
+    const randomIndex = Math.floor(Math.random() * options.length)
+
     return (
       <div key={i} style={{width: '25%'}}>
         <h1>Group {i}</h1>

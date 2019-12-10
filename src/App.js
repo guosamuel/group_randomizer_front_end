@@ -4,7 +4,6 @@ import GroupNumberInput from './components/GroupNumberInput';
 
 function App() {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
-  const [ copyOfOptions, setCopyOfOptions ] = useState([])
   const [ numberOfGroups, setNumberOfGroups ] = useState("1")
   const [ groups, setGroups ] = useState([])
   const [ groupSize, setGroupSize ] = useState(1)
@@ -12,11 +11,6 @@ function App() {
   useEffect(() => {
     setGroupSize(Math.floor(options.length/parseInt(numberOfGroups, 10)))
   }, [options.length, numberOfGroups])
-
-  useEffect(() => {
-    setCopyOfOptions([...options])
-  }, [options])
-
 
   const handleOptionSubmit = (e, input) => {
     e.preventDefault()
@@ -27,24 +21,33 @@ function App() {
     setNumberOfGroups(e.target.value)
   }
 
-  function renderGroupCard(i, currentNumberOfGroups) {
-    console.log("I'M IN THE RENDER GROUP CARD", copyOfOptions)
-    const selectedOptions = []
-    const randomIndex = Math.floor(Math.random() * options.length)
-
-    return (
-      <div key={i} style={{width: '25%'}}>
-        <h1>Group {i}</h1>
-      </div>
-    )
-  }
+  // function renderGroupCard(i, currentNumberOfGroups) {
+  //   console.log("I'M IN THE RENDER GROUP CARD", copyOfOptions)
+  //   const selectedOptions = []
+  //   const randomIndex = Math.floor(Math.random() * options.length)
+  //
+  //   return (
+  //     <div key={i} style={{width: '25%'}}>
+  //       <h1>Group {i}</h1>
+  //     </div>
+  //   )
+  // }
 
   const randomizeGroups = (number, choices) => {
+    const copyOfOptions = [...options]
     const convertedToIntegerNumber = parseInt(number, 10)
     const squares = []
+    //
+    const numberOfLargerGroups = options.length % convertedToIntegerNumber
+    const minimumNumberOfPeoplePerGroup = Math.floor(options.length/convertedToIntegerNumber)
 
+    //outer loop is for rendering each group
     for (let j = 1; j < convertedToIntegerNumber + 1; j++) {
-      squares.push(renderGroupCard(j, number))
+      let selectedOptions = []
+      //inner loop is determining who is in the group
+      let randomIndex = Math.floor(Math.random() * copyOfOptions.length)
+
+      // squares.push(renderGroupCard(j, number))
     }
 
     setGroups(squares)

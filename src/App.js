@@ -7,6 +7,7 @@ function App() {
   const [ numberOfGroups, setNumberOfGroups ] = useState("1")
   const [ groups, setGroups ] = useState([])
   const [ groupSize, setGroupSize ] = useState(1)
+  const [ randomizedOption, setRandomizedOption ] = useState("")
 
   useEffect(() => {
     setGroupSize(Math.floor(options.length/parseInt(numberOfGroups, 10)))
@@ -66,6 +67,10 @@ function App() {
     setGroups([])
   }
 
+  const randomOption = () => {
+    setRandomizedOption(options[Math.floor(Math.random() * options.length)])
+  }
+
   const listOfOptions = options.map( (option, index) => <li key={index}>{option}</li>)
 
   return (
@@ -77,8 +82,8 @@ function App() {
       <h2>Current List of Options</h2>
       <ol>{listOfOptions}</ol>
       <button onClick={(number, choices) => randomizeGroups(numberOfGroups, options)}>Randomize Into Groups!</button>
-      <button onClick={clearGroups}>Clear Groups</button>
-      <button>Randomly Select One Option</button>
+      <button onClick={clearGroups}>Clear</button>
+      <button onClick={randomOption}>Randomly Select One Option</button>
       <br />
       <br />
       {groups.length === 0 ? "Yet to be randomized" :
@@ -92,6 +97,7 @@ function App() {
         >
         {groups}
         </div>}
+        {randomizedOption}
     </div>
   )
 }

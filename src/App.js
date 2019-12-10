@@ -22,11 +22,11 @@ function App() {
   }
 
   function renderGroupCard(i, currentNumberOfGroups, arrayOfOptions) {
-    const listOfOptions = arrayOfOptions.map( (option, index) => <li key={index}>{option}</li>)
+    const listOfGroupOptions = arrayOfOptions.map( (option, index) => <li key={index}>{option}</li>)
     return (
       <div key={i+1} style={{width: '25%'}}>
         <h1>Group {i+1}</h1>
-        <ul>{listOfOptions}</ul>
+        <ul>{listOfGroupOptions}</ul>
       </div>
     )
   }

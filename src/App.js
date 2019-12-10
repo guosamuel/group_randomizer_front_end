@@ -78,6 +78,7 @@ function App() {
       <ol>{listOfOptions}</ol>
       <button onClick={(number, choices) => randomizeGroups(numberOfGroups, options)}>Randomize Into Groups!</button>
       <button onClick={clearGroups}>Clear Groups</button>
+      <button>Randomly Select One Option</button>
       <br />
       <br />
       {groups.length === 0 ? "Yet to be randomized" :

@@ -21,17 +21,15 @@ function App() {
     setNumberOfGroups(e.target.value)
   }
 
-  // function renderGroupCard(i, currentNumberOfGroups) {
-  //   console.log("I'M IN THE RENDER GROUP CARD", copyOfOptions)
-  //   const selectedOptions = []
-  //   const randomIndex = Math.floor(Math.random() * options.length)
-  //
-  //   return (
-  //     <div key={i+1} style={{width: '25%'}}>
-  //       <h1>Group {i+1}</h1>
-  //     </div>
-  //   )
-  // }
+  function renderGroupCard(i, currentNumberOfGroups, arrayOfOptions) {
+    const listOfOptions = arrayOfOptions.map( (option, index) => <li key={index}>{option}</li>)
+    return (
+      <div key={i+1} style={{width: '25%'}}>
+        <h1>Group {i+1}</h1>
+        <ul>{listOfOptions}</ul>
+      </div>
+    )
+  }
 
   const randomizeGroups = (number, choices) => {
     const copyOfOptions = [...options]
@@ -56,13 +54,9 @@ function App() {
         groupCount = 0
       }
     }
-    console.log(selectedOptions)
-    // const numberOfLargerGroups = options.length % convertedToIntegerNumber
-    // const minimumNumberOfPeoplePerGroup = Math.floor(options.length/convertedToIntegerNumber)
 
-    //outer loop is for rendering each group
     for (let j = 0; j < convertedToIntegerNumber; j++) {
-      // squares.push(renderGroupCard(j, number))
+      squares.push(renderGroupCard(j, number, selectedOptions[j]))
     }
 
     setGroups(squares)

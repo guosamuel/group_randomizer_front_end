@@ -45,7 +45,18 @@ function App() {
     }
 
     //loop for randomizing the options in each group
-    let randomIndex = Math.floor(Math.random() * copyOfOptions.length)
+    let groupCount = 0
+    while (copyOfOptions.length > 0) {
+      let randomIndex = Math.floor(Math.random() * copyOfOptions.length)
+      selectedOptions[groupCount].push(copyOfOptions[randomIndex])
+      copyOfOptions.splice(randomIndex, 1)
+      if (groupCount < convertedToIntegerNumber - 1) {
+        groupCount += 1
+      } else {
+        groupCount = 0
+      }
+    }
+    console.log(selectedOptions)
     // const numberOfLargerGroups = options.length % convertedToIntegerNumber
     // const minimumNumberOfPeoplePerGroup = Math.floor(options.length/convertedToIntegerNumber)
 

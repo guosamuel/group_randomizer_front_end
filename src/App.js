@@ -27,8 +27,8 @@ function App() {
   //   const randomIndex = Math.floor(Math.random() * options.length)
   //
   //   return (
-  //     <div key={i} style={{width: '25%'}}>
-  //       <h1>Group {i}</h1>
+  //     <div key={i+1} style={{width: '25%'}}>
+  //       <h1>Group {i+1}</h1>
   //     </div>
   //   )
   // }
@@ -37,16 +37,20 @@ function App() {
     const copyOfOptions = [...options]
     const convertedToIntegerNumber = parseInt(number, 10)
     const squares = []
-    //
-    const numberOfLargerGroups = options.length % convertedToIntegerNumber
-    const minimumNumberOfPeoplePerGroup = Math.floor(options.length/convertedToIntegerNumber)
+    const selectedOptions = []
+
+    //set up the nested arrays for the selectedOptions
+    for (let i = 0; i < convertedToIntegerNumber; i++) {
+      selectedOptions.push([])
+    }
+
+    //loop for randomizing the options in each group
+    let randomIndex = Math.floor(Math.random() * copyOfOptions.length)
+    // const numberOfLargerGroups = options.length % convertedToIntegerNumber
+    // const minimumNumberOfPeoplePerGroup = Math.floor(options.length/convertedToIntegerNumber)
 
     //outer loop is for rendering each group
-    for (let j = 1; j < convertedToIntegerNumber + 1; j++) {
-      let selectedOptions = []
-      //inner loop is determining who is in the group
-      let randomIndex = Math.floor(Math.random() * copyOfOptions.length)
-
+    for (let j = 0; j < convertedToIntegerNumber; j++) {
       // squares.push(renderGroupCard(j, number))
     }
 

@@ -65,6 +65,7 @@ function App() {
 
   const clearGroups = () => {
     setGroups([])
+    setRandomizedOption("")
   }
 
   const randomOption = () => {

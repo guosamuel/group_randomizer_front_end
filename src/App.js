@@ -63,9 +63,13 @@ function App() {
     setGroups(squares)
   }
 
-  const clearGroups = () => {
+  const clearGroupsAndRandomizedOption = () => {
     setGroups([])
     setRandomizedOption("")
+  }
+
+  const clearOptions = () => {
+    console.log("derp")
   }
 
   const randomOption = () => {
@@ -96,13 +100,16 @@ function App() {
       <GroupNumberInput maxNumberOfGroups={options.length} handleNumberOfGroups={handleNumberOfGroups}/>
       <h2>Current List of Options</h2>
       <ol>{listOfOptions}</ol>
+      <button onClick={clearOptions}>Clear Options</button>
+      <br />
+      <br />
       <button
         onClick={(number, choices) => randomizeGroups(numberOfGroups, options)}
         disabled={options.length === 0 ? true : false}
       >
         Randomize Into Groups!
       </button>
-      <button onClick={clearGroups}>Clear</button>
+      <button onClick={clearGroupsAndRandomizedOption}>Clear</button>
       <button
         onClick={randomOption}
         disabled={options.length === 0 ? true : false}

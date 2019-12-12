@@ -87,7 +87,10 @@ function App() {
       <button onClick={randomOption}>Randomly Select One Option</button>
       <br />
       <br />
-      {groups.length === 0 && randomizedOption === 0 ? "Yet to be randomized" :
+      {groups.length === 0 && randomizedOption.length === 0 ?
+      <div>
+        <h2>Yet to be randomized</h2>
+      </div> :
       randomizedOption.length === 0 ?
       <div
       style={{
@@ -100,7 +103,7 @@ function App() {
         {groups}
         </div> :
         <div>
-          <h1>{randomizedOption}</h1>
+          <h2>{randomizedOption}</h2>
         </div>
       }
     </div>

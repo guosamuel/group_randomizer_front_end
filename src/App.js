@@ -73,7 +73,8 @@ function App() {
   }
 
   const removeOption = idx => {
-    const updatedList = [options.slice(0, idx), options.slice(idx+1)]
+    const updatedList = [...options.slice(0, idx), ...options.slice(idx+1)]
+    console.log(updatedList)
     setOptions([...updatedList])
   }
 

@@ -97,7 +97,12 @@ function App() {
       <GroupNumberInput maxNumberOfGroups={options.length} handleNumberOfGroups={handleNumberOfGroups}/>
       <h2>Current List of Options</h2>
       <ol>{listOfOptions}</ol>
-      <button onClick={(number, choices) => randomizeGroups(numberOfGroups, options)}>Randomize Into Groups!</button>
+      <button
+        onClick={(number, choices) => randomizeGroups(numberOfGroups, options)}
+        disabled={options.length === 0 ? true : false}
+      >
+        Randomize Into Groups!
+      </button>
       <button onClick={clearGroups}>Clear</button>
       <button onClick={randomOption}>Randomly Select One Option</button>
       <br />

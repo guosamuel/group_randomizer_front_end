@@ -72,15 +72,16 @@ function App() {
     setRandomizedOption(options[Math.floor(Math.random() * options.length)])
   }
 
-  const removeOption = () => {
-    console.log("derp")
+  const removeOption = idx => {
+    const updatedList = [options.slice(0, idx), options.slice(idx+1)]
+    setOptions([...updatedList])
   }
 
   const listOfOptions = options.map( (option, index) => {
     return (
       <li
       key={index}
-      onClick={removeOption}
+      onClick={ idx => removeOption(index)}
       >
         {option}
       </li>

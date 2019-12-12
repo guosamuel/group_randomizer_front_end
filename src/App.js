@@ -72,7 +72,20 @@ function App() {
     setRandomizedOption(options[Math.floor(Math.random() * options.length)])
   }
 
-  const listOfOptions = options.map( (option, index) => <li key={index}>{option}</li>)
+  const removeOption = () => {
+    console.log("derp")
+  }
+
+  const listOfOptions = options.map( (option, index) => {
+    return (
+      <li
+      key={index}
+      onClick={removeOption}
+      >
+        {option}
+      </li>
+    )
+  })
 
   return (
     <div>
@@ -103,7 +116,7 @@ function App() {
         {groups}
         </div> :
         <div>
-          <h2>{randomizedOption}</h2>
+          <h2>Your randomized choice is: {randomizedOption}</h2>
         </div>
       }
     </div>

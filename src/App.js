@@ -69,7 +69,7 @@ function App() {
   }
 
   const clearOptions = () => {
-    console.log("derp")
+    setOptions([])
   }
 
   const randomOption = () => {
@@ -100,7 +100,12 @@ function App() {
       <GroupNumberInput maxNumberOfGroups={options.length} handleNumberOfGroups={handleNumberOfGroups}/>
       <h2>Current List of Options</h2>
       <ol>{listOfOptions}</ol>
-      <button onClick={clearOptions}>Clear Options</button>
+      <button
+        onClick={clearOptions}
+        disabled={options.length === 0 ? true : false}
+      >
+        Clear Options
+      </button>
       <br />
       <br />
       <button

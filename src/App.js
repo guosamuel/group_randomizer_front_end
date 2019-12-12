@@ -74,7 +74,6 @@ function App() {
 
   const removeOption = idx => {
     const updatedList = [...options.slice(0, idx), ...options.slice(idx+1)]
-    console.log(updatedList)
     setOptions([...updatedList])
   }
 
@@ -104,7 +103,12 @@ function App() {
         Randomize Into Groups!
       </button>
       <button onClick={clearGroups}>Clear</button>
-      <button onClick={randomOption}>Randomly Select One Option</button>
+      <button
+        onClick={randomOption}
+        disabled={options.length === 0 ? true : false}
+      >
+        Randomly Select One Option
+      </button>
       <br />
       <br />
       {groups.length === 0 && randomizedOption.length === 0 ?

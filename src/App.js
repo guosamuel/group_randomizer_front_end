@@ -87,7 +87,8 @@ function App() {
       <button onClick={randomOption}>Randomly Select One Option</button>
       <br />
       <br />
-      {groups.length === 0 ? "Yet to be randomized" :
+      {groups.length === 0 && randomizedOption === 0 ? "Yet to be randomized" :
+      randomizedOption.length === 0 ?
       <div
       style={{
           width: '100%',
@@ -97,8 +98,11 @@ function App() {
         }}
         >
         {groups}
-        </div>}
-        {randomizedOption}
+        </div> :
+        <div>
+          <h1>{randomizedOption}</h1>
+        </div>
+      }
     </div>
   )
 }

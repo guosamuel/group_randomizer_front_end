@@ -7,7 +7,7 @@ function GroupNumberInput(props) {
       <input
         type="number"
         min="1"
-        max={props.maxNumberOfGroups}
+        max={!!props.maxNumberOfGroups ? props.maxNumberOfGroups : "1"}
         defaultValue="1"
         onChange={props.handleNumberOfGroups}
       >

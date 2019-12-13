@@ -10,6 +10,9 @@ function App() {
   const [ randomizedOption, setRandomizedOption ] = useState("")
 
   useEffect(() => {
+    if (options.length < parseInt(numberOfGroups, 10)) {
+      setNumberOfGroups(options.length.toString())
+    }
     setGroupSize(Math.floor(options.length/parseInt(numberOfGroups, 10)))
   }, [options.length, numberOfGroups])
 

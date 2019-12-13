@@ -83,11 +83,9 @@ function App() {
 
   const listOfOptions = options.map( (option, index) => {
     return (
-      <li
-      key={index}
-      onClick={ idx => removeOption(index)}
-      >
+      <li key={index}>
         {option}
+        <button onClick={ idx => removeOption(index)}>X</button>
       </li>
     )
   })

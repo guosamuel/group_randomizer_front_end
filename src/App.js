@@ -118,13 +118,32 @@ function App() {
     )
   })
 
-  const handleSaveGroups = () => {
-    if (!savedGroups.includes(options)) {
-      setSavedGroups([...savedGroups, options])
+  const sameGroup = savedGroup => {
+    console.log("I am in the sameGroup function")
+    const optionsHash = {}
+
+    for (let j = 0; j < options.length; j++) {
+      optionsHash[options[j].toLowerCase()] = true
+    }
+
+    for (let k = 0; k < savedGroup.length; k++) {
+      if(!optionsHash.hasOwnProperty(savedGroup[k].toLowerCase())) {
+        return false
+      }
+    }
+    return true
+  }
+
+  const handleSaveGroup = () => {
+    for (let i = 0; i < savedGroups.length; i++) {
+      console.log("I am in the handleSaveGroup")
+      if (!sameGroup(savedGroups[i])) {
+        setSavedGroups([...savedGroups, options])
+      }
     }
   }
 
-  console.log(savedGroups, !!savedGroups)
+  console.log(savedGroups)
   return (
     <div>
       <h1>Group Randomizer</h1>
@@ -149,7 +168,7 @@ function App() {
         Clear Options
       </button>
       <button
-        onClick={handleSaveGroups}
+        onClick={handleSaveGroup}
       >
         Save Group
       </button>

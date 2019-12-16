@@ -10,6 +10,7 @@ function App() {
   const [ randomizedOption, setRandomizedOption ] = useState("")
 
   useEffect(() => {
+    //this is when a person deletes options, the maxNumberOfGroups should reflect the max length of the options
     if (options.length < parseInt(numberOfGroups, 10)) {
       setNumberOfGroups(options.length.toString())
     }
@@ -93,12 +94,17 @@ function App() {
     )
   })
 
+  console.log("NUMBER OF GROUPS", numberOfGroups)
   return (
     <div>
       <h1>Group Randomizer</h1>
       <Form handleOptionSubmit={handleOptionSubmit}/>
       <br/>
-      <GroupNumberInput maxNumberOfGroups={options.length} handleNumberOfGroups={handleNumberOfGroups}/>
+      <GroupNumberInput
+        maxNumberOfGroups={options.length}
+        handleNumberOfGroups={handleNumberOfGroups}
+        numberOfGroups={numberOfGroups}
+      />
       <h2>Current List of Options</h2>
       <ol>{listOfOptions}</ol>
       <button

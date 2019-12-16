@@ -118,16 +118,15 @@ function App() {
     )
   })
 
-  const sameGroup = savedGroup => {
-    console.log("I am in the sameGroup function")
+  const sameGroup = savingGroup => {
     const optionsHash = {}
 
     for (let j = 0; j < options.length; j++) {
       optionsHash[options[j].toLowerCase()] = true
     }
 
-    for (let k = 0; k < savedGroup.length; k++) {
-      if(!optionsHash.hasOwnProperty(savedGroup[k].toLowerCase())) {
+    for (let k = 0; k < savingGroup.length; k++) {
+      if(!optionsHash.hasOwnProperty(savingGroup[k].toLowerCase())) {
         return false
       }
     }
@@ -135,10 +134,13 @@ function App() {
   }
 
   const handleSaveGroup = () => {
-    for (let i = 0; i < savedGroups.length; i++) {
-      console.log("I am in the handleSaveGroup")
-      if (!sameGroup(savedGroups[i])) {
-        setSavedGroups([...savedGroups, options])
+    if (savedGroups.length === 0) {
+      setSavedGroups([...savedGroups, options])
+    } else {
+      for (let i = 0; i < savedGroups.length; i++) {
+        if (!sameGroup(savedGroups[i])) {
+          setSavedGroups([...savedGroups, options])
+        }
       }
     }
   }

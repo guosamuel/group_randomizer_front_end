@@ -92,7 +92,7 @@ function App() {
 
   const listOfOptions = options.map( (option, index) => {
     return (
-      <li key={index}>
+      <li key={index+1}>
         {option}
         <button onClick={ idx => removeOption(index)}>X</button>
       </li>
@@ -101,23 +101,25 @@ function App() {
 
   const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
     return (
-      <li key={index}>
-        <h3>Saved Group #{index}</h3>
+      <ul key={index+1}>
+        <h3>Saved Group #{index+1}</h3>
         <ul>
         {savedGroup.map( (savedOption, idx) => {
           return (
-            <li key={index.idx}>
+            <li key={index + idx/10 +1}>
               {savedOption}
             </li>
           )
         })}
         </ul>
-      </li>
+      </ul>
     )
   })
 
   const handleSaveGroups = () => {
-    setSavedGroups([...savedGroups, options])
+    if (!savedGroups.includes(options)) {
+      setSavedGroups([...savedGroups, options])
+    }
   }
 
   console.log(savedGroups, !!savedGroups)
@@ -128,7 +130,7 @@ function App() {
       <br/>
       <h2>Saved Groups</h2>
       {savedGroups.length ? listOfSavedGroups :
-        <p>You have yet to save any groups</p>  
+        <p>You have yet to save any groups</p>
       }
       <br/>
       <GroupNumberInput

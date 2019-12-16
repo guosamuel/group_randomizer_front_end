@@ -12,7 +12,11 @@ function App() {
   useEffect(() => {
     //this is when a person deletes options, the maxNumberOfGroups should reflect the max length of the options
     if (options.length < parseInt(numberOfGroups, 10)) {
+      if (options.length === 0) {
+        setNumberOfGroups((options.length + 1).toString())
+      } else {
       setNumberOfGroups(options.length.toString())
+      }
     }
     setGroupSize(Math.floor(options.length/parseInt(numberOfGroups, 10)))
   }, [options.length, numberOfGroups])

@@ -22,6 +22,8 @@ function App() {
     setGroupSize(Math.floor(options.length/parseInt(numberOfGroups, 10)))
   }, [options.length, numberOfGroups])
 
+  const uuidv4 = require('uuid/v4')
+
   const handleOptionSubmit = (e, input) => {
     e.preventDefault()
     setOptions([...options, input])
@@ -32,9 +34,9 @@ function App() {
   }
 
   function renderGroupCard(i, currentNumberOfGroups, arrayOfOptions) {
-    const listOfGroupOptions = arrayOfOptions.map( (option, index) => <li key={index}>{option}</li>)
+    const listOfGroupOptions = arrayOfOptions.map( (option, index) => <li key={uuidv4()}>{option}</li>)
     return (
-      <div key={i+1} style={{width: '25%'}}>
+      <div key={uuidv4()} style={{width: '25%'}}>
         <h1>Group {i+1}</h1>
         <ul>{listOfGroupOptions}</ul>
       </div>
@@ -92,7 +94,7 @@ function App() {
 
   const listOfOptions = options.map( (option, index) => {
     return (
-      <li key={index+1}>
+      <li key={uuidv4()}>
         {option}
         <button onClick={ idx => removeOption(index)}>X</button>
       </li>
@@ -101,12 +103,12 @@ function App() {
 
   const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
     return (
-      <ul key={index+1}>
+      <ul key={uuidv4()}>
         <h3>Saved Group #{index+1}</h3>
         <ul>
-        {savedGroup.map( (savedOption, idx) => {
+        {savedGroup.map( savedOption => {
           return (
-            <li key={index + idx/10 +1}>
+            <li key={uuidv4()}>
               {savedOption}
             </li>
           )

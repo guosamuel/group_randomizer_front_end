@@ -120,14 +120,15 @@ function App() {
     setSavedGroups([...savedGroups, options])
   }
 
+  console.log(savedGroups, !!savedGroups)
   return (
     <div>
       <h1>Group Randomizer</h1>
       <Form handleOptionSubmit={handleOptionSubmit}/>
       <br/>
       <h2>Saved Groups</h2>
-      {!!savedGroups ? <p>You have yet to save any groups</p> :
-        listOfSavedGroups
+      {savedGroups.length ? listOfSavedGroups :
+        <p>You have yet to save any groups</p>  
       }
       <br/>
       <GroupNumberInput

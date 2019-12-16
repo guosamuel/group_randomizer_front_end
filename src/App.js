@@ -8,6 +8,7 @@ function App() {
   const [ groups, setGroups ] = useState([])
   const [ groupSize, setGroupSize ] = useState(1)
   const [ randomizedOption, setRandomizedOption ] = useState("")
+  const [ savedGroups, setSavedGroups ] = useState([])
 
   useEffect(() => {
     //this is when a person deletes options, the maxNumberOfGroups should reflect the max length of the options
@@ -98,11 +99,36 @@ function App() {
     )
   })
 
-  console.log("NUMBER OF GROUPS", numberOfGroups)
+  const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
+    return (
+      <li key={index}>
+        <h3>Saved Group #{index}</h3>
+        <ul>
+        {savedGroup.map( (savedOption, idx) => {
+          return (
+            <li key={index.idx}>
+              {savedOption}
+            </li>
+          )
+        })}
+        </ul>
+      </li>
+    )
+  })
+
+  const handleSaveGroups = () => {
+    setSavedGroups([...savedGroups, options])
+  }
+
   return (
     <div>
       <h1>Group Randomizer</h1>
       <Form handleOptionSubmit={handleOptionSubmit}/>
+      <br/>
+      <h2>Saved Groups</h2>
+      {!!savedGroups ? <p>You have yet to save any groups</p> :
+        listOfSavedGroups
+      }
       <br/>
       <GroupNumberInput
         maxNumberOfGroups={options.length}
@@ -116,6 +142,11 @@ function App() {
         disabled={options.length === 0 ? true : false}
       >
         Clear Options
+      </button>
+      <button
+        onClick={handleSaveGroups}
+      >
+        Save Group
       </button>
       <br />
       <br />

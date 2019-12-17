@@ -103,7 +103,7 @@ function App() {
 
   const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
     return (
-      <ul key={uuidv4()}>
+      <li key={uuidv4()}>
         <h3>Saved Group #{index+1}</h3>
         <ul>
         {savedGroup.map( savedOption => {
@@ -114,7 +114,7 @@ function App() {
           )
         })}
         </ul>
-      </ul>
+      </li>
     )
   })
 
@@ -152,7 +152,10 @@ function App() {
       <Form handleOptionSubmit={handleOptionSubmit}/>
       <br/>
       <h2>Saved Groups</h2>
-      {savedGroups.length ? listOfSavedGroups :
+      {savedGroups.length ?
+        <ol>
+          {listOfSavedGroups}
+        </ol> :
         <p>You have yet to save any groups</p>
       }
       <br/>

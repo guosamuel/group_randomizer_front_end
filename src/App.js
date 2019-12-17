@@ -132,17 +132,30 @@ function App() {
   })
 
   const sameGroup = savingGroup => {
-    const optionsHash = {}
+    // const optionsHash = {}
+    //
+    // for (let j = 0; j < options.length; j++) {
+    //   optionsHash[options[j].toLowerCase()] = true
+    // }
+    // console.log("OPTION HASH", optionsHash)
+    // for (let k = 0; k < savingGroup.length; k++) {
+    //   if(!optionsHash.hasOwnProperty(savingGroup[k].toLowerCase())) {
+    //     return false
+    //   }
+    // }
 
-    for (let j = 0; j < options.length; j++) {
-      optionsHash[options[j].toLowerCase()] = true
+    const savedGroupOptionsHash = {}
+
+    for (let j = 0; j < savingGroup.length; j++) {
+      savedGroupOptionsHash[savingGroup[j].toLowerCase()] = true
     }
 
-    for (let k = 0; k < savingGroup.length; k++) {
-      if(!optionsHash.hasOwnProperty(savingGroup[k].toLowerCase())) {
+    for (let k = 0; k < options.length; k++) {
+      if(!savedGroupOptionsHash.hasOwnProperty(options[k].toLowerCase())) {
         return false
       }
     }
+
     return true
   }
 
@@ -160,7 +173,6 @@ function App() {
     }
   }
 
-  console.log(savedGroups)
   return (
     <div>
       <h1>Group Randomizer</h1>

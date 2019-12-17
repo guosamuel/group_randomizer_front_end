@@ -140,6 +140,8 @@ function App() {
       for (let i = 0; i < savedGroups.length; i++) {
         if (!sameGroup(savedGroups[i])) {
           setSavedGroups([...savedGroups, options])
+        } else {
+          alert(`A saved group with your current list of options already exist. It is Group No. ${i+1}`)
         }
       }
     }

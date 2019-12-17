@@ -106,17 +106,17 @@ function App() {
     setSavedGroups([...updatedSavedGroupList])
   }
 
-  const useSavedGroup = () => {
-    console.log("derp")
+  const reuseSavedGroup = index => {
+    console.log("derp", options[index])
   }
-  
+
   const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
     return (
       <li key={uuidv4()}>
         <h3>
           Saved Group #{index+1}
           <button onClick={idx => deleteSavedGroup(index)}>X</button>
-          <button onClick={useSavedGroup}>Re-use This Group</button>
+          <button onClick={idx => reuseSavedGroup(index)}>Re-use This Group</button>
         </h3>
         <ul>
         {savedGroup.map( savedOption => {

@@ -102,8 +102,8 @@ function App() {
   })
 
   const deleteSavedGroup = index => {
-    console.log("derp", index)
-    
+    const updatedSavedGroupList = [...savedGroups.slice(0, index), ...savedGroups.slice(index+1)]
+    setSavedGroups([...updatedSavedGroupList])
   }
 
   const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {

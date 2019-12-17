@@ -101,10 +101,18 @@ function App() {
     )
   })
 
+  const deleteSavedGroup = index => {
+    console.log("derp", index)
+    
+  }
+
   const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
     return (
       <li key={uuidv4()}>
-        <h3>Saved Group #{index+1}</h3>
+        <h3>
+          Saved Group #{index+1}
+          <button onClick={idx => deleteSavedGroup(index)}>X</button>
+        </h3>
         <ul>
         {savedGroup.map( savedOption => {
           return (

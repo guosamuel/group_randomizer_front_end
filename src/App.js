@@ -132,29 +132,30 @@ function App() {
   })
 
   const sameGroup = savingGroup => {
-    // const optionsHash = {}
-    //
-    // for (let j = 0; j < options.length; j++) {
-    //   optionsHash[options[j].toLowerCase()] = true
-    // }
-    // console.log("OPTION HASH", optionsHash)
-    // for (let k = 0; k < savingGroup.length; k++) {
-    //   if(!optionsHash.hasOwnProperty(savingGroup[k].toLowerCase())) {
-    //     return false
-    //   }
-    // }
 
-    const savedGroupOptionsHash = {}
+    const optionsHash = {}
 
-    for (let j = 0; j < savingGroup.length; j++) {
-      savedGroupOptionsHash[savingGroup[j].toLowerCase()] = true
+    for (let j = 0; j < options.length; j++) {
+      optionsHash[options[j].toLowerCase()] = true
     }
-
-    for (let k = 0; k < options.length; k++) {
-      if(!savedGroupOptionsHash.hasOwnProperty(options[k].toLowerCase())) {
+    // console.log("OPTION HASH", optionsHash)
+    for (let k = 0; k < savingGroup.length; k++) {
+      if(!optionsHash.hasOwnProperty(savingGroup[k].toLowerCase())) {
         return false
       }
     }
+
+    // const savedGroupOptionsHash = {}
+    //
+    // for (let j = 0; j < savingGroup.length; j++) {
+    //   savedGroupOptionsHash[savingGroup[j].toLowerCase()] = true
+    // }
+    //
+    // for (let k = 0; k < options.length; k++) {
+    //   if(!savedGroupOptionsHash.hasOwnProperty(options[k].toLowerCase())) {
+    //     return false
+    //   }
+    // }
 
     return true
   }
@@ -166,9 +167,10 @@ function App() {
       for (let i = 0; i < savedGroups.length; i++) {
         if (!sameGroup(savedGroups[i])) {
           setSavedGroups([...savedGroups, options])
-        } else {
-          alert(`A saved group with your current list of options already exist. It is Group No. ${i+1}`)
         }
+        // else {
+        //   alert(`A saved group with your current list of options already exist. It is Group No. ${i+1}`)
+        // }
       }
     }
   }

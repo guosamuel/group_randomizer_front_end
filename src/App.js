@@ -230,6 +230,12 @@ function App() {
         numberOfGroups={numberOfGroups}
       />
       <h2>Current List of Options</h2>
+      <label>Group Name:</label>
+      <br />
+      <input
+        placeholder="Input group name here"
+      >
+      </input>
       <ol>{listOfOptions}</ol>
       <button
         onClick={clearOptions}

@@ -125,6 +125,7 @@ function App() {
         </h3>
         <ul>
         {savedGroup.options.map( savedOption => {
+          console.log(savedGroup)
           return (
             <li key={uuidv4()}>
               {savedOption}
@@ -186,7 +187,7 @@ function App() {
 
   const handleSaveGroup = () => {
     if (savedGroups.length === 0) {
-      setSavedGroups([{name: (savingGroupName ? savingGroupName : null), options: [options]}])
+      setSavedGroups([{name: (savingGroupName ? savingGroupName : null), options: options}])
       setSavingGroupName("")
     } else {
       // we want to stop as soon as we discover an existing saved group
@@ -200,7 +201,7 @@ function App() {
         i++
       }
       if (!savedGroupExist) {
-        setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : null), options: [options]}])
+        setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : null), options: options}])
         setSavingGroupName("")
       }
       // for (let i = 0; i < savedGroups.length; i++) {

@@ -119,12 +119,12 @@ function App() {
     return (
       <li key={uuidv4()}>
         <h3>
-          Saved Group #{index+1}
+          {savedGroup.name ? savedGroup.name : `Saved Group #${index+1}`}
           <button onClick={idx => deleteSavedGroup(index)}>X</button>
           <button onClick={idx => reuseSavedGroup(index)}>Re-use This Group</button>
         </h3>
         <ul>
-        {savedGroup.map( savedOption => {
+        {savedGroup.options.map( savedOption => {
           return (
             <li key={uuidv4()}>
               {savedOption}
@@ -136,7 +136,6 @@ function App() {
     )
   })
 
-  //function currently not working. Need to change it
   const sameGroup = savingGroup => {
 
     const savingGroupHash = {}
@@ -187,21 +186,22 @@ function App() {
 
   const handleSaveGroup = () => {
     if (savedGroups.length === 0) {
-      setSavedGroups([{name: savingGroupName, options: [options]}])
+      setSavedGroups([{name: (savingGroupName ? savingGroupName : null), options: [options]}])
       setSavingGroupName("")
     } else {
       // we want to stop as soon as we discover an existing saved group
       let i = 0
       let savedGroupExist = false
       while (i < savedGroups.length && !savedGroupExist) {
-        if (sameGroup(savedGroups[i])) {
+        if (sameGroup(savedGroups[i].options)) {
           savedGroupExist = true
-          alert(`A saved group with your current list of options already exist. It is Group No. ${i+1}`)
+          alert(`A saved group with your current list of options already exist. It is ${savedGroups[i].name}`)
         }
         i++
       }
       if (!savedGroupExist) {
-        setSavedGroups([...savedGroups, options])
+        setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : null), options: [options]}])
+        setSavingGroupName("")
       }
       // for (let i = 0; i < savedGroups.length; i++) {
       //   // this still saves as soon as one of the groups are not the same

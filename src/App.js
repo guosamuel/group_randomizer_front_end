@@ -131,19 +131,39 @@ function App() {
     )
   })
 
+  //function currently not working. Need to change it
   const sameGroup = savingGroup => {
 
-    const optionsHash = {}
+    const savingGroupHash = {}
 
-    for (let j = 0; j < options.length; j++) {
-      optionsHash[options[j].toLowerCase()] = true
+    for (let j = 0; j < savingGroup.length; j++) {
+      savingGroupHash[savingGroup[j].toLowerCase()] = 1
     }
-    // console.log("OPTION HASH", optionsHash)
-    for (let k = 0; k < savingGroup.length; k++) {
-      if(!optionsHash.hasOwnProperty(savingGroup[k].toLowerCase())) {
-        return false
+
+    for (let k = 0; k < options.length; k++) {
+      if (savingGroupHash.hasOwnProperty(options[k].toLowerCase())) {
+        savingGroupHash[options[k].toLowerCase()] -= 1
+      } else {
+        savingGroupHash[options[k].toLowerCase()] = 1
       }
     }
+
+    let sameGroupCheck = Object.values(savingGroupHash).reduce( (acc, current) => acc += current)
+
+    if (sameGroupCheck === 0) {
+      //this means the same group already exists
+      return true
+    } else {
+      //this means the group does not already exist
+      return false
+    }
+    //this is checking each option in the existing saved group against the
+    //the current list of options
+    // for (let k = 0; k < savingGroup.length; k++) {
+    //   if(!optionsHash.hasOwnProperty(savingGroup[k].toLowerCase())) {
+    //     return false
+    //   }
+    // }
 
     // const savedGroupOptionsHash = {}
     //
@@ -157,21 +177,35 @@ function App() {
     //   }
     // }
 
-    return true
+    // return true
   }
 
   const handleSaveGroup = () => {
     if (savedGroups.length === 0) {
       setSavedGroups([...savedGroups, options])
     } else {
-      for (let i = 0; i < savedGroups.length; i++) {
-        if (!sameGroup(savedGroups[i])) {
-          setSavedGroups([...savedGroups, options])
+      // we want to stop as soon as we discover an existing saved group
+      let i = 0
+      let savedGroupExist = false
+      while (i < savedGroups.length && !savedGroupExist) {
+        if (sameGroup(savedGroups[i])) {
+          savedGroupExist = true
+          alert(`A saved group with your current list of options already exist. It is Group No. ${i+1}`)
         }
-        // else {
-        //   alert(`A saved group with your current list of options already exist. It is Group No. ${i+1}`)
-        // }
+        i++
       }
+      if (!savedGroupExist) {
+        setSavedGroups([...savedGroups, options])
+      }
+      // for (let i = 0; i < savedGroups.length; i++) {
+      //   // this still saves as soon as one of the groups are not the same
+      //   if (!sameGroup(savedGroups[i])) {
+      //     setSavedGroups([...savedGroups, options])
+      //   }
+      //   else {
+      //     alert(`A saved group with your current list of options already exist. It is Group No. ${i+1}`)
+      //   }
+      // }
     }
   }
 

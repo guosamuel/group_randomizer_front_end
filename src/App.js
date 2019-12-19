@@ -9,6 +9,7 @@ function App() {
   const [ groupSize, setGroupSize ] = useState(1)
   const [ randomizedOption, setRandomizedOption ] = useState("")
   const [ savedGroups, setSavedGroups ] = useState([])
+  const [ savingGroupName, setSavingGroupName ] = useState("")
 
   useEffect(() => {
     //this is when a person deletes options, the maxNumberOfGroups should reflect the max length of the options
@@ -211,6 +212,12 @@ function App() {
     }
   }
 
+  const handleSavingGroupName = e => {
+    setSavingGroupName(e.target.value)
+  }
+
+  console.log(savingGroupName)
+  
   return (
     <div>
       <h1>Group Randomizer</h1>
@@ -230,10 +237,15 @@ function App() {
         numberOfGroups={numberOfGroups}
       />
       <h2>Current List of Options</h2>
+      <label>Note: You have the option of creating a group name for your current list of options. If you do not choose to do so, the default name will be "Saved Group #(Last Group Number)"</label>
+      <br/>
+      <br/>
       <label>Group Name:</label>
       <br />
       <input
         placeholder="Input group name here"
+        onChange={handleSavingGroupName}
+        value={savingGroupName}
       >
       </input>
       <ol>{listOfOptions}</ol>

@@ -107,7 +107,7 @@ function App() {
   }
 
   const reuseSavedGroup = index => {
-    console.log("derp", options[index])
+    setOptions([...savedGroups[index]])
   }
 
   const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {

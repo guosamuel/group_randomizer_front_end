@@ -8,6 +8,8 @@ function App() {
   const [ groups, setGroups ] = useState([])
   const [ groupSize, setGroupSize ] = useState(1)
   const [ randomizedOption, setRandomizedOption ] = useState("")
+  // savedGroups shall be an array of objects
+  // the object structure shall be {name: TBD, options: TBD}
   const [ savedGroups, setSavedGroups ] = useState([])
   const [ savingGroupName, setSavingGroupName ] = useState("")
 
@@ -185,7 +187,7 @@ function App() {
 
   const handleSaveGroup = () => {
     if (savedGroups.length === 0) {
-      setSavedGroups([...savedGroups, options])
+      setSavedGroups([options])
     } else {
       // we want to stop as soon as we discover an existing saved group
       let i = 0
@@ -212,12 +214,10 @@ function App() {
     }
   }
 
-  const handleSavingGroupName = e => {
+  const handleSavingGroupNameInput = e => {
     setSavingGroupName(e.target.value)
   }
 
-  console.log(savingGroupName)
-  
   return (
     <div>
       <h1>Group Randomizer</h1>
@@ -244,7 +244,7 @@ function App() {
       <br />
       <input
         placeholder="Input group name here"
-        onChange={handleSavingGroupName}
+        onChange={handleSavingGroupNameInput}
         value={savingGroupName}
       >
       </input>

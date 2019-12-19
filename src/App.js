@@ -187,7 +187,8 @@ function App() {
 
   const handleSaveGroup = () => {
     if (savedGroups.length === 0) {
-      setSavedGroups([options])
+      setSavedGroups([{name: savingGroupName, options: [options]}])
+      setSavingGroupName("")
     } else {
       // we want to stop as soon as we discover an existing saved group
       let i = 0

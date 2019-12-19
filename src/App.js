@@ -44,6 +44,7 @@ function App() {
   }
 
   const randomizeGroups = (number, choices) => {
+    setRandomizedOption("")
     const copyOfOptions = [...options]
     const convertedToIntegerNumber = parseInt(number, 10)
     const squares = []
@@ -84,6 +85,7 @@ function App() {
   }
 
   const randomOption = () => {
+    setGroups([])
     setRandomizedOption(options[Math.floor(Math.random() * options.length)])
   }
 

@@ -167,6 +167,9 @@ function App() {
       //this means the group does not already exist
       return false
     }
+
+    // keeping the code below in case I need to reference it for a blog topic
+
     //this is checking each option in the existing saved group against the
     //the current list of options
     // for (let k = 0; k < savingGroup.length; k++) {
@@ -209,6 +212,9 @@ function App() {
         setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : `Saved Group #${savedGroups.length+1}`), options: options}])
         setSavingGroupName("")
       }
+
+      // keeping the code below in case I need to reference it for a blog topic
+
       // for (let i = 0; i < savedGroups.length; i++) {
       //   // this still saves as soon as one of the groups are not the same
       //   if (!sameGroup(savedGroups[i])) {

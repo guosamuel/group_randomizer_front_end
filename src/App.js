@@ -119,13 +119,12 @@ function App() {
     return (
       <li key={uuidv4()}>
         <h3>
-          {savedGroup.name ? savedGroup.name : `Saved Group #${index+1}`}
+          {savedGroup.name}
           <button onClick={idx => deleteSavedGroup(index)}>X</button>
           <button onClick={idx => reuseSavedGroup(index)}>Re-use This Group</button>
         </h3>
         <ul>
         {savedGroup.options.map( savedOption => {
-          console.log(savedGroup)
           return (
             <li key={uuidv4()}>
               {savedOption}

@@ -112,7 +112,7 @@ function App() {
   }
 
   const reuseSavedGroup = index => {
-    setOptions([...savedGroups[index]])
+    setOptions([...savedGroups[index].options])
   }
 
   const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
@@ -187,7 +187,7 @@ function App() {
 
   const handleSaveGroup = () => {
     if (savedGroups.length === 0) {
-      setSavedGroups([{name: (savingGroupName ? savingGroupName : null), options: options}])
+      setSavedGroups([{name: (savingGroupName ? savingGroupName : `Saved Group #1`), options: options}])
       setSavingGroupName("")
     } else {
       // we want to stop as soon as we discover an existing saved group
@@ -201,7 +201,7 @@ function App() {
         i++
       }
       if (!savedGroupExist) {
-        setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : null), options: options}])
+        setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : `Saved Group #${savedGroups.length+1}`), options: options}])
         setSavingGroupName("")
       }
       // for (let i = 0; i < savedGroups.length; i++) {

@@ -108,6 +108,11 @@ function App() {
 
   const deleteSavedGroup = index => {
     const updatedSavedGroupList = [...savedGroups.slice(0, index), ...savedGroups.slice(index+1)]
+    updatedSavedGroupList.map( (savedGroup, index) => {
+      if (savedGroup.name.startsWith(`Saved Group #`)) {
+        savedGroup.name = `Saved Group #${index+1}`
+      }
+    })
     setSavedGroups([...updatedSavedGroupList])
   }
 

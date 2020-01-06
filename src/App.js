@@ -80,7 +80,7 @@ function App() {
     setGroups(squares)
   }
 
-  const clear = () => {
+  const clearOutputs = () => {
     setGroups([])
     setRandomizedOption("")
     setRandomizedOrder([])
@@ -266,7 +266,7 @@ function App() {
       >
         Randomize Into Groups!
       </button>
-      <button onClick={clear}>Clear</button>
+      <button onClick={clearOutputs}>Clear</button>
       <button
         onClick={randomOption}
         disabled={options.length === 0 ? true : false}
@@ -281,31 +281,36 @@ function App() {
       </button>
       <br />
       <br />
-      {groups.length === 0 && randomizedOption.length === 0 ?
-      <div>
-        <h2>Yet to be randomized</h2>
-      </div> :
-      randomizedOption.length === 0 ?
-      <div
-      style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexWrap: 'wrap'
-        }}
+      {groups.length === 0 && randomizedOption.length === 0 && randomizedOrder.length === 0 ?
+        <div>
+          <h2>Yet to be randomized</h2>
+        </div> : null
+      }
+      {groups.length !== 0 ?
+        <div
+          style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              flexWrap: 'wrap'
+            }}
         >
-        {groups}
-        </div> :
+          {groups}
+        </div> : null
+      }
+      {randomizedOption.length !== 0 ?
         <div>
           <h2>Your randomized choice is: {randomizedOption}</h2>
-        </div>
+        </div> : null
       }
-      {randomizedOrder.length === 0 ? null :
-      <div>
-        <ol>
-          {randomizedOrderList}
-        </ol>
-      </div>}
+      {randomizedOrder.length !== 0 ?
+        <div>
+          <h2>Your randomized order is:</h2>
+          <ol>
+            {randomizedOrderList}
+            </ol>
+        </div> : null
+      }
     </div>
   )
 }

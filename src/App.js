@@ -80,9 +80,10 @@ function App() {
     setGroups(squares)
   }
 
-  const clearGroupsAndRandomizedOption = () => {
+  const clear = () => {
     setGroups([])
     setRandomizedOption("")
+    setRandomizedOrder([])
   }
 
   const clearOptions = () => {
@@ -257,7 +258,7 @@ function App() {
       >
         Randomize Into Groups!
       </button>
-      <button onClick={clearGroupsAndRandomizedOption}>Clear</button>
+      <button onClick={clear}>Clear</button>
       <button
         onClick={randomOption}
         disabled={options.length === 0 ? true : false}

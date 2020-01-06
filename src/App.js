@@ -206,6 +206,14 @@ function App() {
     setRandomizedOrder([...randomOrder])
   }
 
+  const randomizedOrderList = randomizedOrder.map( option => {
+    return(
+      <li key={uuidv4()}>
+        {option}
+      </li>
+    )
+  })
+
   console.log(randomizedOrder)
 
   return (
@@ -292,6 +300,12 @@ function App() {
           <h2>Your randomized choice is: {randomizedOption}</h2>
         </div>
       }
+      {randomizedOrder.length === 0 ? null :
+      <div>
+        <ol>
+          {randomizedOrderList}
+        </ol>
+      </div>}
     </div>
   )
 }

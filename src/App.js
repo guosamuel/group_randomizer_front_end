@@ -146,51 +146,21 @@ function App() {
 
     const savingGroupHash = {}
 
-    for (let j = 0; j < savingGroup.length; j++) {
-      savingGroupHash[savingGroup[j].toLowerCase()] = 1
-    }
-
-    for (let k = 0; k < options.length; k++) {
-      if (savingGroupHash.hasOwnProperty(options[k].toLowerCase())) {
-        savingGroupHash[options[k].toLowerCase()] -= 1
-      } else {
-        savingGroupHash[options[k].toLowerCase()] = 1
-      }
-    }
-
-    let sameGroupCheck = Object.values(savingGroupHash).reduce( (acc, current) => acc += current)
-
-    if (sameGroupCheck === 0) {
-      //this means the same group already exists
-      return true
-    } else {
-      //this means the group does not already exist
+    if (savingGroup.length !== options.length) {
       return false
     }
 
-    // keeping the code below in case I need to reference it for a blog topic
+    for (let j = 0; j < savingGroup.length; j++) {
+      savingGroupHash[savingGroup[j].toLowerCase()] = true
+    }
 
-    //this is checking each option in the existing saved group against the
-    //the current list of options
-    // for (let k = 0; k < savingGroup.length; k++) {
-    //   if(!optionsHash.hasOwnProperty(savingGroup[k].toLowerCase())) {
-    //     return false
-    //   }
-    // }
+    for (let k = 0; k < options.length; k++) {
+      if (!savingGroupHash.hasOwnProperty(options[k].toLowerCase())) {
+        return false
+      }
+    }
 
-    // const savedGroupOptionsHash = {}
-    //
-    // for (let j = 0; j < savingGroup.length; j++) {
-    //   savedGroupOptionsHash[savingGroup[j].toLowerCase()] = true
-    // }
-    //
-    // for (let k = 0; k < options.length; k++) {
-    //   if(!savedGroupOptionsHash.hasOwnProperty(options[k].toLowerCase())) {
-    //     return false
-    //   }
-    // }
-
-    // return true
+    return true
   }
 
   const handleSaveGroup = () => {

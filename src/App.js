@@ -195,7 +195,17 @@ function App() {
   const randomizeOrder = () => {
     setGroups([])
     setRandomizedOption("")
+    const copyOfOptions = [...options]
+    const randomOrder = []
+    while (copyOfOptions.length > 0) {
+      let randomIndex = Math.floor(Math.random() * copyOfOptions.length)
+      randomOrder.push(copyOfOptions[randomIndex])
+      copyOfOptions.splice(randomIndex, 1)
+    }
+    setRandomizedOrder([...randomOrder])
   }
+
+  console.log(randomizedOrder)
 
   return (
     <div>

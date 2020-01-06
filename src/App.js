@@ -193,7 +193,8 @@ function App() {
   }
 
   const randomizeOrder = () => {
-
+    setGroups([])
+    setRandomizedOption("")
   }
 
   return (

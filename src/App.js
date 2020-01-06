@@ -12,6 +12,7 @@ function App() {
   // the object structure shall be {name: TBD, options: TBD}
   const [ savedGroups, setSavedGroups ] = useState([])
   const [ savingGroupName, setSavingGroupName ] = useState("")
+  const [ randomizedOrder, setRandomizedOrder ] = useState([])
 
   useEffect(() => {
     //this is when a person deletes options, the maxNumberOfGroups should reflect the max length of the options
@@ -48,6 +49,7 @@ function App() {
 
   const randomizeGroups = (number, choices) => {
     setRandomizedOption("")
+    setRandomizedOrder([])
     const copyOfOptions = [...options]
     const convertedToIntegerNumber = parseInt(number, 10)
     const squares = []
@@ -89,6 +91,7 @@ function App() {
 
   const randomOption = () => {
     setGroups([])
+    setRandomizedOrder([])
     setRandomizedOption(options[Math.floor(Math.random() * options.length)])
   }
 
@@ -189,10 +192,10 @@ function App() {
     setSavingGroupName(e.target.value)
   }
 
-  const randomOrder = () => {
-    console.log("derp")
+  const randomizeOrder = () => {
+
   }
-  
+
   return (
     <div>
       <h1>Group Randomizer</h1>
@@ -251,7 +254,7 @@ function App() {
         Randomly Select One Option
       </button>
       <button
-        onClick={randomOrder}
+        onClick={randomizeOrder}
         disabled={options.length === 0 ? true : false}
       >
         Randomize Order

@@ -182,18 +182,6 @@ function App() {
         setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : `Saved Group #${savedGroups.length+1}`), options: options}])
         setSavingGroupName("")
       }
-
-      // keeping the code below in case I need to reference it for a blog topic
-
-      // for (let i = 0; i < savedGroups.length; i++) {
-      //   // this still saves as soon as one of the groups are not the same
-      //   if (!sameGroup(savedGroups[i])) {
-      //     setSavedGroups([...savedGroups, options])
-      //   }
-      //   else {
-      //     alert(`A saved group with your current list of options already exist. It is Group No. ${i+1}`)
-      //   }
-      // }
     }
   }
 
@@ -201,6 +189,10 @@ function App() {
     setSavingGroupName(e.target.value)
   }
 
+  const randomOrder = () => {
+    console.log("derp")
+  }
+  
   return (
     <div>
       <h1>Group Randomizer</h1>
@@ -257,6 +249,12 @@ function App() {
         disabled={options.length === 0 ? true : false}
       >
         Randomly Select One Option
+      </button>
+      <button
+        onClick={randomOrder}
+        disabled={options.length === 0 ? true : false}
+      >
+        Randomize Order
       </button>
       <br />
       <br />

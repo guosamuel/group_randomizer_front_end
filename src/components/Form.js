@@ -25,12 +25,18 @@ function Form(props) {
         onChange={handleOptionInput}
         rows='5'
         cols='50'
+        style={{
+          border: '2px solid'
+        }}
         >
       </textarea>
       <br />
       <button
         type="Submit"
         disabled={!input}
+        style={{
+          border: '1px solid'
+        }}
         >
         Submit
       </button>

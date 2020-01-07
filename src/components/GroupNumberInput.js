@@ -10,6 +10,9 @@ function GroupNumberInput(props) {
         max={props.maxNumberOfGroups > props.numberOfGroups ? props.maxNumberOfGroups : "1"}
         onChange={props.handleNumberOfGroups}
         value={props.numberOfGroups}
+        style={{
+          border: '1px solid'
+        }}
       >
       </input>
     </div>

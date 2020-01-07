@@ -40,7 +40,7 @@ function App() {
   function renderGroupCard(i, currentNumberOfGroups, arrayOfOptions) {
     const listOfGroupOptions = arrayOfOptions.map( (option, index) => <li key={uuidv4()}>{option}</li>)
     return (
-      <div key={uuidv4()} style={{width: '25%'}}>
+      <div key={uuidv4()} style={{width: '33%', border: '1px solid'}}>
         <h1>Group {i+1}</h1>
         <ul>{listOfGroupOptions}</ul>
       </div>
@@ -107,7 +107,14 @@ function App() {
     return (
       <li key={uuidv4()}>
         {option}
-        <button onClick={ idx => removeOption(index)}>X</button>
+        <button
+          onClick={ idx => removeOption(index)}
+          style={{
+            border: '1px solid'
+          }}
+        >
+          X
+        </button>
       </li>
     )
   })
@@ -132,8 +139,22 @@ function App() {
       <li key={uuidv4()}>
         <h3>
           {savedGroup.name}
-          <button onClick={idx => deleteSavedGroup(index)}>X</button>
-          <button onClick={idx => reuseSavedGroup(index)}>Re-use This Group</button>
+          <button
+            onClick={idx => deleteSavedGroup(index)}
+            style={{
+              border: '1px solid'
+            }}
+          >
+            X
+          </button>
+          <button
+            onClick={idx => reuseSavedGroup(index)}
+            style={{
+              border: '1px solid'
+            }}
+          >
+            Re-use This Group
+          </button>
         </h3>
         <ul>
         {savedGroup.options.map( savedOption => {
@@ -245,17 +266,26 @@ function App() {
         placeholder="Input group name here"
         onChange={handleSavingGroupNameInput}
         value={savingGroupName}
+        style={{
+          border: '1px solid'
+        }}
       >
       </input>
       <ol>{listOfOptions}</ol>
       <button
         onClick={clearOptions}
         disabled={options.length === 0 ? true : false}
+        style={{
+        border: '1px solid'
+        }}
       >
         Clear Options
       </button>
       <button
         onClick={handleSaveGroup}
+        style={{
+          border: '1px solid'
+        }}
       >
         Save Group
       </button>
@@ -264,19 +294,35 @@ function App() {
       <button
         onClick={(number, choices) => randomizeGroups(numberOfGroups, options)}
         disabled={options.length === 0 ? true : false}
+        style={{
+          border: '1px solid'
+        }}
       >
         Randomize Into Groups!
       </button>
-      <button onClick={clearOutputs}>Clear</button>
+      <button
+        onClick={clearOutputs}
+        style={{
+          border: '1px solid'
+        }}
+      >
+        Clear
+      </button>
       <button
         onClick={randomOption}
         disabled={options.length === 0 ? true : false}
+        style={{
+          border: '1px solid'
+        }}
       >
         Randomly Select One Option
       </button>
       <button
         onClick={randomizeOrder}
         disabled={options.length === 0 ? true : false}
+        style={{
+          border: '1px solid'
+        }}
       >
         Randomize Order
       </button>
@@ -294,7 +340,7 @@ function App() {
               height: '100%',
               display: 'flex',
               flexWrap: 'wrap'
-            }}
+          }}
         >
           {groups}
         </div> : null

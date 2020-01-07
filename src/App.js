@@ -48,8 +48,9 @@ function App() {
   }
 
   const randomizeGroups = (number, choices) => {
-    setRandomizedOption("")
-    setRandomizedOrder([])
+    clearOutputs()
+    // setRandomizedOption("")
+    // setRandomizedOrder([])
     const copyOfOptions = [...options]
     const convertedToIntegerNumber = parseInt(number, 10)
     const squares = []
@@ -91,8 +92,9 @@ function App() {
   }
 
   const randomOption = () => {
-    setGroups([])
-    setRandomizedOrder([])
+    clearOutputs()
+    // setGroups([])
+    // setRandomizedOrder([])
     setRandomizedOption(options[Math.floor(Math.random() * options.length)])
   }
 
@@ -194,8 +196,9 @@ function App() {
   }
 
   const randomizeOrder = () => {
-    setGroups([])
-    setRandomizedOption("")
+    clearOutputs()
+    // setGroups([])
+    // setRandomizedOption("")
     const copyOfOptions = [...options]
     const randomOrder = []
     while (copyOfOptions.length > 0) {
@@ -213,8 +216,6 @@ function App() {
       </li>
     )
   })
-
-  console.log(randomizedOrder)
 
   return (
     <div>

@@ -7,7 +7,7 @@ const uuidv4 = require('uuid/v4')
 
 //need to set savedGroups in Redux
 
-function SavedGroupContainer(){
+function SavedGroupsContainer(){
 
   const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
@@ -59,4 +59,4 @@ const mapStateToProps = state => {
     savedGroups: state.savedGroupsReducer.savedGroups
   }
 }
-export default connect(mapStateToProps)(SavedGroupContainer)
+export default connect(mapStateToProps)(SavedGroupsContainer)

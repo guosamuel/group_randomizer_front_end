@@ -1,13 +1,15 @@
 import React from 'react'
 import Heading from '../components/SavedGroupsContainer/Heading'
 
+import { connect } from 'react-redux'
+
 const uuidv4 = require('uuid/v4')
 
 //need to set savedGroups in Redux
 
 function SavedGroupContainer(){
 
-  const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
+  const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
       <li key={uuidv4()}>
         <h3>
@@ -52,4 +54,9 @@ function SavedGroupContainer(){
   )
 }
 
-export default SavedGroupContainer
+const mapStateToProps = state => {
+  return {
+    savedGroups: state.savedGroupsReducer.savedGroups
+  }
+}
+export default connect(mapStateToProps)(SavedGroupContainer)

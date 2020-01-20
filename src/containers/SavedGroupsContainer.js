@@ -1,5 +1,5 @@
 import React from 'react'
-import Heading from '../components/SavedGroupContainer/Heading'
+import Heading from '../components/SavedGroupsContainer/Heading'
 
 const uuidv4 = require('uuid/v4')
 

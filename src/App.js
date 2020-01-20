@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
 import GroupNumberInput from './components/GroupNumberInput';
+import SavedGroupContainer from './containers/SavedGroupsContainer'
 
 function App() {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
@@ -10,7 +11,7 @@ function App() {
   const [ randomizedOption, setRandomizedOption ] = useState("")
   // savedGroups shall be an array of objects
   // the object structure shall be {name: TBD, options: TBD}
-  const [ savedGroups, setSavedGroups ] = useState([])
+  // const [ savedGroups, setSavedGroups ] = useState([])
   const [ savingGroupName, setSavingGroupName ] = useState("")
   const [ randomizedOrder, setRandomizedOrder ] = useState([])
 
@@ -134,40 +135,40 @@ function App() {
     setOptions([...savedGroups[index].options])
   }
 
-  const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
-    return (
-      <li key={uuidv4()}>
-        <h3>
-          {savedGroup.name}
-          <button
-            onClick={idx => deleteSavedGroup(index)}
-            style={{
-              border: '1px solid'
-            }}
-          >
-            X
-          </button>
-          <button
-            onClick={idx => reuseSavedGroup(index)}
-            style={{
-              border: '1px solid'
-            }}
-          >
-            Re-use This Group
-          </button>
-        </h3>
-        <ul>
-        {savedGroup.options.map( savedOption => {
-          return (
-            <li key={uuidv4()}>
-              {savedOption}
-            </li>
-          )
-        })}
-        </ul>
-      </li>
-    )
-  })
+  // const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
+  //   return (
+  //     <li key={uuidv4()}>
+  //       <h3>
+  //         {savedGroup.name}
+  //         <button
+  //           onClick={idx => deleteSavedGroup(index)}
+  //           style={{
+  //             border: '1px solid'
+  //           }}
+  //         >
+  //           X
+  //         </button>
+  //         <button
+  //           onClick={idx => reuseSavedGroup(index)}
+  //           style={{
+  //             border: '1px solid'
+  //           }}
+  //         >
+  //           Re-use This Group
+  //         </button>
+  //       </h3>
+  //       <ul>
+  //       {savedGroup.options.map( savedOption => {
+  //         return (
+  //           <li key={uuidv4()}>
+  //             {savedOption}
+  //           </li>
+  //         )
+  //       })}
+  //       </ul>
+  //     </li>
+  //   )
+  // })
 
   const sameGroup = savingGroup => {
 
@@ -243,13 +244,7 @@ function App() {
       <h1>Group Randomizer</h1>
       <Form handleOptionSubmit={handleOptionSubmit}/>
       <br/>
-      <h2>Saved Groups</h2>
-      {savedGroups.length ?
-        <ul>
-          {listOfSavedGroups}
-        </ul> :
-        <p>You have yet to save any groups</p>
-      }
+      <SavedGroupContainer />
       <br/>
       <GroupNumberInput
         maxNumberOfGroups={options.length}

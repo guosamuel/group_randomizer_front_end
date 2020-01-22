@@ -1,24 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Heading from '../components/OptionsContainer/Heading'
+import Note from '../components/OptionsContainer/Note'
+import GroupName from '../components/OptionsContainer/GroupName'
 
 function OptionsContainer() {
+  const [ savingGroupName, setSavingGroupName ] = useState("")
+
+  const handleSavingGroupNameInput = e => {
+    setSavingGroupName(e.target.value)
+  }
 
   return (
     <div>
-      <h2>Current List of Options</h2>
-      <label>Note: You have the option of creating a group name for your current list of options. If you do not choose to do so, the default name will be "Saved Group #(Last Group Number)"</label>
+      <Heading />
+      <Note />
       <br/>
       <br/>
       <label>Group Name:</label>
       <br />
-      <input
-        placeholder="Input group name here"
-        onChange={handleSavingGroupNameInput}
-        value={savingGroupName}
-        style={{
-          border: '1px solid'
-        }}
-      >
-      </input>
+      <GroupName
+        handleSavingGroupNameInput={handleSavingGroupNameInput}
+        savingGroupName={savingGroupName}
+      />
       <ol>{listOfOptions}</ol>
       <button
         onClick={clearOptions}
@@ -38,7 +41,7 @@ function OptionsContainer() {
         Save Group
       </button>
     </div>
-  }
+  )
 }
 
 export default OptionsContainer

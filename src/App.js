@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
 import GroupNumberInput from './components/GroupNumberInput';
 import SavedGroupContainer from './containers/SavedGroupsContainer'
+import OptionsContainer from './containers/OptionsContainer'
 
 function App() {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
@@ -213,9 +214,9 @@ function App() {
     }
   }
 
-  const handleSavingGroupNameInput = e => {
-    setSavingGroupName(e.target.value)
-  }
+  // const handleSavingGroupNameInput = e => {
+  //   setSavingGroupName(e.target.value)
+  // }
 
   const randomizeOrder = () => {
     clearOutputs()
@@ -251,39 +252,7 @@ function App() {
         handleNumberOfGroups={handleNumberOfGroups}
         numberOfGroups={numberOfGroups}
       />
-      <h2>Current List of Options</h2>
-      <label>Note: You have the option of creating a group name for your current list of options. If you do not choose to do so, the default name will be "Saved Group #(Last Group Number)"</label>
-      <br/>
-      <br/>
-      <label>Group Name:</label>
-      <br />
-      <input
-        placeholder="Input group name here"
-        onChange={handleSavingGroupNameInput}
-        value={savingGroupName}
-        style={{
-          border: '1px solid'
-        }}
-      >
-      </input>
-      <ol>{listOfOptions}</ol>
-      <button
-        onClick={clearOptions}
-        disabled={options.length === 0 ? true : false}
-        style={{
-        border: '1px solid'
-        }}
-      >
-        Clear Options
-      </button>
-      <button
-        onClick={handleSaveGroup}
-        style={{
-          border: '1px solid'
-        }}
-      >
-        Save Group
-      </button>
+      <OptionsContainer />
       <br />
       <br />
       <button

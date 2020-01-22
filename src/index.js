@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import { combineReducers } from './reducers/index.js'
+import combineReducers from './reducers/index.js'
 
 let store = createStore(combineReducers)
 

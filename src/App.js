@@ -11,7 +11,7 @@ function App() {
   const [ randomizedOption, setRandomizedOption ] = useState("")
   // savedGroups shall be an array of objects
   // the object structure shall be {name: TBD, options: TBD}
-  // const [ savedGroups, setSavedGroups ] = useState([])
+  const [ savedGroups, setSavedGroups ] = useState([])
   const [ savingGroupName, setSavingGroupName ] = useState("")
   const [ randomizedOrder, setRandomizedOrder ] = useState([])
 

@@ -7,7 +7,7 @@ const uuidv4 = require('uuid/v4')
 
 //need to set savedGroups in Redux
 
-function SavedGroupsContainer(){
+function SavedGroupsContainer(props){
 
   const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
@@ -44,13 +44,15 @@ function SavedGroupsContainer(){
     )
   })
   return (
-    <Heading />
-    {savedGroups.length ?
-      <ul>
-        {listOfSavedGroups}
-      </ul> :
-      <p>You have yet to save any groups</p>
-    }
+    <div>
+      <Heading />
+      {props.savedGroups.length ?
+        <ul>
+          {listOfSavedGroups}
+        </ul> :
+        <p>You have yet to save any groups</p>
+      }
+    </div>
   )
 }
 

@@ -89,9 +89,9 @@ function App() {
     setRandomizedOrder([])
   }
 
-  const clearOptions = () => {
-    setOptions([])
-  }
+  // const clearOptions = () => {
+  //   setOptions([])
+  // }
 
   const randomOption = () => {
     clearOutputs()

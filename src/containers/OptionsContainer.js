@@ -4,6 +4,7 @@ import Note from '../components/OptionsContainer/Note'
 import GroupName from '../components/OptionsContainer/GroupName'
 
 import { connect } from 'react-redux'
+import { removeOption, clearOptions } from '../actions/optionsActions'
 
 function OptionsContainer(props) {
   const [ savingGroupName, setSavingGroupName ] = useState("")
@@ -19,7 +20,7 @@ function OptionsContainer(props) {
       <li key={uuidv4()}>
         {option}
         <button
-          onClick={ idx => removeOption(index)}
+          onClick={ () => props.removeOption(index)}
           style={{
             border: '1px solid'
           }}
@@ -44,7 +45,7 @@ function OptionsContainer(props) {
       />
       <ol>{listOfOptions}</ol>
       <button
-        onClick={clearOptions}
+        onClick={props.clearOptions}
         disabled={props.options.length === 0 ? true : false}
         style={{
         border: '1px solid'
@@ -69,4 +70,11 @@ const mapStateToProps = state => {
     options: state.options
   }
 }
-export default connect(mapStateToProps)(OptionsContainer)
+
+const mapDispatchToProps = dispatch => {
+  return {
+    removeOption: dispatch( index => removeOption(index)),
+    clearOptions: dispatch( () => clearOptions())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(OptionsContainer)

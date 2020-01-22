@@ -2,12 +2,22 @@ import React from 'react'
 import Heading from '../components/SavedGroupsContainer/Heading'
 
 import { connect } from 'react-redux'
+import { deleteSavedGroup } from '../actions/savedGroupsActions'
 
 const uuidv4 = require('uuid/v4')
 
-//need to set savedGroups in Redux
-
 function SavedGroupsContainer(props){
+
+  const deleteSavedGroup = index => {
+    const updatedSavedGroupList = [...savedGroups.slice(0, index), ...savedGroups.slice(index+1)]
+    // can use the logic below if I decide to switch back to an ordered list
+    // updatedSavedGroupList.map( (savedGroup, index) => {
+    //   if (savedGroup.name.startsWith(`Saved Group #`)) {
+    //     savedGroup.name = `Saved Group #${index+1}`
+    //   }
+    // })
+    setSavedGroups([...updatedSavedGroupList])
+  }
 
   const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
@@ -23,7 +33,7 @@ function SavedGroupsContainer(props){
             X
           </button>
           <button
-            onClick={idx => reuseSavedGroup(index)}
+            // onClick={idx => reuseSavedGroup(index)}
             style={{
               border: '1px solid'
             }}

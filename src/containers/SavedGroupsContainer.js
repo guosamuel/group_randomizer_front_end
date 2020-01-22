@@ -2,7 +2,7 @@ import React from 'react'
 import Heading from '../components/SavedGroupsContainer/Heading'
 
 import { connect } from 'react-redux'
-import { deleteSavedGroup } from '../actions/savedGroupsActions'
+import { deleteSavedGroup, reuseSavedGroup } from '../actions/savedGroupsActions'
 
 const uuidv4 = require('uuid/v4')
 
@@ -22,7 +22,7 @@ function SavedGroupsContainer(props){
             X
           </button>
           <button
-            // onClick={idx => reuseSavedGroup(index)}
+            onClick={ () => props.reuseSavedGroup(index)}
             style={{
               border: '1px solid'
             }}
@@ -63,7 +63,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteSavedGroup: index => dispatch(deleteSavedGroup(index))
+    deleteSavedGroup: index => dispatch(deleteSavedGroup(index)),
+    reuseSavedGroup: index => dispatch(reuseSavedGroup(index))
   }
 }
 

@@ -8,24 +8,13 @@ const uuidv4 = require('uuid/v4')
 
 function SavedGroupsContainer(props){
 
-  const deleteSavedGroup = index => {
-    const updatedSavedGroupList = [...savedGroups.slice(0, index), ...savedGroups.slice(index+1)]
-    // can use the logic below if I decide to switch back to an ordered list
-    // updatedSavedGroupList.map( (savedGroup, index) => {
-    //   if (savedGroup.name.startsWith(`Saved Group #`)) {
-    //     savedGroup.name = `Saved Group #${index+1}`
-    //   }
-    // })
-    setSavedGroups([...updatedSavedGroupList])
-  }
-
   const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
       <li key={uuidv4()}>
         <h3>
           {savedGroup.name}
           <button
-            onClick={idx => deleteSavedGroup(index)}
+            onClick={ () => props.deleteSavedGroup(index)}
             style={{
               border: '1px solid'
             }}
@@ -71,4 +60,11 @@ const mapStateToProps = state => {
     savedGroups: state.savedGroupsReducer.savedGroups
   }
 }
-export default connect(mapStateToProps)(SavedGroupsContainer)
+
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteSavedGroup: index => dispatch(deleteSavedGroup(index))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SavedGroupsContainer)

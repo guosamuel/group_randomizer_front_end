@@ -105,21 +105,21 @@ function App() {
     setOptions([...updatedList])
   }
 
-  const listOfOptions = options.map( (option, index) => {
-    return (
-      <li key={uuidv4()}>
-        {option}
-        <button
-          onClick={ idx => removeOption(index)}
-          style={{
-            border: '1px solid'
-          }}
-        >
-          X
-        </button>
-      </li>
-    )
-  })
+  // const listOfOptions = options.map( (option, index) => {
+  //   return (
+  //     <li key={uuidv4()}>
+  //       {option}
+  //       <button
+  //         onClick={ idx => removeOption(index)}
+  //         style={{
+  //           border: '1px solid'
+  //         }}
+  //       >
+  //         X
+  //       </button>
+  //     </li>
+  //   )
+  // })
 
   // const deleteSavedGroup = index => {
   //   const updatedSavedGroupList = [...savedGroups.slice(0, index), ...savedGroups.slice(index+1)]

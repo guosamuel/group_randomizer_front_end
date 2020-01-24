@@ -5,6 +5,11 @@ export const deleteSavedGroup = index => {
   }
 }
 
+export const saveGroup = group => {
+  type: "SAVEGROUP",
+  payload: group
+}
+
 // goes to the optionsReducer
 export const reuseSavedGroup = index => {
   return {

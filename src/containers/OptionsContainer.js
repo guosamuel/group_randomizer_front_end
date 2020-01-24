@@ -5,6 +5,7 @@ import GroupName from '../components/OptionsContainer/GroupName'
 
 import { connect } from 'react-redux'
 import { removeOption, clearOptions } from '../actions/optionsActions'
+import { saveGroup } from '../actions/savedGroupActions'
 
 function OptionsContainer(props) {
   const [ savingGroupName, setSavingGroupName ] = useState("")
@@ -30,6 +31,28 @@ function OptionsContainer(props) {
       </li>
     )
   })
+
+  const handleSaveGroup = () => {
+    if (props.savedGroups.length === 0) {
+      props.saveGroup([{name: (savingGroupName ? savingGroupName : `Saved Group #1`), options: props.options}])
+      setSavingGroupName("")
+    } else {
+      // we want to stop as soon as we discover an existing saved group
+      let i = 0
+      let savedGroupExist = false
+      while (i < savedGroups.length && !savedGroupExist) {
+        if (sameGroup(savedGroups[i].options)) {
+          savedGroupExist = true
+          alert(`A saved group with your current list of options already exist. It is ${savedGroups[i].name}`)
+        }
+        i++
+      }
+      if (!savedGroupExist) {
+        setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : `Saved Group #${savedGroups.length+1}`), options: options}])
+        setSavingGroupName("")
+      }
+    }
+  }
 
   return (
     <div>
@@ -67,14 +90,16 @@ function OptionsContainer(props) {
 
 const mapStateToProps = state => {
   return {
-    options: state.options
+    options: state.options,
+    savedGroups: state.savedGroups
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     removeOption: dispatch( index => removeOption(index)),
-    clearOptions: dispatch( () => clearOptions())
+    clearOptions: dispatch( () => clearOptions()),
+    saveGroup: dispatch( group => saveGroup(group))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(OptionsContainer)

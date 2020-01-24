@@ -192,27 +192,27 @@ function App() {
     return true
   }
 
-  const handleSaveGroup = () => {
-    if (savedGroups.length === 0) {
-      setSavedGroups([{name: (savingGroupName ? savingGroupName : `Saved Group #1`), options: options}])
-      setSavingGroupName("")
-    } else {
-      // we want to stop as soon as we discover an existing saved group
-      let i = 0
-      let savedGroupExist = false
-      while (i < savedGroups.length && !savedGroupExist) {
-        if (sameGroup(savedGroups[i].options)) {
-          savedGroupExist = true
-          alert(`A saved group with your current list of options already exist. It is ${savedGroups[i].name}`)
-        }
-        i++
-      }
-      if (!savedGroupExist) {
-        setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : `Saved Group #${savedGroups.length+1}`), options: options}])
-        setSavingGroupName("")
-      }
-    }
-  }
+  // const handleSaveGroup = () => {
+  //   if (savedGroups.length === 0) {
+  //     setSavedGroups([{name: (savingGroupName ? savingGroupName : `Saved Group #1`), options: options}])
+  //     setSavingGroupName("")
+  //   } else {
+  //     // we want to stop as soon as we discover an existing saved group
+  //     let i = 0
+  //     let savedGroupExist = false
+  //     while (i < savedGroups.length && !savedGroupExist) {
+  //       if (sameGroup(savedGroups[i].options)) {
+  //         savedGroupExist = true
+  //         alert(`A saved group with your current list of options already exist. It is ${savedGroups[i].name}`)
+  //       }
+  //       i++
+  //     }
+  //     if (!savedGroupExist) {
+  //       setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : `Saved Group #${savedGroups.length+1}`), options: options}])
+  //       setSavingGroupName("")
+  //     }
+  //   }
+  // }
 
   // const handleSavingGroupNameInput = e => {
   //   setSavingGroupName(e.target.value)

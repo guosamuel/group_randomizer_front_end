@@ -30,10 +30,10 @@ function App() {
 
   const uuidv4 = require('uuid/v4')
 
-  const handleOptionSubmit = (e, input) => {
-    e.preventDefault()
-    setOptions([...options, input])
-  }
+  // const handleOptionSubmit = (e, input) => {
+  //   e.preventDefault()
+  //   setOptions([...options, input])
+  // }
 
   const handleNumberOfGroups = e => {
     setNumberOfGroups(e.target.value)
@@ -132,9 +132,9 @@ function App() {
   //   setSavedGroups([...updatedSavedGroupList])
   // }
 
-  const reuseSavedGroup = index => {
-    setOptions([...savedGroups[index].options])
-  }
+  // const reuseSavedGroup = index => {
+  //   setOptions([...savedGroups[index].options])
+  // }
 
   // const listOfSavedGroups = savedGroups.map( (savedGroup, index) => {
   //   return (
@@ -243,7 +243,7 @@ function App() {
   return (
     <div>
       <h1>Group Randomizer</h1>
-      <Form handleOptionSubmit={handleOptionSubmit}/>
+      <Form />
       <br/>
       <SavedGroupContainer />
       <br/>

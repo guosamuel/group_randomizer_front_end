@@ -10,3 +10,10 @@ export const clearOptions = () => {
     type: "CLEAR_OPTIONS"
   }
 }
+
+export const addOption = option => {
+  return {
+    type: "ADD_OPTION",
+    paylaod: option
+  }
+}

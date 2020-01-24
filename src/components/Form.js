@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+import { connect } from 'react-redux'
+import { addOption } from '../actions/optionsActions'
+
 function Form(props) {
   const [ input, setInput ] = useState("")
 
@@ -12,7 +15,9 @@ function Form(props) {
   }
 
   const clearAndSubmitInput = (e, option, clearCallback) => {
-    props.handleOptionSubmit(e, option)
+    e.preventDefault()
+    // props.handleOptionSubmit(e, option)
+    props.addOption(option)
     clearCallback()
   }
 
@@ -44,4 +49,10 @@ function Form(props) {
   )
 }
 
-export default Form;
+const mapDispatchToProps = dispatch => {
+  return {
+    addOption: option => dispatch(addOption(option))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Form);

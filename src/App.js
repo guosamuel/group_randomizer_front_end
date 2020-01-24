@@ -171,26 +171,26 @@ function App() {
   //   )
   // })
 
-  const sameGroup = savingGroup => {
-
-    const savingGroupHash = {}
-
-    if (savingGroup.length !== options.length) {
-      return false
-    }
-
-    for (let j = 0; j < savingGroup.length; j++) {
-      savingGroupHash[savingGroup[j].toLowerCase()] = true
-    }
-
-    for (let k = 0; k < options.length; k++) {
-      if (!savingGroupHash.hasOwnProperty(options[k].toLowerCase())) {
-        return false
-      }
-    }
-
-    return true
-  }
+  // const sameGroup = savingGroup => {
+  //
+  //   const savingGroupHash = {}
+  //
+  //   if (savingGroup.length !== options.length) {
+  //     return false
+  //   }
+  //
+  //   for (let j = 0; j < savingGroup.length; j++) {
+  //     savingGroupHash[savingGroup[j].toLowerCase()] = true
+  //   }
+  //
+  //   for (let k = 0; k < options.length; k++) {
+  //     if (!savingGroupHash.hasOwnProperty(options[k].toLowerCase())) {
+  //       return false
+  //     }
+  //   }
+  //
+  //   return true
+  // }
 
   // const handleSaveGroup = () => {
   //   if (savedGroups.length === 0) {

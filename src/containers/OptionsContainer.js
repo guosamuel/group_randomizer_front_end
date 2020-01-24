@@ -5,9 +5,10 @@ import GroupName from '../components/OptionsContainer/GroupName'
 
 import { connect } from 'react-redux'
 import { removeOption, clearOptions } from '../actions/optionsActions'
-import { saveGroup } from '../actions/savedGroupActions'
+import { saveGroup } from '../actions/savedGroupsActions'
 
 function OptionsContainer(props) {
+  console.log(props)
   const [ savingGroupName, setSavingGroupName ] = useState("")
 
   const uuidv4 = require('uuid/v4')
@@ -34,24 +35,45 @@ function OptionsContainer(props) {
 
   const handleSaveGroup = () => {
     if (props.savedGroups.length === 0) {
-      props.saveGroup([{name: (savingGroupName ? savingGroupName : `Saved Group #1`), options: props.options}])
+      props.saveGroup({name: (savingGroupName ? savingGroupName : `Saved Group #1`), options: props.options})
       setSavingGroupName("")
     } else {
       // we want to stop as soon as we discover an existing saved group
       let i = 0
       let savedGroupExist = false
-      while (i < savedGroups.length && !savedGroupExist) {
-        if (sameGroup(savedGroups[i].options)) {
+      while (i < props.savedGroups.length && !savedGroupExist) {
+        if (sameGroup(props.savedGroups[i].options)) {
           savedGroupExist = true
-          alert(`A saved group with your current list of options already exist. It is ${savedGroups[i].name}`)
+          alert(`A saved group with your current list of options already exist. It is ${props.savedGroups[i].name}`)
         }
         i++
       }
       if (!savedGroupExist) {
-        setSavedGroups([...savedGroups, {name: (savingGroupName ? savingGroupName : `Saved Group #${savedGroups.length+1}`), options: options}])
+        props.saveGroup({name: (savingGroupName ? savingGroupName : `Saved Group #${props.savedGroups.length+1}`), options: props.options})
         setSavingGroupName("")
       }
     }
+  }
+
+  const sameGroup = savingGroup => {
+
+    const savingGroupHash = {}
+
+    if (savingGroup.length !== props.options.length) {
+      return false
+    }
+
+    for (let j = 0; j < savingGroup.length; j++) {
+      savingGroupHash[savingGroup[j].toLowerCase()] = true
+    }
+
+    for (let k = 0; k < props.options.length; k++) {
+      if (!savingGroupHash.hasOwnProperty(props.options[k].toLowerCase())) {
+        return false
+      }
+    }
+
+    return true
   }
 
   return (
@@ -97,9 +119,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeOption: dispatch( index => removeOption(index)),
-    clearOptions: dispatch( () => clearOptions()),
-    saveGroup: dispatch( group => saveGroup(group))
+    removeOption: index => dispatch(removeOption(index)),
+    clearOptions: () => dispatch(clearOptions()),
+    saveGroup: group => dispatch(saveGroup(group))
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(OptionsContainer)

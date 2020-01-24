@@ -1,12 +1,12 @@
 export const removeOption = index => {
   return {
-    type: "REMOVEOPTION",
+    type: "REMOVE_OPTION",
     payload: index
   }
 }
 
 export const clearOptions = () => {
   return {
-    type: "CLEAROPTIONS"
+    type: "CLEAR_OPTIONS"
   }
 }

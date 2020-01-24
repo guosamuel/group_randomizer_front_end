@@ -8,7 +8,6 @@ import { removeOption, clearOptions } from '../actions/optionsActions'
 import { saveGroup } from '../actions/savedGroupsActions'
 
 function OptionsContainer(props) {
-  console.log(props)
   const [ savingGroupName, setSavingGroupName ] = useState("")
 
   const uuidv4 = require('uuid/v4')
@@ -112,8 +111,8 @@ function OptionsContainer(props) {
 
 const mapStateToProps = state => {
   return {
-    options: state.options,
-    savedGroups: state.savedGroups
+    options: state.optionsReducer.options,
+    savedGroups: state.savedGroupsReducer.savedGroups
   }
 }
 

@@ -8,6 +8,12 @@ const uuidv4 = require('uuid/v4')
 
 function SavedGroupsContainer(props){
 
+  const handleReuseSavedGroupIndex = index => {
+    const reusingSavedGroup = props.savedGroups[index]
+    console.log(reusingSavedGroup)
+    props.reuseSavedGroup(reusingSavedGroup)
+  }
+
   const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
       <li key={uuidv4()}>
@@ -22,7 +28,7 @@ function SavedGroupsContainer(props){
             X
           </button>
           <button
-            onClick={ () => props.reuseSavedGroup(index)}
+            onClick={ () => handleReuseSavedGroupIndex(index)}
             style={{
               border: '1px solid'
             }}
@@ -64,7 +70,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     deleteSavedGroup: index => dispatch(deleteSavedGroup(index)),
-    reuseSavedGroup: index => dispatch(reuseSavedGroup(index))
+    reuseSavedGroup: savedGroup => dispatch(reuseSavedGroup(savedGroup))
   }
 }
 

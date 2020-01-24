@@ -1,5 +1,7 @@
 export default (state = { options: ["Sam", "Ryan", "Stephen", "David"] }, action) => {
   switch(action.type) {
+    case "REUSE_SAVED_GROUP":
+      return {...state, options: action.payload.options}
     case "CLEAR_OPTIONS":
       return {...state, options: []}
     case "REMOVE_OPTION":

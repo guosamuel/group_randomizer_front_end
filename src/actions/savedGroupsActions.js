@@ -13,9 +13,9 @@ export const saveGroup = group => {
 }
 
 // goes to the optionsReducer
-export const reuseSavedGroup = index => {
+export const reuseSavedGroup = savedGroup => {
   return {
     type: "REUSE_SAVED_GROUP",
-    payload: index
+    payload: savedGroup
   }
 }

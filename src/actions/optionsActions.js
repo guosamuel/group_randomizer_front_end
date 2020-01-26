@@ -14,6 +14,6 @@ export const clearOptions = () => {
 export const addOption = option => {
   return {
     type: "ADD_OPTION",
-    paylaod: option
+    payload: option
   }
 }

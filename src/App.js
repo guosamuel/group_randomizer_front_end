@@ -4,7 +4,9 @@ import GroupNumberInput from './components/GroupNumberInput';
 import SavedGroupContainer from './containers/SavedGroupsContainer'
 import OptionsContainer from './containers/OptionsContainer'
 
-function App() {
+import { connect } from 'react-redux'
+
+function App(props) {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
   const [ numberOfGroups, setNumberOfGroups ] = useState("1")
   const [ groups, setGroups ] = useState([])
@@ -309,7 +311,7 @@ function App() {
           {groups}
         </div> : null
       }
-      {randomizedOption.length !== 0 ?
+      {props.randomizedOption.length !== 0 ?
         <div>
           <h2>Your randomized choice is: {randomizedOption}</h2>
         </div> : null
@@ -324,6 +326,12 @@ function App() {
       }
     </div>
   )
+}
+
+const mapStateToProps = state => {
+  return {
+    randomizedOption: state.optionsReducer.randomizedOption
+  }
 }
 
 export default App;

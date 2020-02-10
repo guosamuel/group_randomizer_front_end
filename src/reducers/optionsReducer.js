@@ -1,4 +1,4 @@
-export default (state = { options: ["Sam", "Ryan", "Stephen", "David"] }, action) => {
+export default (state = { options: ["Sam", "Ryan", "Stephen", "David"], randomizedOption: "" }, action) => {
   switch(action.type) {
     case "ADD_OPTION":
       return {... state, options: [...state.options, action.payload]}

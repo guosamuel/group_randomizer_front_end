@@ -276,7 +276,7 @@ function App(props) {
       </button>
       <button
         onClick={randomOption}
-        disabled={options.length === 0 ? true : false}
+        disabled={props.options.length === 0 ? true : false}
         style={{
           border: '1px solid'
         }}
@@ -330,8 +330,9 @@ function App(props) {
 
 const mapStateToProps = state => {
   return {
-    randomizedOption: state.optionsReducer.randomizedOption
+    randomizedOption: state.outputReducer.randomizedOption,
+    options: state.optionsReducer.options
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);

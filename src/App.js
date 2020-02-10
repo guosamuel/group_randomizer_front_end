@@ -5,6 +5,7 @@ import SavedGroupContainer from './containers/SavedGroupsContainer'
 import OptionsContainer from './containers/OptionsContainer'
 
 import { connect } from 'react-redux'
+import { clearOutputs } from './actions/outputActions'
 
 function App(props) {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
@@ -86,9 +87,10 @@ function App(props) {
   }
 
   const clearOutputs = () => {
-    setGroups([])
-    setRandomizedOption("")
-    setRandomizedOrder([])
+    props.clearOutputs()
+    // setGroups([])
+    // setRandomizedOption("")
+    // setRandomizedOrder([])
   }
 
   // const clearOptions = () => {
@@ -313,7 +315,7 @@ function App(props) {
       }
       {props.randomizedOption.length !== 0 ?
         <div>
-          <h2>Your randomized choice is: {randomizedOption}</h2>
+          <h2>Your randomized choice is: {props.randomizedOption}</h2>
         </div> : null
       }
       {randomizedOrder.length !== 0 ?
@@ -334,5 +336,10 @@ const mapStateToProps = state => {
     options: state.optionsReducer.options
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    clearOutputs: () => dispatch(clearOutputs())
+  }
+}
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -253,9 +253,7 @@ function App(props) {
       <br/>
       <SavedGroupContainer />
       <br/>
-      <GroupNumberInput
-        maxNumberOfGroups={props.options.length}
-      />
+      <GroupNumberInput />
       <OptionsContainer />
       <br />
       <br />

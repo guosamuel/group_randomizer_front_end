@@ -29,10 +29,16 @@ function GroupNumberInput(props) {
   )
 }
 
+const mapStateToProps = state => {
+  return {
+    maxNumberOfGroups: state.optionsReducer.options.length
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     handleNumberOfGroups: number => dispatch(handleNumberOfGroups(number))
   }
 }
 
-export default connect(mapDispatchToProps)(GroupNumberInput)
+export default connect(mapStateToProps, mapDispatchToProps)(GroupNumberInput)

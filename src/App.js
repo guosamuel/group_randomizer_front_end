@@ -5,7 +5,7 @@ import SavedGroupContainer from './containers/SavedGroupsContainer'
 import OptionsContainer from './containers/OptionsContainer'
 
 import { connect } from 'react-redux'
-import { clearOutputs, randomizeOption } from './actions/outputActions'
+import { clearOutputs, randomizeOption, randomizeOrder } from './actions/outputActions'
 
 function App(props) {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
@@ -224,20 +224,21 @@ function App(props) {
   // }
 
   const randomizeOrder = () => {
-    clearOutputs()
+    props.clearOutputs()
     // setGroups([])
     // setRandomizedOption("")
-    const copyOfOptions = [...options]
+    const copyOfOptions = [...props.options]
     const randomOrder = []
     while (copyOfOptions.length > 0) {
       let randomIndex = Math.floor(Math.random() * copyOfOptions.length)
       randomOrder.push(copyOfOptions[randomIndex])
       copyOfOptions.splice(randomIndex, 1)
     }
-    setRandomizedOrder([...randomOrder])
+    // setRandomizedOrder([...randomOrder])
+    props.randomizeOrder(randomOrder)
   }
 
-  const randomizedOrderList = randomizedOrder.map( option => {
+  const randomizedOrderList = props.randomizedOrder.map( option => {
     return(
       <li key={uuidv4()}>
         {option}
@@ -288,7 +289,7 @@ function App(props) {
       </button>
       <button
         onClick={randomizeOrder}
-        disabled={options.length === 0 ? true : false}
+        disabled={props.options.length === 0 ? true : false}
         style={{
           border: '1px solid'
         }}
@@ -297,7 +298,7 @@ function App(props) {
       </button>
       <br />
       <br />
-      {groups.length === 0 && randomizedOption.length === 0 && randomizedOrder.length === 0 ?
+      {groups.length === 0 && props.randomizedOption.length === 0 && props.randomizedOrder.length === 0 ?
         <div>
           <h2>Yet to be randomized</h2>
         </div> : null
@@ -319,7 +320,7 @@ function App(props) {
           <h2>Your randomized choice is: {props.randomizedOption}</h2>
         </div> : null
       }
-      {randomizedOrder.length !== 0 ?
+      {props.randomizedOrder.length !== 0 ?
         <div>
           <h2>Your randomized order is:</h2>
           <ol>
@@ -334,14 +335,16 @@ function App(props) {
 const mapStateToProps = state => {
   return {
     randomizedOption: state.outputReducer.randomizedOption,
-    options: state.optionsReducer.options
+    options: state.optionsReducer.options,
+    randomizedOrder: state.outputReducer.randomizedOrder
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     clearOutputs: () => dispatch(clearOutputs()),
-    randomizeOption: option => dispatch(randomizeOption(option))
+    randomizeOption: option => dispatch(randomizeOption(option)),
+    randomizeOrder: options => dispatch(randomizeOrder(options))
   }
 }
 

@@ -10,3 +10,10 @@ export const randomizeOption = randomOption => {
     payload: randomOption
   }
 }
+
+export const randomizeOrder = options => {
+  return {
+    type: "RANDOM_ORDER",
+    payload: options
+  }
+}

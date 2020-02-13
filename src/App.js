@@ -42,15 +42,26 @@ function App(props) {
   //   setNumberOfGroups(e.target.value)
   // }
 
-  function renderGroupCard(i, arrayOfOptions) {
-    const listOfGroupOptions = arrayOfOptions.map( option => <li key={uuidv4()}>{option}</li>)
-    return (
-      <div key={uuidv4()} style={{width: '33%', border: '1px solid'}}>
-        <h1>Group {i+1}</h1>
-        <ul>{listOfGroupOptions}</ul>
-      </div>
-    )
-  }
+  // function renderGroupCard(i, arrayOfOptions) {
+  //   const listOfGroupOptions = arrayOfOptions.map( option => <li key={uuidv4()}>{option}</li>)
+  //   return (
+  //     <div key={uuidv4()} style={{width: '33%', border: '1px solid'}}>
+  //       <h1>Group {i+1}</h1>
+  //       <ul>{listOfGroupOptions}</ul>
+  //     </div>
+  //   )
+  // }
+
+  const renderGroupCard =
+    props.randomizedGroups.map( (group, index) => {
+      const listOfGroupOptions = group.map( option => <li key={uuidv4()}>{option}</li> )
+      return (
+        <div key={uuidv4()} style={{width: '33%', border: '1px solid'}}>
+          <h1>Group {index+1}</h1>
+          <ul>{listOfGroupOptions}</ul>
+        </div>
+      )
+    }
 
   const randomizeGroups = (number, choices) => {
     props.clearOutputs()
@@ -58,7 +69,7 @@ function App(props) {
     // setRandomizedOrder([])
     const copyOfOptions = [...props.options]
     const convertedToIntegerNumber = parseInt(number, 10)
-    const squares = []
+    // const squares = []
     const selectedOptions = []
 
     //set up the nested arrays for the selectedOptions
@@ -79,12 +90,12 @@ function App(props) {
       }
     }
 
-    for (let j = 0; j < convertedToIntegerNumber; j++) {
-      squares.push(renderGroupCard(j, selectedOptions[j]))
-    }
+    // for (let j = 0; j < convertedToIntegerNumber; j++) {
+    //   squares.push(renderGroupCard(j, selectedOptions[j]))
+    // }
 
     // setGroups(squares)
-    props.setRandomizedGroups(squares)
+    props.randomizeGroups(selectedOptions)
   }
 
   const clearOutputs = () => {
@@ -99,7 +110,7 @@ function App(props) {
   // }
 
   const randomOption = () => {
-    clearOutputs()
+    props.clearOutputs()
     // setGroups([])
     // setRandomizedOrder([])
     const chosenRandomOption = props.options[Math.floor(Math.random() * props.options.length)]
@@ -295,12 +306,12 @@ function App(props) {
       </button>
       <br />
       <br />
-      {groups.length === 0 && props.randomizedOption.length === 0 && props.randomizedOrder.length === 0 ?
+      {props.randomizedGroups.length === 0 && props.randomizedOption.length === 0 && props.randomizedOrder.length === 0 ?
         <div>
           <h2>Yet to be randomized</h2>
         </div> : null
       }
-      {groups.length !== 0 ?
+      {props.randomizedGroups.length !== 0 ?
         <div
           style={{
               width: '100%',
@@ -309,7 +320,7 @@ function App(props) {
               flexWrap: 'wrap'
           }}
         >
-          {groups}
+          {renderGroupCard}
         </div> : null
       }
       {props.randomizedOption.length !== 0 ?
@@ -334,7 +345,8 @@ const mapStateToProps = state => {
     randomizedOption: state.outputReducer.randomizedOption,
     options: state.optionsReducer.options,
     randomizedOrder: state.outputReducer.randomizedOrder,
-    numberOfGroups: state.optionsReducer.numberOfGroups
+    numberOfGroups: state.optionsReducer.numberOfGroups,
+    randomizedGroups: state.outputReducer.randomizedGroups
   }
 }
 

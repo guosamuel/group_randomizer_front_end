@@ -17,3 +17,10 @@ export const randomizeOrder = options => {
     payload: options
   }
 }
+
+export const randomizeGroups = groups => {
+  return {
+    type: "RANDOM_GROUPS",
+    payload: groups
+  }
+}

@@ -6,6 +6,8 @@ export default (state = { randomizedOption: "", randomizedOrder: [], randomizedG
       return {...state, randomizedOption: action.payload}
     case "RANDOM_ORDER":
       return {...state, randomizedOrder: action.payload}
+    case "RANDOM_GROUPS":
+      return {...state, randomizedGroups: action.payload}
     default:
       return state
   }

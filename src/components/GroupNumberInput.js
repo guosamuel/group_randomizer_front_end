@@ -11,7 +11,6 @@ function GroupNumberInput(props) {
     props.handleNumberOfGroups(numberOfGroups)
   }
 
-  console.log(numberOfGroups)
   return (
     <div>
       <h2>Number of Groups</h2>

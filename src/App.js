@@ -38,9 +38,9 @@ function App(props) {
   //   setOptions([...options, input])
   // }
 
-  const handleNumberOfGroups = e => {
-    setNumberOfGroups(e.target.value)
-  }
+  // const handleNumberOfGroups = e => {
+  //   setNumberOfGroups(e.target.value)
+  // }
 
   function renderGroupCard(i, currentNumberOfGroups, arrayOfOptions) {
     const listOfGroupOptions = arrayOfOptions.map( (option, index) => <li key={uuidv4()}>{option}</li>)
@@ -105,10 +105,10 @@ function App(props) {
     props.randomizeOption(chosenRandomOption)
   }
 
-  const removeOption = idx => {
-    const updatedList = [...options.slice(0, idx), ...options.slice(idx+1)]
-    setOptions([...updatedList])
-  }
+  // const removeOption = idx => {
+  //   const updatedList = [...options.slice(0, idx), ...options.slice(idx+1)]
+  //   setOptions([...updatedList])
+  // }
 
   // const listOfOptions = options.map( (option, index) => {
   //   return (
@@ -254,16 +254,14 @@ function App(props) {
       <SavedGroupContainer />
       <br/>
       <GroupNumberInput
-        maxNumberOfGroups={options.length}
-        handleNumberOfGroups={handleNumberOfGroups}
-        numberOfGroups={numberOfGroups}
+        maxNumberOfGroups={props.options.length}
       />
       <OptionsContainer />
       <br />
       <br />
       <button
         onClick={(number, choices) => randomizeGroups(numberOfGroups, options)}
-        disabled={options.length === 0 ? true : false}
+        disabled={props.options.length === 0 ? true : false}
         style={{
           border: '1px solid'
         }}

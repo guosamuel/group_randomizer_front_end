@@ -17,3 +17,10 @@ export const addOption = option => {
     payload: option
   }
 }
+
+export const handleNumberOfGroups = number => {
+  return {
+    type: "HANDLE_NUMBER_OF_GROUPS",
+    payload: number
+  }
+}

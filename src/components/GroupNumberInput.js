@@ -8,7 +8,7 @@ function GroupNumberInput(props) {
 
   const handleNumberOfGroups = e => {
     setNumberOfGroups(e.target.value)
-    props.handleNumberOfGroups(numberOfGroups)
+    props.handleNumberOfGroups(e.target.value)
   }
 
   console.log("LOCAL STATE", numberOfGroups)

@@ -5,7 +5,7 @@ import SavedGroupContainer from './containers/SavedGroupsContainer'
 import OptionsContainer from './containers/OptionsContainer'
 
 import { connect } from 'react-redux'
-import { clearOutputs, randomizeOption, randomizeOrder } from './actions/outputActions'
+import { clearOutputs, randomizeOption, randomizeOrder, randomizeGroups } from './actions/outputActions'
 
 function App(props) {
   const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
@@ -52,16 +52,15 @@ function App(props) {
   //   )
   // }
 
-  const renderGroupCard =
-    props.randomizedGroups.map( (group, index) => {
-      const listOfGroupOptions = group.map( option => <li key={uuidv4()}>{option}</li> )
-      return (
-        <div key={uuidv4()} style={{width: '33%', border: '1px solid'}}>
-          <h1>Group {index+1}</h1>
-          <ul>{listOfGroupOptions}</ul>
-        </div>
-      )
-    }
+  const renderGroupCards = props.randomizedGroups.map( (group, index) => {
+    const listOfGroupOptions = group.map( option => <li key={uuidv4()}>{option}</li> )
+    return (
+      <div key={uuidv4()} style={{width: '33%', border: '1px solid'}}>
+        <h1>Group {index+1}</h1>
+        <ul>{listOfGroupOptions}</ul>
+      </div>
+    )
+  })
 
   const randomizeGroups = (number, choices) => {
     props.clearOutputs()
@@ -258,6 +257,7 @@ function App(props) {
     )
   })
 
+  console.log("REDUX STATE", props.numberOfGroups)
   return (
     <div>
       <h1>Group Randomizer</h1>
@@ -320,7 +320,7 @@ function App(props) {
               flexWrap: 'wrap'
           }}
         >
-          {renderGroupCard}
+          {renderGroupCards}
         </div> : null
       }
       {props.randomizedOption.length !== 0 ?
@@ -354,7 +354,8 @@ const mapDispatchToProps = dispatch => {
   return {
     clearOutputs: () => dispatch(clearOutputs()),
     randomizeOption: option => dispatch(randomizeOption(option)),
-    randomizeOrder: options => dispatch(randomizeOrder(options))
+    randomizeOrder: options => dispatch(randomizeOrder(options)),
+    randomizeGroups: groups => dispatch(randomizeGroups(groups))
   }
 }
 

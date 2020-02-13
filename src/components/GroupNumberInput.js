@@ -11,6 +11,8 @@ function GroupNumberInput(props) {
     props.handleNumberOfGroups(numberOfGroups)
   }
 
+  console.log("LOCAL STATE", numberOfGroups)
+
   return (
     <div>
       <h2>Number of Groups</h2>

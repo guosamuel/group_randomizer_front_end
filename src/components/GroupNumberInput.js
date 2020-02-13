@@ -11,13 +11,14 @@ function GroupNumberInput(props) {
     props.handleNumberOfGroups(numberOfGroups)
   }
 
+  console.log(numberOfGroups)
   return (
     <div>
       <h2>Number of Groups</h2>
       <input
         type="number"
         min="1"
-        max={props.maxNumberOfGroups > numberOfGroups ? props.maxNumberOfGroups : "1"}
+        max={props.maxNumberOfGroups >= numberOfGroups ? props.maxNumberOfGroups : "1"}
         onChange={handleNumberOfGroups}
         value={numberOfGroups}
         style={{

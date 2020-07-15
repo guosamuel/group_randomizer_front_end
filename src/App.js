@@ -257,16 +257,14 @@ function App(props) {
     )
   })
 
-  console.log("REDUX STATE", props.numberOfGroups)
   return (
     <div>
       <h1>Group Randomizer</h1>
       <Form />
       <br/>
-      <SavedGroupContainer />
+      <OptionsContainer />
       <br/>
       <GroupNumberInput />
-      <OptionsContainer />
       <br />
       <br />
       <button
@@ -276,7 +274,7 @@ function App(props) {
           border: '1px solid'
         }}
       >
-        Randomize Into Groups!
+        Randomly Split Into Groups!
       </button>
       <button
         onClick={clearOutputs}
@@ -337,6 +335,7 @@ function App(props) {
             </ol>
         </div> : null
       }
+      <SavedGroupContainer />
     </div>
   )
 }

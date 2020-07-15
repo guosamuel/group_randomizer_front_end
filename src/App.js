@@ -280,6 +280,7 @@ function App(props) {
       </button>
       <button
         onClick={clearOutputs}
+        disabled={props.options.length === 0 && props.randomizedGroups.length === 0 ? true : false}
         style={{
           border: '1px solid'
         }}

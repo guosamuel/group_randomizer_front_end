@@ -38,18 +38,16 @@ function Form(props) {
 
   return(
     <form onSubmit={(e, option, clearCallback) => clearAndSubmitInput(e, input, clearOptionInput)}>
-      <textarea
+      <input
         type="text"
-        placeholder="Please input options here"
+        placeholder="Input option here"
         value={input}
         onChange={handleOptionInput}
-        rows='5'
-        cols='50'
         style={{
           border: '2px solid'
         }}
         >
-      </textarea>
+      </input>
       <br />
       <button
         type="Submit"

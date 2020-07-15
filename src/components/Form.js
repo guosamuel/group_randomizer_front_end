@@ -17,8 +17,23 @@ function Form(props) {
   const clearAndSubmitInput = (e, option, clearCallback) => {
     e.preventDefault()
     // props.handleOptionSubmit(e, option)
-    props.addOption(option)
-    clearCallback()
+    let exists = false
+    for (let i = 0; i < props.options.length; i++) {
+      if (props.options[i].toLowerCase() !== option.toLowerCase()) {
+        continue
+      } else {
+        exists = true
+        break
+      }
+    }
+
+    if (exists) {
+      alert("The option you have put down already exists.")
+    } else {
+      props.addOption(option)
+      clearCallback()
+    }
+
   }
 
   return(
@@ -49,10 +64,16 @@ function Form(props) {
   )
 }
 
+const mapStateToProps = state => {
+  return {
+    options: state.optionsReducer.options
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     addOption: option => dispatch(addOption(option))
   }
 }
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

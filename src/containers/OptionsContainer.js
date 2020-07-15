@@ -99,6 +99,7 @@ function OptionsContainer(props) {
       </button>
       <button
         onClick={handleSaveGroup}
+        disabled={props.options.length === 0 ? true : false}
         style={{
           border: '1px solid'
         }}

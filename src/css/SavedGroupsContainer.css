@@ -10,6 +10,6 @@
   display: inline-block;
 } */
 
-.Saved-groups-container > .saved-groups-list > ul {
+.Saved-groups-container > .saved-groups-list > li > .options-list {
   display: inline-block;
 }

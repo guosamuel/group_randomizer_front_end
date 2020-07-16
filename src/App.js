@@ -6,12 +6,13 @@ import OptionsContainer from './containers/OptionsContainer'
 
 import { connect } from 'react-redux'
 import { clearOutputs, randomizeOption, randomizeOrder, randomizeGroups } from './actions/outputActions'
+import { handleNumberOfGroups } from './actions/optionsActions'
 
 function App(props) {
   // const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
-  const [ numberOfGroups, setNumberOfGroups ] = useState("1")
+  // const [ numberOfGroups, setNumberOfGroups ] = useState("1")
   // const [ groups, setGroups ] = useState([])
-  const [ groupSize, setGroupSize ] = useState(1)
+  // const [ groupSize, setGroupSize ] = useState(1)
   // const [ randomizedOption, setRandomizedOption ] = useState("")
   // savedGroups shall be an array of objects
   // the object structure shall be {name: TBD, options: TBD}
@@ -21,15 +22,17 @@ function App(props) {
 
   useEffect(() => {
     //this is when a person deletes options, the maxNumberOfGroups should reflect the max length of the options
-    if (props.options.length < parseInt(numberOfGroups, 10)) {
+    if (props.options.length < parseInt(props.numberOfGroups, 10)) {
       if (props.options.length === 0) {
-        setNumberOfGroups((props.options.length + 1).toString())
+        // setNumberOfGroups((props.options.length + 1).toString())
+        props.handleNumberOfGroups((props.options.length + 1).toString())
       } else {
-      setNumberOfGroups(props.options.length.toString())
+      // setNumberOfGroups(props.options.length.toString())
+      props.handleNumberOfGroups(props.options.length.toString())
       }
     }
-    setGroupSize(Math.floor(props.options.length/parseInt(numberOfGroups, 10)))
-  }, [props.options.length, numberOfGroups])
+    // setGroupSize(Math.floor(props.options.length/parseInt(props.numberOfGroups, 10)))
+  }, [props.options.length, props.numberOfGroups])
 
   const uuidv4 = require('uuid/v4')
 
@@ -355,7 +358,8 @@ const mapDispatchToProps = dispatch => {
     clearOutputs: () => dispatch(clearOutputs()),
     randomizeOption: option => dispatch(randomizeOption(option)),
     randomizeOrder: options => dispatch(randomizeOrder(options)),
-    randomizeGroups: groups => dispatch(randomizeGroups(groups))
+    randomizeGroups: groups => dispatch(randomizeGroups(groups)),
+    handleNumberOfGroups: number => dispatch(handleNumberOfGroups(number))
   }
 }
 

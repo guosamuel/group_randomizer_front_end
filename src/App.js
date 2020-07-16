@@ -8,28 +8,28 @@ import { connect } from 'react-redux'
 import { clearOutputs, randomizeOption, randomizeOrder, randomizeGroups } from './actions/outputActions'
 
 function App(props) {
-  const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
+  // const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
   const [ numberOfGroups, setNumberOfGroups ] = useState("1")
-  const [ groups, setGroups ] = useState([])
+  // const [ groups, setGroups ] = useState([])
   const [ groupSize, setGroupSize ] = useState(1)
-  const [ randomizedOption, setRandomizedOption ] = useState("")
+  // const [ randomizedOption, setRandomizedOption ] = useState("")
   // savedGroups shall be an array of objects
   // the object structure shall be {name: TBD, options: TBD}
-  const [ savedGroups, setSavedGroups ] = useState([])
-  const [ savingGroupName, setSavingGroupName ] = useState("")
-  const [ randomizedOrder, setRandomizedOrder ] = useState([])
+  // const [ savedGroups, setSavedGroups ] = useState([])
+  // const [ savingGroupName, setSavingGroupName ] = useState("")
+  // const [ randomizedOrder, setRandomizedOrder ] = useState([])
 
   useEffect(() => {
     //this is when a person deletes options, the maxNumberOfGroups should reflect the max length of the options
-    if (options.length < parseInt(numberOfGroups, 10)) {
-      if (options.length === 0) {
-        setNumberOfGroups((options.length + 1).toString())
+    if (props.options.length < parseInt(numberOfGroups, 10)) {
+      if (props.options.length === 0) {
+        setNumberOfGroups((props.options.length + 1).toString())
       } else {
-      setNumberOfGroups(options.length.toString())
+      setNumberOfGroups(props.options.length.toString())
       }
     }
-    setGroupSize(Math.floor(options.length/parseInt(numberOfGroups, 10)))
-  }, [options.length, numberOfGroups])
+    setGroupSize(Math.floor(props.options.length/parseInt(numberOfGroups, 10)))
+  }, [props.options.length, numberOfGroups])
 
   const uuidv4 = require('uuid/v4')
 

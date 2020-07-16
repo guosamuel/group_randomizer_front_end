@@ -317,11 +317,13 @@ function App(props) {
       }
       {props.randomizedGroups.length !== 0 ?
         <div
+          id="group-card-container"
           style={{
               width: '100%',
               height: '100%',
               display: 'flex',
-              flexWrap: 'wrap'
+              flexWrap: 'wrap',
+              justifyContent: 'center'
           }}
         >
           {renderGroupCards}

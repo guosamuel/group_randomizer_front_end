@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import { removeOption, clearOptions } from '../actions/optionsActions'
 import { saveGroup } from '../actions/savedGroupsActions'
 
+import '../css/OptionsContainer.css'
+
 function OptionsContainer(props) {
   const [ savingGroupName, setSavingGroupName ] = useState("")
 
@@ -76,7 +78,7 @@ function OptionsContainer(props) {
   }
 
   return (
-    <div>
+    <div className="OptionsContainer">
       <Heading />
       <Note />
       <br/>
@@ -87,7 +89,9 @@ function OptionsContainer(props) {
         handleSavingGroupNameInput={handleSavingGroupNameInput}
         savingGroupName={savingGroupName}
       />
-      <ol>{listOfOptions}</ol>
+      <div className="options-list">
+        <ol>{listOfOptions}</ol>
+      </div>
       <button
         onClick={props.clearOptions}
         disabled={props.options.length === 0 ? true : false}

@@ -4,6 +4,8 @@ import GroupNumberInput from './components/GroupNumberInput';
 import SavedGroupContainer from './containers/SavedGroupsContainer'
 import OptionsContainer from './containers/OptionsContainer'
 
+import './css/App.css'
+
 import { connect } from 'react-redux'
 import { clearOutputs, randomizeOption, randomizeOrder, randomizeGroups } from './actions/outputActions'
 import { handleNumberOfGroups } from './actions/optionsActions'
@@ -261,7 +263,7 @@ function App(props) {
   })
 
   return (
-    <div>
+    <div className='App'>
       <h1>Group Randomizer</h1>
       <Form />
       <br/>

@@ -1,0 +1,7 @@
+.OptionsContainer {
+  text-align: center;
+}
+
+.OptionsContainer > .options-list > ol {
+  display: inline-block;
+}

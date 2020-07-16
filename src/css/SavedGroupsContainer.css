@@ -1,0 +1,15 @@
+.Saved-groups-container {
+  text-align: center;
+}
+
+.Saved-groups-container > .saved-groups-list {
+  display: inline-block;
+}
+
+/* .Saved-groups-container > ul {
+  display: inline-block;
+} */
+
+.Saved-groups-container > .saved-groups-list > ul {
+  display: inline-block;
+}

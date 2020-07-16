@@ -1,6 +1,8 @@
 import React from 'react'
 import Heading from '../components/SavedGroupsContainer/Heading'
 
+import '../css/SavedGroupsContainer.css'
+
 import { connect } from 'react-redux'
 import { deleteSavedGroup, reuseSavedGroup } from '../actions/savedGroupsActions'
 
@@ -36,7 +38,7 @@ function SavedGroupsContainer(props){
             Re-use This Group
           </button>
         </h3>
-        <ul>
+        <ul className='options-list'>
         {savedGroup.options.map( savedOption => {
           return (
             <li key={uuidv4()}>
@@ -49,10 +51,10 @@ function SavedGroupsContainer(props){
     )
   })
   return (
-    <div>
+    <div className="Saved-groups-container">
       <Heading />
       {props.savedGroups.length ?
-        <ul>
+        <ul className='saved-groups-list'>
           {listOfSavedGroups}
         </ul> :
         <p>You have yet to save any groups</p>

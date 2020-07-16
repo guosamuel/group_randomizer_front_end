@@ -3,6 +3,8 @@ import Heading from '../components/OptionsContainer/Heading'
 import Note from '../components/OptionsContainer/Note'
 import GroupName from '../components/OptionsContainer/GroupName'
 
+import '../css/OptionsContainer.css'
+
 import { connect } from 'react-redux'
 import { removeOption, clearOptions } from '../actions/optionsActions'
 import { saveGroup } from '../actions/savedGroupsActions'
@@ -78,7 +80,7 @@ function OptionsContainer(props) {
   }
 
   return (
-    <div className="OptionsContainer">
+    <div className="Options-container">
       <Heading />
       <Note />
       <br/>

@@ -19,25 +19,25 @@ function SavedGroupsContainer(props){
   const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
       <li key={uuidv4()} style={{wordBreak: 'break-all'}}>
-        <h3>
-          {savedGroup.name}
-          <button
-            onClick={ () => props.deleteSavedGroup(index)}
-            style={{
-              border: '1px solid'
-            }}
-          >
-            X
-          </button>
-          <button
-            onClick={ () => handleReuseSavedGroupIndex(index)}
-            style={{
-              border: '1px solid'
-            }}
-          >
-            Re-use This Group
-          </button>
-        </h3>
+        <h3>{savedGroup.name}</h3>
+        <button
+          onClick={ () => props.deleteSavedGroup(index)}
+          style={{
+            border: '1px solid'
+          }}
+        >
+          Delete
+        </button>
+        <button
+          onClick={ () => handleReuseSavedGroupIndex(index)}
+          style={{
+            border: '1px solid'
+          }}
+        >
+          Re-use This Group
+        </button>
+        <br />
+        <br />
         <ul className='options-list'>
         {savedGroup.options.map( savedOption => {
           return (

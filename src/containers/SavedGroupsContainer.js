@@ -18,7 +18,7 @@ function SavedGroupsContainer(props){
 
   const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
-      <li key={uuidv4()}>
+      <li key={uuidv4()} style={{wordBreak: 'break-all'}}>
         <h3>
           {savedGroup.name}
           <button

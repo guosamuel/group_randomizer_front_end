@@ -62,7 +62,7 @@ function App(props) {
     return (
       <div key={uuidv4()} style={{width: '33%', border: '1px solid'}}>
         <h1>Group {index+1}</h1>
-        <ul>{listOfGroupOptions}</ul>
+        <ul style={{wordBreak: 'break-all'}}>{listOfGroupOptions}</ul>
       </div>
     )
   })

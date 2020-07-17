@@ -92,7 +92,7 @@ function OptionsContainer(props) {
         savingGroupName={savingGroupName}
       />
       <div className="options-list">
-        <ol>{listOfOptions}</ol>
+        <ol style={{wordBreak: 'break-all'}}>{listOfOptions}</ol>
       </div>
       <button
         onClick={props.clearOptions}

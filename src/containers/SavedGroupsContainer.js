@@ -15,10 +15,11 @@ function SavedGroupsContainer(props){
     console.log(reusingSavedGroup)
     props.reuseSavedGroup(reusingSavedGroup)
   }
-
+// <li key={uuidv4()} style={{wordBreak: 'break-all'}}>
+//       </li>
   const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
-      <li key={uuidv4()} style={{wordBreak: 'break-all'}}>
+      <div style={{wordBreak: 'break-all'}}>
         <h3>{savedGroup.name}</h3>
         <button
           onClick={ () => props.deleteSavedGroup(index)}
@@ -47,7 +48,7 @@ function SavedGroupsContainer(props){
           )
         })}
         </ul>
-      </li>
+      </div>
     )
   })
   return (

@@ -16,6 +16,7 @@ function GroupNumberInput(props) {
   return (
     <div>
       <h2>Number of Groups</h2>
+      {parseInt(numberOfGroups, 10) <= 0 || !numberOfGroups ? <p>The number of groups must be filled in or greater than 0</p> : null}
       <input
         type="number"
         min="1"

@@ -283,7 +283,7 @@ function App(props) {
       <br />
       <button
         onClick={(number, choices) => randomizeGroups(props.numberOfGroups, props.options)}
-        disabled={props.options.length === 0 ? true : false}
+        disabled={props.options.length === 0 || !props.numberOfGroups || parseInt(props.numberOfGroups,10) <= 0 ? true : false}
         style={{
           border: '1px solid'
         }}
@@ -292,7 +292,7 @@ function App(props) {
       </button>
       <button
         onClick={clearOutputs}
-        disabled={props.options.length === 0 && props.randomizedGroups.length === 0 ? true : false}
+        disabled={(props.options.length === 0 && props.randomizedGroups.length === 0) || !props.numberOfGroups || parseInt(props.numberOfGroups,10) <= 0 ? true : false}
         style={{
           border: '1px solid'
         }}
@@ -301,7 +301,7 @@ function App(props) {
       </button>
       <button
         onClick={randomOption}
-        disabled={props.options.length === 0 ? true : false}
+        disabled={props.options.length === 0 || !props.numberOfGroups || parseInt(props.numberOfGroups,10) <= 0 ? true : false}
         style={{
           border: '1px solid'
         }}
@@ -310,7 +310,7 @@ function App(props) {
       </button>
       <button
         onClick={randomizeOrder}
-        disabled={props.options.length === 0 ? true : false}
+        disabled={props.options.length === 0 || !props.numberOfGroups || parseInt(props.numberOfGroups,10) <= 0 ? true : false}
         style={{
           border: '1px solid'
         }}

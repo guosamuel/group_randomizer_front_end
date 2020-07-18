@@ -265,7 +265,7 @@ function App(props) {
 
   const randomizedOrderList = props.randomizedOrder.map( option => {
     return(
-      <li key={uuidv4()}>
+      <li key={uuidv4()} style={{ marginTop: '10px', marginBottom: '10px' }}>
         {option}
       </li>
     )
@@ -344,11 +344,11 @@ function App(props) {
         </div> : null
       }
       {props.randomizedOrder.length !== 0 ?
-        <div>
+        <div id='randomized-order-container'>
           <h2>Your randomized order is:</h2>
           <ol>
             {randomizedOrderList}
-            </ol>
+          </ol>
         </div> : null
       }
       <SavedGroupContainer />

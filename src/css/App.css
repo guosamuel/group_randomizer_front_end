@@ -6,6 +6,12 @@
   display: inline-block;
 }
 
+.App > #randomized-order-container > ol {
+  word-break: break-all;
+  padding-left: 25vw;
+  padding-right: 25vw
+}
+
 .App-logo {
   height: 40vmin;
 }

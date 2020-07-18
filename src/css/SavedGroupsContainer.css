@@ -4,6 +4,9 @@
 
 .Saved-groups-container > .saved-groups-list {
   display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* .Saved-groups-container > ul {
@@ -12,4 +15,10 @@
 
 .Saved-groups-container > .saved-groups-list > li > .options-list {
   display: inline-block;
+}
+
+.options-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

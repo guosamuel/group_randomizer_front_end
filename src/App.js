@@ -58,11 +58,20 @@ function App(props) {
   // }
 
   const renderGroupCards = props.randomizedGroups.map( (group, index) => {
-    const listOfGroupOptions = group.map( option => <li key={uuidv4()}>{option}</li> )
+    const listOfGroupOptions = group.map( option => <li key={uuidv4()} style={{ marginTop: '10px', marginBottom: '10px'}}>{option}</li> )
     return (
       <div key={uuidv4()} style={{width: '33%', border: '1px solid'}}>
         <h1>Group {index+1}</h1>
-        <ul style={{wordBreak: 'break-all'}}>{listOfGroupOptions}</ul>
+        <ul
+          style={{
+            wordBreak: 'break-all',
+            listStyleType: 'none',
+            margin: 0,
+            padding: 0
+          }}
+        >
+            {listOfGroupOptions}
+        </ul>
       </div>
     )
   })

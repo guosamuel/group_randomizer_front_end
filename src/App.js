@@ -340,7 +340,8 @@ function App(props) {
       }
       {props.randomizedOption.length !== 0 ?
         <div>
-          <h2>Your randomized choice is: {props.randomizedOption}</h2>
+          <h2>Your randomized choice is:</h2>
+          <p style={{ paddingLeft: '25vw', paddingRight: '25vw', wordBreak: 'break-all' }}>{props.randomizedOption}</p>
         </div> : null
       }
       {props.randomizedOrder.length !== 0 ?

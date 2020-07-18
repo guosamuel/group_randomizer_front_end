@@ -83,8 +83,6 @@ function OptionsContainer(props) {
     <div className="Options-container">
       <Heading />
       <Note />
-      <br/>
-      <br/>
       <label>Group Name:</label>
       <br />
       <GroupName

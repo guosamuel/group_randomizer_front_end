@@ -91,9 +91,12 @@ function OptionsContainer(props) {
         handleSavingGroupNameInput={handleSavingGroupNameInput}
         savingGroupName={savingGroupName}
       />
+      <br />
+      <br />
       <div className="options-list">
         <ol style={{wordBreak: 'break-all'}}>{listOfOptions}</ol>
       </div>
+      <br />
       <button
         onClick={props.clearOptions}
         disabled={props.options.length === 0 ? true : false}

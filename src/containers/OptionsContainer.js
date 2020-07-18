@@ -22,7 +22,7 @@ function OptionsContainer(props) {
 
   const listOfOptions = props.options.map( (option, index) => {
     return (
-      <li key={uuidv4()}>
+      <li key={uuidv4()} style={{marginTop: '10px', marginBottom: '10px'}}>
         {option}
         <button
           onClick={ () => props.removeOption(index)}

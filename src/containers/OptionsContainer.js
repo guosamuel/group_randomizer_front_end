@@ -115,9 +115,12 @@ function OptionsContainer(props) {
         <ol style={{wordBreak: 'break-all'}}>{listOfOptions}</ol>
       </div>
       */}
-      <table className='options-list'>
+      <br />
+      <br />
+      <table>
         {tabularOptions}
       </table>
+      <br />
       <br />
       <button
         onClick={props.clearOptions}

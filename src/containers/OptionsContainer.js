@@ -36,6 +36,24 @@ function OptionsContainer(props) {
     )
   })
 
+  const tabularOptions = props.options.map( (option, index) => {
+    return (
+      <tr style={{wordBreak: 'break-all'}}>
+        <td>{option}</td>
+        <td>
+          <button
+            onClick={ () => props.removeOption(index)}
+            style={{
+              border: '1px solid'
+            }}
+          >
+            Remove
+          </button>
+        </td>
+      </tr>
+    )
+  })
+
   const handleSaveGroup = () => {
     if (props.savedGroups.length === 0) {
       props.saveGroup({name: (savingGroupName ? savingGroupName : `Saved Group #1`), options: props.options})
@@ -92,9 +110,14 @@ function OptionsContainer(props) {
       <br />
       <br />
       <label>Total Count: {props.options.length}</label>
+      {/*
       <div className="options-list">
         <ol style={{wordBreak: 'break-all'}}>{listOfOptions}</ol>
       </div>
+      */}
+      <table className='options-list'>
+        {tabularOptions}
+      </table>
       <br />
       <button
         onClick={props.clearOptions}

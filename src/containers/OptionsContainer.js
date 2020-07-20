@@ -91,6 +91,7 @@ function OptionsContainer(props) {
       />
       <br />
       <br />
+      <label>Total Count: {props.options.length}</label>
       <div className="options-list">
         <ol style={{wordBreak: 'break-all'}}>{listOfOptions}</ol>
       </div>

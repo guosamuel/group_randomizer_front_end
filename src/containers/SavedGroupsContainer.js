@@ -39,6 +39,7 @@ function SavedGroupsContainer(props){
         </button>
         <br />
         <br />
+        <label>Total Count: {savedGroup.options.length}</label>
         <ul className='options-list'>
         {savedGroup.options.map( savedOption => {
           return (

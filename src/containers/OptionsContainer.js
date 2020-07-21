@@ -50,6 +50,9 @@ function OptionsContainer(props) {
             Remove
           </button>
         </td>
+        <td>
+          <p className="remove">Remove</p>
+        </td>
       </tr>
     )
   })

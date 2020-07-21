@@ -20,3 +20,12 @@ td {
   /* height: 20px; */
   padding: 5px
 }
+
+.remove {
+  text-decoration: underline;
+  color: blue;
+}
+
+.remove:hover {
+  cursor: progress
+}

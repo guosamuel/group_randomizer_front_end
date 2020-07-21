@@ -41,17 +41,7 @@ function OptionsContainer(props) {
       <tr>
         <td>{option}</td>
         <td>
-          <button
-            onClick={ () => props.removeOption(index)}
-            style={{
-              border: '1px solid'
-            }}
-          >
-            Remove
-          </button>
-        </td>
-        <td>
-          <p className="remove">Remove</p>
+          <p className="remove" onClick={ () => props.removeOption(index)}>Remove</p>
         </td>
       </tr>
     )

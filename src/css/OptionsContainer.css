@@ -14,11 +14,17 @@ table  {
   /* list-style-type: none; */
   /* border: 1px solid black; */
   /* border-collapse: collapse */
+  margin-left: 25vw;
+  margin-right: 25vw
 }
 
 td {
-  /* height: 20px; */
-  padding: 5px
+  padding: 5px;
+  word-break: break-all;
+  white-space: pre-line;
+  word-wrap: break-word;
+  hyphens: auto;
+  /* overflow-wrap: break-word */
 }
 
 .remove {

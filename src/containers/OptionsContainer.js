@@ -40,7 +40,7 @@ function OptionsContainer(props) {
     return (
       <tr>
         <td>{option}</td>
-        <td>
+        <td width="60px">
           <p className="remove" onClick={ () => props.removeOption(index)}>Remove</p>
         </td>
       </tr>

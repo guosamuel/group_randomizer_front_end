@@ -40,7 +40,14 @@ td {
   /* word-break: break-all; */
   /* white-space: pre-line;
   word-wrap: break-word; */
-  hyphens: auto;
   /* overflow-wrap: break-word */
   border: 1px solid black
+}
+
+.one-long-word {
+  word-break: break-all;
+}
+
+.not-one-long-word {
+  hyphens: auto;
 }

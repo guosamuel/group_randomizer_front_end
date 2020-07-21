@@ -28,7 +28,13 @@
 .saved-option {
   margin-top: 10px;
   margin-bottom: 10px;
-  hyphens: auto;
   border: 1px black solid;
-  /* word-break: break-all; */
+}
+
+.one-long-word {
+  word-break: break-all;
+}
+
+.not-one-long-word {
+  hyphens: auto;
 }

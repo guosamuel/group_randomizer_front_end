@@ -37,9 +37,11 @@ function OptionsContainer(props) {
   })
 
   const tabularOptions = props.options.map( (option, index) => {
+    let longWordCSS = option.includes(" ") ? " not-one-long-word" : " one-long-word"
+
     return (
       <tr>
-        <td className='option-width'>{option}</td>
+        <td className={'option-width' + longWordCSS}>{option}</td>
         <td width="60px">
           <p className="remove" onClick={ () => props.removeOption(index)}>Remove</p>
         </td>

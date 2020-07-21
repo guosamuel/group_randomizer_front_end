@@ -42,8 +42,10 @@ function SavedGroupsContainer(props){
         <label>Total Count: {savedGroup.options.length}</label>
         <ul className='options-list'>
         {savedGroup.options.map( savedOption => {
+          let longWordCSS = savedOption.includes(" ") ? " not-one-long-word" : " one-long-word"
+
           return (
-            <li key={uuidv4()} className='saved-option'>
+            <li key={uuidv4()} className={'saved-option' + longWordCSS}>
               {savedOption}
             </li>
           )

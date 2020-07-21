@@ -22,5 +22,11 @@
   margin: 0;
   padding: 0;
   padding-left: 25vw;
-  padding-right: 25vw
+  padding-right: 25vw;
+}
+
+.saved-option {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  hyphens: auto
 }

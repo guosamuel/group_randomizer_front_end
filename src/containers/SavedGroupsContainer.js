@@ -43,7 +43,7 @@ function SavedGroupsContainer(props){
         <ul className='options-list'>
         {savedGroup.options.map( savedOption => {
           return (
-            <li key={uuidv4()} style={{marginTop: '10px', marginBottom: '10px'}}>
+            <li key={uuidv4()} className='saved-option'>
               {savedOption}
             </li>
           )

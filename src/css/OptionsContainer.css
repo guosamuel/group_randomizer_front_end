@@ -9,9 +9,14 @@
   padding: 0;
 }
 
-table {
+table  {
   display: inline-block;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  /* list-style-type: none; */
+  /* border: 1px solid black; */
+  /* border-collapse: collapse */
+}
+
+td {
+  /* height: 20px; */
+  padding: 5px
 }

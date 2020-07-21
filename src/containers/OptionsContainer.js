@@ -38,7 +38,7 @@ function OptionsContainer(props) {
 
   const tabularOptions = props.options.map( (option, index) => {
     return (
-      <tr style={{wordBreak: 'break-all'}}>
+      <tr>
         <td>{option}</td>
         <td>
           <button

@@ -39,7 +39,7 @@ function OptionsContainer(props) {
   const tabularOptions = props.options.map( (option, index) => {
     return (
       <tr>
-        <td>{option}</td>
+        <td className='option-width'>{option}</td>
         <td width="60px">
           <p className="remove" onClick={ () => props.removeOption(index)}>Remove</p>
         </td>

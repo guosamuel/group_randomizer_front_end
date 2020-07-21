@@ -20,10 +20,10 @@ table  {
 
 td {
   padding: 5px;
-  word-break: break-all;
+  /* word-break: break-all; */
   /* white-space: pre-line; */
-  word-wrap: break-word;
-  hyphens: auto;
+  /* word-wrap: break-word; */
+  /* hyphens: auto; */
   /* overflow-wrap: break-word */
 }
 
@@ -34,4 +34,13 @@ td {
 
 .remove:hover {
   cursor: pointer
+}
+
+.option-width {
+  /* word-break: break-all; */
+  /* white-space: pre-line;
+  word-wrap: break-word; */
+  hyphens: auto;
+  /* overflow-wrap: break-word */
+  border: 1px solid black
 }

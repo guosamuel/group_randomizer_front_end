@@ -344,7 +344,7 @@ function App(props) {
       {props.randomizedOption.length !== 0 ?
         <div>
           <h2>Your randomized choice is:</h2>
-          <p style={{ paddingLeft: '25vw', paddingRight: '25vw', wordBreak: 'break-all' }}>{props.randomizedOption}</p>
+          <p className={(props.randomizedOption.includes(" ") ? 'not-one-long-word' : 'one-long-word') + ' padding-center'}>{props.randomizedOption}</p>
         </div> : null
       }
       {props.randomizedOrder.length !== 0 ?

@@ -40,6 +40,7 @@ function App(props) {
 
   const uuidv4 = require('uuid/v4')
 
+  const borderRadiusStyle = { borderRadius: 2 }
   // const handleOptionSubmit = (e, input) => {
   //   e.preventDefault()
   //   setOptions([...options, input])
@@ -285,10 +286,16 @@ function App(props) {
       <br/>
       <GroupNumberInput />
       <br />
-      <ToggleButton
-        value={ toggle }
-        onToggle={() => setToggle(!toggle)}
-      />
+      <div style={{display: 'inline-block'}}>
+        <ToggleButton
+          activeLabel={'GROUPS'}
+          inactiveLabel={'PEOPLE'}
+          thumbStyle={borderRadiusStyle}
+          trackStyle={borderRadiusStyle}
+          value={ toggle }
+          onToggle={() => setToggle(!toggle)}
+        />
+      </div>
       <br />
       <br />
       <button

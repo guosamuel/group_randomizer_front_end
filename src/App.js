@@ -60,7 +60,7 @@ function App(props) {
   const renderGroupCards = props.randomizedGroups.map( (group, index) => {
     const listOfGroupOptions = group.map( option => {
       let longWordCSS = option.includes(" ") ? " not-one-long-word" : " one-long-word"
-      return <li key={uuidv4()} className={'random-group-option' + longWordCSS}>{option}</li>
+      return <li key={uuidv4()} className={'option' + longWordCSS}>{option}</li>
     })
     return (
       <div key={uuidv4()} style={{width: '33%', border: '1px solid'}}>
@@ -266,8 +266,9 @@ function App(props) {
   }
 
   const randomizedOrderList = props.randomizedOrder.map( option => {
+    let longWordCSS = option.includes(" ") ? " not-one-long-word" : " one-long-word"
     return(
-      <li key={uuidv4()} style={{ marginTop: '10px', marginBottom: '10px' }}>
+      <li key={uuidv4()} className={'option' + longWordCSS}>
         {option}
       </li>
     )
@@ -347,9 +348,9 @@ function App(props) {
         </div> : null
       }
       {props.randomizedOrder.length !== 0 ?
-        <div id='randomized-order-container'>
+        <div>
           <h2>Your randomized order is:</h2>
-          <ol>
+          <ol className='padding-center'>
             {randomizedOrderList}
           </ol>
         </div> : null

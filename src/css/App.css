@@ -6,7 +6,7 @@
   display: inline-block;
 }
 
-.random-group-option {
+.option {
   margin-top: 10px;
   margin-bottom: 10px
 }
@@ -19,13 +19,12 @@
   hyphens: auto;
 }
 
-.App > #randomized-order-container > ol {
-  word-break: break-all;
+.padding-center {
   padding-left: 25vw;
   padding-right: 25vw
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
 }
 
@@ -42,4 +41,4 @@
 
 .App-link {
   color: #09d3ac;
-}
+} */

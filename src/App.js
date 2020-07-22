@@ -3,6 +3,7 @@ import Form from './components/Form';
 import GroupNumberInput from './components/GroupNumberInput';
 import SavedGroupContainer from './containers/SavedGroupsContainer'
 import OptionsContainer from './containers/OptionsContainer'
+import ToggleButton from 'react-toggle-button'
 
 import './css/App.css'
 
@@ -11,6 +12,7 @@ import { clearOutputs, randomizeOption, randomizeOrder, randomizeGroups } from '
 import { handleNumberOfGroups } from './actions/optionsActions'
 
 function App(props) {
+  const [ toggle, setToggle ] = useState(true)
   // const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
   // const [ numberOfGroups, setNumberOfGroups ] = useState("1")
   // const [ groups, setGroups ] = useState([])
@@ -282,6 +284,11 @@ function App(props) {
       <OptionsContainer />
       <br/>
       <GroupNumberInput />
+      <br />
+      <ToggleButton
+        value={ toggle }
+        onToggle={() => setToggle(!toggle)}
+      />
       <br />
       <br />
       <button

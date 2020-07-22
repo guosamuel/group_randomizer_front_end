@@ -58,13 +58,15 @@ function App(props) {
   // }
 
   const renderGroupCards = props.randomizedGroups.map( (group, index) => {
-    const listOfGroupOptions = group.map( option => <li key={uuidv4()} style={{ marginTop: '10px', marginBottom: '10px'}}>{option}</li> )
+    const listOfGroupOptions = group.map( option => {
+      let longWordCSS = option.includes(" ") ? " not-one-long-word" : " one-long-word"
+      return <li key={uuidv4()} className={'random-group-option' + longWordCSS}>{option}</li>
+    })
     return (
       <div key={uuidv4()} style={{width: '33%', border: '1px solid'}}>
         <h1>Group {index+1}</h1>
         <ul
           style={{
-            wordBreak: 'break-all',
             listStyleType: 'none',
             margin: 0,
             padding: 0

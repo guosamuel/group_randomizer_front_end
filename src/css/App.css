@@ -6,6 +6,19 @@
   display: inline-block;
 }
 
+.random-group-option {
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+
+.one-long-word {
+  word-break: break-all;
+}
+
+.not-one-long-word {
+  hyphens: auto;
+}
+
 .App > #randomized-order-container > ol {
   word-break: break-all;
   padding-left: 25vw;

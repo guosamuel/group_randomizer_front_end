@@ -286,15 +286,18 @@ function App(props) {
       <br/>
       <GroupNumberInput />
       <br />
-      <div style={{display: 'inline-block'}}>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+        <label style={{ paddingRight: '5px' }}>GROUPS</label>
         <ToggleButton
-          activeLabel={'GROUPS'}
-          inactiveLabel={'PEOPLE'}
           thumbStyle={borderRadiusStyle}
           trackStyle={borderRadiusStyle}
           value={ toggle }
           onToggle={() => setToggle(!toggle)}
         />
+        <label style={{ paddingLeft: '5px' }}>PEOPLE</label>
       </div>
       <br />
       <br />

@@ -290,8 +290,11 @@ function App(props) {
         display: 'flex',
         justifyContent: 'center'
       }}>
+        {/* GROUPS = true PEOPLE = false for toggle values */}
         <label style={{ paddingRight: '5px' }}>GROUPS</label>
         <ToggleButton
+          inactiveLabel={""}
+          activeLabel={""}
           thumbStyle={borderRadiusStyle}
           trackStyle={borderRadiusStyle}
           value={ toggle }

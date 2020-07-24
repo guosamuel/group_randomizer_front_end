@@ -12,7 +12,7 @@ import { clearOutputs, randomizeOption, randomizeOrder, randomizeGroups } from '
 import { handleNumberOfGroups } from './actions/optionsActions'
 
 function App(props) {
-  const [ toggle, setToggle ] = useState("GROUPS")
+  const [ toggle, setToggle ] = useState(true)
   // const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
   // const [ numberOfGroups, setNumberOfGroups ] = useState("1")
   // const [ groups, setGroups ] = useState([])
@@ -302,7 +302,7 @@ function App(props) {
           thumbStyle={borderRadiusStyle}
           trackStyle={borderRadiusStyle}
           value={ toggle }
-          onToggle={() => setToggle(toggle === "GROUPS" ? "PEOPLE" : "GROUPS")}
+          onToggle={() => setToggle(!toggle)}
         />
         <label style={{ paddingLeft: '5px' }}>PEOPLE</label>
       </div>

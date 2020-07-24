@@ -12,7 +12,7 @@ import { clearOutputs, randomizeOption, randomizeOrder, randomizeGroups } from '
 import { handleNumberOfGroups } from './actions/optionsActions'
 
 function App(props) {
-  const [ toggle, setToggle ] = useState(true)
+  const [ toggle, setToggle ] = useState("GROUPS")
   // const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
   // const [ numberOfGroups, setNumberOfGroups ] = useState("1")
   // const [ groups, setGroups ] = useState([])
@@ -85,35 +85,39 @@ function App(props) {
     props.clearOutputs()
     // setRandomizedOption("")
     // setRandomizedOrder([])
-    const copyOfOptions = [...props.options]
-    const convertedToIntegerNumber = parseInt(number, 10)
-    // const squares = []
-    const selectedOptions = []
+    if (toggle === "GROUPS") {
+      const copyOfOptions = [...props.options]
+      const convertedToIntegerNumber = parseInt(number, 10)
+      // const squares = []
+      const selectedOptions = []
 
-    //set up the nested arrays for the selectedOptions
-    for (let i = 0; i < convertedToIntegerNumber; i++) {
-      selectedOptions.push([])
-    }
-
-    //loop for randomizing the options in each group
-    let groupCount = 0
-    while (copyOfOptions.length > 0) {
-      let randomIndex = Math.floor(Math.random() * copyOfOptions.length)
-      selectedOptions[groupCount].push(copyOfOptions[randomIndex])
-      copyOfOptions.splice(randomIndex, 1)
-      if (groupCount < convertedToIntegerNumber - 1) {
-        groupCount += 1
-      } else {
-        groupCount = 0
+      //set up the nested arrays for the selectedOptions
+      for (let i = 0; i < convertedToIntegerNumber; i++) {
+        selectedOptions.push([])
       }
+
+      //loop for randomizing the options in each group
+      let groupCount = 0
+      while (copyOfOptions.length > 0) {
+        let randomIndex = Math.floor(Math.random() * copyOfOptions.length)
+        selectedOptions[groupCount].push(copyOfOptions[randomIndex])
+        copyOfOptions.splice(randomIndex, 1)
+        if (groupCount < convertedToIntegerNumber - 1) {
+          groupCount += 1
+        } else {
+          groupCount = 0
+        }
+      }
+
+      // for (let j = 0; j < convertedToIntegerNumber; j++) {
+      //   squares.push(renderGroupCard(j, selectedOptions[j]))
+      // }
+
+      // setGroups(squares)
+      props.randomizeGroups(selectedOptions)
+    } else {
+      console.log("meep")
     }
-
-    // for (let j = 0; j < convertedToIntegerNumber; j++) {
-    //   squares.push(renderGroupCard(j, selectedOptions[j]))
-    // }
-
-    // setGroups(squares)
-    props.randomizeGroups(selectedOptions)
   }
 
   const clearOutputs = () => {
@@ -276,7 +280,7 @@ function App(props) {
       </li>
     )
   })
-
+  console.log("I IZ TOGGLE", toggle)
   return (
     <div className='App'>
       <h1>Group Randomizer</h1>
@@ -298,7 +302,7 @@ function App(props) {
           thumbStyle={borderRadiusStyle}
           trackStyle={borderRadiusStyle}
           value={ toggle }
-          onToggle={() => setToggle(!toggle)}
+          onToggle={() => setToggle(toggle === "GROUPS" ? "PEOPLE" : "GROUPS")}
         />
         <label style={{ paddingLeft: '5px' }}>PEOPLE</label>
       </div>

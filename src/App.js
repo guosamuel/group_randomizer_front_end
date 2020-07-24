@@ -86,10 +86,11 @@ function App(props) {
     // setRandomizedOption("")
     // setRandomizedOrder([])
     const copyOfOptions = [...props.options]
+    const convertedToIntegerNumber = parseInt(number, 10)
+    const selectedOptions = []
     if (isGroups) {
-      const convertedToIntegerNumber = parseInt(number, 10)
+
       // const squares = []
-      const selectedOptions = []
 
       //set up the nested arrays for the selectedOptions
       for (let i = 0; i < convertedToIntegerNumber; i++) {
@@ -116,7 +117,21 @@ function App(props) {
       // setGroups(squares)
       props.randomizeGroups(selectedOptions)
     } else {
+      let totalNumberOfGroups = Math.ceil(copyOfOptions.length/convertedToIntegerNumber)
+      for (let i = 0; i < totalNumberOfGroups; i++) {
+        selectedOptions.push([])
+      }
+      let randomIndex
 
+      for (let i = 0; i < selectedOptions.length; i++) {
+        for (let j = 0; j < convertedToIntegerNumber; j++) {
+          randomIndex = Math.floor(Math.random() * copyOfOptions.length)
+          selectedOptions[i].push(copyOfOptions[randomIndex])
+          copyOfOptions.splice(randomIndex, 1)
+        }
+      }
+
+      props.randomizeGroups(selectedOptions)
     }
   }
 

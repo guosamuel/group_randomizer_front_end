@@ -117,7 +117,7 @@ function App(props) {
       // setGroups(squares)
       props.randomizeGroups(selectedOptions)
     } else {
-      let totalNumberOfGroups = Math.ceil(copyOfOptions.length/convertedToIntegerNumber)
+      let totalNumberOfGroups = Math.floor(copyOfOptions.length/convertedToIntegerNumber)
       for (let i = 0; i < totalNumberOfGroups; i++) {
         selectedOptions.push([])
       }
@@ -131,6 +131,7 @@ function App(props) {
         }
       }
 
+      if (copyOfOptions.length !== 0) selectedOptions.push([...copyOfOptions])
       props.randomizeGroups(selectedOptions)
     }
   }

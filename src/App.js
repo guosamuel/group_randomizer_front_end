@@ -12,7 +12,7 @@ import { clearOutputs, randomizeOption, randomizeOrder, randomizeGroups } from '
 import { handleNumberOfGroups } from './actions/optionsActions'
 
 function App(props) {
-  const [ toggle, setToggle ] = useState(true)
+  const [ isGroups, setIsGroups ] = useState(true)
   // const [ options, setOptions ] = useState(["Sam", "Ryan", "Stephen", "David"])
   // const [ numberOfGroups, setNumberOfGroups ] = useState("1")
   // const [ groups, setGroups ] = useState([])
@@ -85,7 +85,7 @@ function App(props) {
     props.clearOutputs()
     // setRandomizedOption("")
     // setRandomizedOrder([])
-    if (toggle === "GROUPS") {
+    if (isGroups) {
       const copyOfOptions = [...props.options]
       const convertedToIntegerNumber = parseInt(number, 10)
       // const squares = []
@@ -280,7 +280,7 @@ function App(props) {
       </li>
     )
   })
-  console.log("I IZ TOGGLE", toggle)
+  console.log("I IZ TOGGLE", isGroups)
   return (
     <div className='App'>
       <h1>Group Randomizer</h1>
@@ -301,8 +301,8 @@ function App(props) {
           activeLabel={""}
           thumbStyle={borderRadiusStyle}
           trackStyle={borderRadiusStyle}
-          value={ toggle }
-          onToggle={() => setToggle(!toggle)}
+          value={ isGroups }
+          onToggle={() => setIsGroups(!isGroups)}
         />
         <label style={{ paddingLeft: '5px' }}>PEOPLE</label>
       </div>

@@ -295,7 +295,7 @@ function App(props) {
         justifyContent: 'center'
       }}>
         {/* GROUPS = true PEOPLE = false for toggle values */}
-        <label style={{ paddingRight: '5px' }}>GROUPS</label>
+        <label style={{ paddingRight: '5px' }}>PEOPLE</label>
         <ToggleButton
           inactiveLabel={""}
           activeLabel={""}
@@ -304,7 +304,7 @@ function App(props) {
           value={ isGroups }
           onToggle={() => setIsGroups(!isGroups)}
         />
-        <label style={{ paddingLeft: '5px' }}>PEOPLE</label>
+        <label style={{ paddingLeft: '5px' }}>GROUPS</label>
       </div>
       <br />
       <br />

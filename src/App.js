@@ -85,8 +85,8 @@ function App(props) {
     props.clearOutputs()
     // setRandomizedOption("")
     // setRandomizedOrder([])
+    const copyOfOptions = [...props.options]
     if (isGroups) {
-      const copyOfOptions = [...props.options]
       const convertedToIntegerNumber = parseInt(number, 10)
       // const squares = []
       const selectedOptions = []
@@ -116,7 +116,7 @@ function App(props) {
       // setGroups(squares)
       props.randomizeGroups(selectedOptions)
     } else {
-      console.log("meep")
+
     }
   }
 

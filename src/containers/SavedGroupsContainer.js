@@ -21,7 +21,7 @@ function SavedGroupsContainer(props){
     return (
       <div>
         <h3>{savedGroup.name}</h3>
-        <button
+        {/*<button
           onClick={ () => props.deleteSavedGroup(index)}
           style={{
             border: '1px solid'
@@ -39,6 +39,7 @@ function SavedGroupsContainer(props){
         </button>
         <br />
         <br />
+        */}
         <p className="remove" onClick={ () => props.deleteSavedGroup(index)}>Remove</p>
         <p className="remove" onClick={ () => handleReuseSavedGroupIndex(index)}>Re-use This Group</p>
         <label>Total Count: {savedGroup.options.length}</label>

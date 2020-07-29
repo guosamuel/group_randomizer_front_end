@@ -38,3 +38,12 @@
 .not-one-long-word {
   hyphens: auto;
 }
+
+.remove {
+  text-decoration: underline;
+  color: blue;
+}
+
+.remove:hover {
+  cursor: pointer
+}

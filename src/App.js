@@ -304,7 +304,7 @@ function App(props) {
       <br/>
       <OptionsContainer />
       <br/>
-      <GroupNumberInput />
+      <GroupNumberInput isGroups={isGroups}/>
       <br />
       <div style={{
         display: 'flex',

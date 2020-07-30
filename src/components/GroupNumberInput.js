@@ -13,9 +13,11 @@ function GroupNumberInput(props) {
 
   console.log("LOCAL STATE", numberOfGroups)
 
+  console.log("props", props)
+
   return (
     <div>
-      <h2>Number of Groups</h2>
+      <h2>Number of {props.isGroups ? "Groups" : "People"}</h2>
       {parseInt(numberOfGroups, 10) <= 0 || !numberOfGroups ? <p>The number of groups must be filled in or greater than 0</p> : null}
       <input
         type="number"

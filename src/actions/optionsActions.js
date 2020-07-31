@@ -18,9 +18,9 @@ export const addOption = option => {
   }
 }
 
-export const handleNumberOfGroups = number => {
+export const handleNumber = number => {
   return {
-    type: "HANDLE_NUMBER_OF_GROUPS",
+    type: "HANDLE_NUMBER",
     payload: number
   }
 }

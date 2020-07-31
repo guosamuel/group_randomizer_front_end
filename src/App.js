@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
-import GroupNumberInput from './components/GroupNumberInput';
+import NumberInput from './components/NumberInput';
 import SavedGroupContainer from './containers/SavedGroupsContainer'
 import OptionsContainer from './containers/OptionsContainer'
 import ToggleButton from 'react-toggle-button'
@@ -9,7 +9,7 @@ import './css/App.css'
 
 import { connect } from 'react-redux'
 import { clearOutputs, randomizeOption, randomizeOrder, randomizeGroups } from './actions/outputActions'
-import { handleNumberOfGroups } from './actions/optionsActions'
+import { handleNumber } from './actions/optionsActions'
 
 function App(props) {
   const [ isGroups, setIsGroups ] = useState(true)
@@ -26,17 +26,17 @@ function App(props) {
 
   useEffect(() => {
     //this is when a person deletes options, the maxNumberOfGroups should reflect the max length of the options
-    if (props.options.length < parseInt(props.numberOfGroups, 10)) {
+    if (props.options.length < parseInt(props.number, 10)) {
       if (props.options.length === 0) {
         // setNumberOfGroups((props.options.length + 1).toString())
-        props.handleNumberOfGroups((props.options.length + 1).toString())
+        props.handleNumber((props.options.length + 1).toString())
       } else {
       // setNumberOfGroups(props.options.length.toString())
-      props.handleNumberOfGroups(props.options.length.toString())
+      props.handleNumber(props.options.length.toString())
       }
     }
     // setGroupSize(Math.floor(props.options.length/parseInt(props.numberOfGroups, 10)))
-  }, [props.options.length, props.numberOfGroups])
+  }, [props.options.length, props.number])
 
   const uuidv4 = require('uuid/v4')
 
@@ -296,7 +296,7 @@ function App(props) {
       </li>
     )
   })
-  console.log("I IZ TOGGLE", isGroups)
+
   return (
     <div className='App'>
       <h1>Group Randomizer</h1>
@@ -304,7 +304,7 @@ function App(props) {
       <br/>
       <OptionsContainer />
       <br/>
-      <GroupNumberInput isGroups={isGroups}/>
+      <NumberInput isGroups={isGroups}/>
       <br />
       <div style={{
         display: 'flex',
@@ -325,8 +325,8 @@ function App(props) {
       <br />
       <br />
       <button
-        onClick={(number, choices) => randomizeGroups(props.numberOfGroups, props.options)}
-        disabled={props.options.length === 0 || !props.numberOfGroups || parseInt(props.numberOfGroups,10) <= 0 ? true : false}
+        onClick={(number, choices) => randomizeGroups(props.number, props.options)}
+        disabled={props.options.length === 0 || !props.number || parseInt(props.number,10) <= 0 ? true : false}
         style={{
           border: '1px solid'
         }}
@@ -335,7 +335,7 @@ function App(props) {
       </button>
       <button
         onClick={clearOutputs}
-        disabled={(props.options.length === 0 && props.randomizedGroups.length === 0) || !props.numberOfGroups || parseInt(props.numberOfGroups,10) <= 0 ? true : false}
+        disabled={(props.options.length === 0 && props.randomizedGroups.length === 0) || !props.number || parseInt(props.number,10) <= 0 ? true : false}
         style={{
           border: '1px solid'
         }}
@@ -344,7 +344,7 @@ function App(props) {
       </button>
       <button
         onClick={randomOption}
-        disabled={props.options.length === 0 || !props.numberOfGroups || parseInt(props.numberOfGroups,10) <= 0 ? true : false}
+        disabled={props.options.length === 0 || !props.number || parseInt(props.number,10) <= 0 ? true : false}
         style={{
           border: '1px solid'
         }}
@@ -353,7 +353,7 @@ function App(props) {
       </button>
       <button
         onClick={randomizeOrder}
-        disabled={props.options.length === 0 || !props.numberOfGroups || parseInt(props.numberOfGroups,10) <= 0 ? true : false}
+        disabled={props.options.length === 0 || !props.number || parseInt(props.number,10) <= 0 ? true : false}
         style={{
           border: '1px solid'
         }}
@@ -405,7 +405,7 @@ const mapStateToProps = state => {
     randomizedOption: state.outputReducer.randomizedOption,
     options: state.optionsReducer.options,
     randomizedOrder: state.outputReducer.randomizedOrder,
-    numberOfGroups: state.optionsReducer.numberOfGroups,
+    number: state.optionsReducer.number,
     randomizedGroups: state.outputReducer.randomizedGroups
   }
 }
@@ -416,7 +416,7 @@ const mapDispatchToProps = dispatch => {
     randomizeOption: option => dispatch(randomizeOption(option)),
     randomizeOrder: options => dispatch(randomizeOrder(options)),
     randomizeGroups: groups => dispatch(randomizeGroups(groups)),
-    handleNumberOfGroups: number => dispatch(handleNumberOfGroups(number))
+    handleNumber: number => dispatch(handleNumber(number))
   }
 }
 

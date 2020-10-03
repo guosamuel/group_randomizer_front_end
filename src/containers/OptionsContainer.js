@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Heading from '../components/OptionsContainer/Heading'
-import Note from '../components/OptionsContainer/Note'
+import Note from '../components/OptionsContainer/Note/Note'
 import GroupName from '../components/OptionsContainer/GroupName'
 
 import '../css/OptionsContainer.css'

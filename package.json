@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^7.24.5",
+    "@testing-library/react": "^11.0.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-grid-system": "^6.0.6",

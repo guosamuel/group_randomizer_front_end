@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { connect } from 'react-redux'
-import { handleNumber } from '../actions/optionsActions'
+import { handleNumber } from '../../actions/optionsActions'
 
 function NumberInput(props) {
   const [ number, setNumber ] = useState("1")
@@ -12,7 +12,7 @@ function NumberInput(props) {
   }
 
   return (
-    <div>
+    <div data-testid="number-input">
       <h2>Number of {props.isGroups ? "Groups" : "People"}</h2>
       {parseInt(number, 10) <= 0 || !number ? <p>The number of {props.isGroups ? "groups" : "people"} must be filled in or greater than 0</p> : null}
       <input

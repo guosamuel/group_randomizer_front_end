@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
-import NumberInput from './components/NumberInput';
+import NumberInput from './components/NumberInput/NumberInput';
 import SavedGroupContainer from './containers/SavedGroupsContainer'
 import OptionsContainer from './containers/OptionsContainer'
 import ToggleButton from 'react-toggle-button'

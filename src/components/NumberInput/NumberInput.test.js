@@ -33,20 +33,21 @@ function renderWithRedux(component, { initialState, store = createStore(reducer,
 
 it("renders with redux", () => {
   const { getByTestId } = renderWithRedux(<NumberInput isGroups={true}/>)
-  expect(getByTestId("number-input"))
+  expect(getByTestId("number-input-component"))
 })
 
 it("renders with proper initial state", () => {
   const { getByTestId } = renderWithRedux(<NumberInput isGroups={true}/>)
-  expect(getByTestId("number-input").textContent).toBe("Number of Groups")
-})
 
-it("renders with respective prop values", () => {
-  const { getByTestId } = renderWithRedux(<NumberInput isGroups={true}/>)
-  expect(getByTestId("number-input").textContent).toBe("Number of Groups")
+  const numberInput = getByTestId("number-input")
+  expect(getByTestId("number-input-header").textContent).toBe("Number of Groups")
+  // expect(getByTestId("number-input-component").textContent).toBe("1")
+  expect(numberInput.value).toBe("1")
+  expect(numberInput.min).toBe("1")
+  expect(numberInput.max).toBe(startingState.optionsReducer.options.length.toString())
 })
 
 it("renders with respective prop values", () => {
   const { getByTestId } = renderWithRedux(<NumberInput isGroups={false}/>)
-  expect(getByTestId("number-input").textContent).toBe("Number of People")
+  expect(getByTestId("number-input-header").textContent).toBe("Number of People")
 })

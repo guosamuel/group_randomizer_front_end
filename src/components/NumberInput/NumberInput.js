@@ -12,8 +12,8 @@ function NumberInput(props) {
   }
 
   return (
-    <div data-testid="number-input">
-      <h2>Number of {props.isGroups ? "Groups" : "People"}</h2>
+    <div data-testid="number-input-component">
+      <h2 data-testid="number-input-header">Number of {props.isGroups ? "Groups" : "People"}</h2>
       {parseInt(number, 10) <= 0 || !number ? <p>The number of {props.isGroups ? "groups" : "people"} must be filled in or greater than 0</p> : null}
       <input
         type="number"
@@ -24,6 +24,7 @@ function NumberInput(props) {
         style={{
           border: '1px solid'
         }}
+        data-testid="number-input"
       >
       </input>
     </div>

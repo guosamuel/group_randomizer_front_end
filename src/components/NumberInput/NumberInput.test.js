@@ -5,11 +5,18 @@ import { Provider } from 'react-redux'
 
 import { render } from '@testing-library/react'
 
-it("render the component properly", () => {
-  render(<NumberInput isGroups={true}/>)
-})
-
-const startingState = { maxNumber: 1 }
+const startingState = {
+  optionsReducer: {
+    options: [
+      "Sam",
+      "Ryan",
+      "Stephen",
+      "David",
+      "awefsgdgndgsfdffbsdffsgfbdfsdffsgbdsffdbfesfbfgsffbxffesgfbgbgsgrdgngrdggrsfdbgfgfbgrdbgfgfdbbgdbgbfdgfbbgfbcbfgdbcgrfdawefsgdgndgsfdffbsdffsgfbdfsdffsgbdsffdbfesfbfgsffbxffesgfbgbgsgrdgngrdggrsfdbgfgfbgrdbgfgfdbbgdbgbfdgfbbgfbcbfgdbcgrfd", "afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564"
+    ],
+    number: "1"
+  }
+ }
 
 function reducer(state = startingState, action) {
   switch(action.type) {
@@ -18,7 +25,7 @@ function reducer(state = startingState, action) {
   }
 }
 
-function renderWithRedux(component, { initialState, store = createStore(reducer, initialState)} = {}) {
+function renderWithRedux(component, { initialState, store = createStore(reducer, initialState) } = {}) {
   return {
     ...render(<Provider store={store}>{component}</Provider>)
   }
@@ -26,5 +33,11 @@ function renderWithRedux(component, { initialState, store = createStore(reducer,
 
 it("renders with redux", () => {
   const { getByTestId } = renderWithRedux(<NumberInput isGroups={true}/>)
-  expect(getByTestId("number-input")).not.toBeNull()
+  expect(getByTestId("number-input"))
+})
+
+it("renders with proper initial state", () => {
+  const { getByTestId } = renderWithRedux(<NumberInput isGroups={true}/>)
+  expect(getByTestId("number-input").textContent).toBe("Number of Groups")
+
 })

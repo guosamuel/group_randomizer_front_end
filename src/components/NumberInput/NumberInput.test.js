@@ -39,5 +39,14 @@ it("renders with redux", () => {
 it("renders with proper initial state", () => {
   const { getByTestId } = renderWithRedux(<NumberInput isGroups={true}/>)
   expect(getByTestId("number-input").textContent).toBe("Number of Groups")
+})
 
+it("renders with respective prop values", () => {
+  const { getByTestId } = renderWithRedux(<NumberInput isGroups={true}/>)
+  expect(getByTestId("number-input").textContent).toBe("Number of Groups")
+})
+
+it("renders with respective prop values", () => {
+  const { getByTestId } = renderWithRedux(<NumberInput isGroups={false}/>)
+  expect(getByTestId("number-input").textContent).toBe("Number of People")
 })

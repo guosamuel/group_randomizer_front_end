@@ -55,6 +55,9 @@ it ("typing in numerical values", () => {
   const { getByTestId } = renderWithRedux(<NumberInput isGroups={true} />)
 
   expect(getByTestId("number-input").value).toBe("1")
-  fireEvent.keyPress(getByTestId("number-input"), { key: '2', code: 'Digit2' })
+  fireEvent.change(getByTestId("number-input"), { target: { value: '2' } })
   expect(getByTestId("number-input").value).toBe("2")
+  fireEvent.change(getByTestId("number-input"), { target: { value: '3' } })
+  expect(getByTestId("number-input").value).toBe("3")
+
 })

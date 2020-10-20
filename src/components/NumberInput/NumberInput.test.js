@@ -51,7 +51,7 @@ it("renders with respective prop values", () => {
   expect(getByTestId("number-input-header").textContent).toBe("Number of People")
 })
 
-it ("typing in numerical values", () => {
+it("typing in numerical values", () => {
   const { getByTestId } = renderWithRedux(<NumberInput isGroups={true} />)
 
   expect(getByTestId("number-input").value).toBe("1")
@@ -60,4 +60,20 @@ it ("typing in numerical values", () => {
   fireEvent.change(getByTestId("number-input"), { target: { value: '3' } })
   expect(getByTestId("number-input").value).toBe("3")
 
+})
+
+it("typing a number equal to or less than 0 for groups", () => {
+  const { getByTestId } = renderWithRedux(<NumberInput isGroups={true} />)
+  fireEvent.change(getByTestId("number-input"), { target: { value: '0'} })
+  expect(getByTestId("number-input-error-message").textContent).toBe("The number of groups must be filled in or greater than 0")
+  fireEvent.change(getByTestId("number-input"), { target: { value: '-1'} })
+  expect(getByTestId("number-input-error-message").textContent).toBe("The number of groups must be filled in or greater than 0")
+})
+
+it("typing a number equal to or less than 0 for people", () => {
+  const { getByTestId } = renderWithRedux(<NumberInput isGroups={false} />)
+  fireEvent.change(getByTestId("number-input"), { target: { value: '0'} })
+  expect(getByTestId("number-input-error-message").textContent).toBe("The number of people must be filled in or greater than 0")
+  fireEvent.change(getByTestId("number-input"), { target: { value: '-1'} })
+  expect(getByTestId("number-input-error-message").textContent).toBe("The number of people must be filled in or greater than 0")
 })

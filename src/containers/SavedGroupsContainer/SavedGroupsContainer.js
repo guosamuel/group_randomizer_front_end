@@ -1,7 +1,7 @@
 import React from 'react'
-import Heading from '../components/SavedGroupsContainer/Heading/Heading'
+import Heading from '../../components/SavedGroupsContainer/Heading/Heading'
 
-import '../css/SavedGroupsContainer.css'
+import '../../css/SavedGroupsContainer.css'
 
 import { connect } from 'react-redux'
 import { deleteSavedGroup, reuseSavedGroup } from '../actions/savedGroupsActions'

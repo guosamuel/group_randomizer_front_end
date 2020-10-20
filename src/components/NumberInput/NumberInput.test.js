@@ -12,9 +12,9 @@ const startingState = {
       "Ryan",
       "Stephen",
       "David",
-      "awefsgdgndgsfdffbsdffsgfbdfsdffsgbdsffdbfesfbfgsffbxffesgfbgbgsgrdgngrdggrsfdbgfgfbgrdbgfgfdbbgdbgbfdgfbbgfbcbfgdbcgrfdawefsgdgndgsfdffbsdffsgfbdfsdffsgbdsffdbfesfbfgsffbxffesgfbgbgsgrdgngrdggrsfdbgfgfbgrdbgfgfdbbgdbgbfdgfbbgfbcbfgdbcgrfd", "afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564"
-    ],
-    number: "1"
+      "awefsgdgndgsfdffbsdffsgfbdfsdffsgbdsffdbfesfbfgsffbxffesgfbgbgsgrdgngrdggrsfdbgfgfbgrdbgfgfdbbgdbgbfdgfbbgfbcbfgdbcgrfdawefsgdgndgsfdffbsdffsgfbdfsdffsgbdsffdbfesfbfgsffbxffesgfbgbgsgrdgngrdggrsfdbgfgfbgrdbgfgfdbbgdbgbfdgfbbgfbcbfgdbcgrfd",
+      "afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564 afsghndfgsfgdf 545564"
+    ]
   }
  }
 
@@ -76,4 +76,15 @@ it("typing a number equal to or less than 0 for people", () => {
   expect(getByTestId("number-input-error-message").textContent).toBe("The number of people must be filled in or greater than 0")
   fireEvent.change(getByTestId("number-input"), { target: { value: '-1'} })
   expect(getByTestId("number-input-error-message").textContent).toBe("The number of people must be filled in or greater than 0")
+})
+
+it("proper max value", () => {
+  const store = createStore(() => ({optionsReducer: { options: ["Bob"] } }) )
+
+  const { getByTestId } = renderWithRedux(<NumberInput isGroups={true} />, { store })
+  
+  fireEvent.change(getByTestId("number-input"), { target: { value: '3'} })
+  expect(getByTestId("number-input").value).toBe("3")
+  expect(getByTestId("number-input").max).toBe("1")
+
 })

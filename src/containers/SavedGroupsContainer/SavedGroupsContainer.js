@@ -4,7 +4,7 @@ import Heading from '../../components/SavedGroupsContainer/Heading/Heading'
 import '../../css/SavedGroupsContainer.css'
 
 import { connect } from 'react-redux'
-import { deleteSavedGroup, reuseSavedGroup } from '../actions/savedGroupsActions'
+import { deleteSavedGroup, reuseSavedGroup } from '../../actions/savedGroupsActions'
 
 const uuidv4 = require('uuid/v4')
 
@@ -19,7 +19,7 @@ function SavedGroupsContainer(props){
 //       </li>
   const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
-      <div>
+      <div data-testid="saved-groups-container-component">
         <h3>{savedGroup.name}</h3>
         {/*<button
           onClick={ () => props.deleteSavedGroup(index)}

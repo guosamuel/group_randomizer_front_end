@@ -1,21 +1,23 @@
 import React from 'react'
 import SavedGroupsContainer from './SavedGroupsContainer'
 import { createStore } from 'redux'
-import Provider from 'react-redux'
+import { Provider } from 'react-redux'
 
 import { render } from '@testing-library/react'
 
 const startingState = {
-  savedGroups: [
-    {
-      name: "Saved Group #1",
-      options: ["Bob", "Sam", "Gavin"]
-    },
-    {
-      name: "Testing",
-      options: ["Bleh"]
-    }
-  ]
+  savedGroupsReducer: {
+    savedGroups: [
+      {
+        name: "Saved Group #1",
+        options: ["Bob", "Sam", "Gavin"]
+      },
+      {
+        name: "Testing",
+        options: ["Bleh"]
+      }
+    ]
+  }
 }
 
 function reducer(state = startingState, action) {
@@ -34,3 +36,8 @@ function renderWithRedux(component, { initialState, store = createStore(reducer,
     ...render(<Provider store={store}>{component}</Provider>)
   }
 }
+
+it("renders with redux", () => {
+  const { getByTestId } = renderWithRedux(<SavedGroupsContainer />)
+  expect(getByTestId("saved-groups-container-component"))
+})

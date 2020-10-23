@@ -41,3 +41,16 @@ it("renders with redux", () => {
   const { getByTestId } = renderWithRedux(<SavedGroupsContainer />)
   expect(getByTestId("saved-groups-container-component"))
 })
+
+it("renders correctly with the initial state", () => {
+  const { getByText, getByTestId } = renderWithRedux(<SavedGroupsContainer />)
+  const container = getByTestId("saved-groups-container-component")
+  const allSavedGroups = container.querySelectorAll(".saved-group")
+  const allOptionsList = container.querySelectorAll(".options-list")
+
+  expect(container.querySelector(".saved-groups-list"))
+  expect(allOptionsList.length).toBe(2)
+  expect(allSavedGroups.length).toBe(2)
+  expect(getByText("Saved Group #1"))
+  expect(getByText("Testing"))
+})

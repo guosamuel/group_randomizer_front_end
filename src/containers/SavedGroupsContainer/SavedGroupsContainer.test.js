@@ -47,10 +47,18 @@ it("renders correctly with the initial state", () => {
   const container = getByTestId("saved-groups-container-component")
   const allSavedGroups = container.querySelectorAll(".saved-group")
   const allOptionsList = container.querySelectorAll(".options-list")
+  const allOptions = container.querySelectorAll(".saved-option")
 
   expect(container.querySelector(".saved-groups-list"))
   expect(allOptionsList.length).toBe(2)
   expect(allSavedGroups.length).toBe(2)
+  expect(allOptions.length).toBe(4)
+
+  expect(allOptions[0].textContent).toBe("Bob")
+  expect(allOptions[1].textContent).toBe("Sam")
+  expect(allOptions[2].textContent).toBe("Gavin")
+  expect(allOptions[3].textContent).toBe("Bleh")
+
   expect(getByText("Saved Group #1"))
   expect(getByText("Testing"))
 })

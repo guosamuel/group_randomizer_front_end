@@ -48,6 +48,7 @@ it("renders correctly with the initial state", () => {
   const allSavedGroups = container.querySelectorAll(".saved-group")
   const allOptionsList = container.querySelectorAll(".options-list")
   const allOptions = container.querySelectorAll(".saved-option")
+  const allSavedGroupNames = container.querySelectorAll(".saved-group-name")
 
   expect(container.querySelector(".saved-groups-list"))
   expect(allOptionsList.length).toBe(2)
@@ -59,6 +60,6 @@ it("renders correctly with the initial state", () => {
   expect(allOptions[2].textContent).toBe("Gavin")
   expect(allOptions[3].textContent).toBe("Bleh")
 
-  expect(getByText("Saved Group #1"))
-  expect(getByText("Testing"))
+  expect(allSavedGroupNames[0].textContent).toBe("Saved Group #1")
+  expect(allSavedGroupNames[1].textContent).toBe("Testing")
 })

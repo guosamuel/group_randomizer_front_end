@@ -20,7 +20,7 @@ function SavedGroupsContainer(props){
   const listOfSavedGroups = props.savedGroups.map( (savedGroup, index) => {
     return (
       <div key={uuidv4()} className="saved-group">
-        <h3>{savedGroup.name}</h3>
+        <h3 className="saved-group-name">{savedGroup.name}</h3>
         {/*<button
           onClick={ () => props.deleteSavedGroup(index)}
           style={{

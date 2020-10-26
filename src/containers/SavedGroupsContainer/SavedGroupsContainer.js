@@ -42,7 +42,7 @@ function SavedGroupsContainer(props){
         */}
         <p className="remove" onClick={ () => props.deleteSavedGroup(index)}>Remove</p>
         <p className="remove" onClick={ () => handleReuseSavedGroupIndex(index)}>Re-use This Group</p>
-        <label>Total Count: {savedGroup.options.length}</label>
+        <label className="saved-group-label">Total Count: {savedGroup.options.length}</label>
         <ul className='options-list'>
         {savedGroup.options.map( savedOption => {
           let longWordCSS = savedOption.includes(" ") ? " not-one-long-word" : " one-long-word"

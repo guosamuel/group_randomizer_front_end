@@ -49,11 +49,13 @@ it("renders correctly with the initial state", () => {
   const allOptionsList = container.querySelectorAll(".options-list")
   const allOptions = container.querySelectorAll(".saved-option")
   const allSavedGroupNames = container.querySelectorAll(".saved-group-name")
+  const allSavedGroupLabels = container.querySelectorAll(".saved-group-label")
 
   expect(container.querySelector(".saved-groups-list"))
   expect(allOptionsList.length).toBe(2)
   expect(allSavedGroups.length).toBe(2)
   expect(allOptions.length).toBe(4)
+  expect(allSavedGroupLabels.length).toBe(2)
 
   expect(allOptions[0].textContent).toBe("Bob")
   expect(allOptions[1].textContent).toBe("Sam")
@@ -62,4 +64,8 @@ it("renders correctly with the initial state", () => {
 
   expect(allSavedGroupNames[0].textContent).toBe("Saved Group #1")
   expect(allSavedGroupNames[1].textContent).toBe("Testing")
+
+  expect(allSavedGroupLabels[0].textContent).toBe("Total Count: 3")
+  expect(allSavedGroupLabels[1].textContent).toBe("Total Count: 1")
+
 })

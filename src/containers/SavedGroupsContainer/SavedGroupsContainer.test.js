@@ -80,5 +80,9 @@ it("renders the correct content with no saved groups", () => {
   const storeWithEmptyState = createStore(reducer, emptyState)
 
   const { getByTestId } = renderWithRedux(<SavedGroupsContainer />, storeWithEmptyState )
+  const container = getByTestId("saved-groups-container-component")
+
   expect(getByTestId("saved-groups-empty-message").textContent).toBe("You have yet to save any groups")
+  expect(container.querySelector("saved-groups-list")).toBe(null)
+
 })

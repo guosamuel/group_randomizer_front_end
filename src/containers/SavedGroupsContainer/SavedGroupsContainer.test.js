@@ -31,7 +31,7 @@ function reducer(state = startingState, action) {
   }
 }
 
-function renderWithRedux(component, { initialState, store = createStore(reducer, initialState) } = {}) {
+function renderWithRedux(component, store = createStore(reducer)) {
   return {
     ...render(<Provider store={store}>{component}</Provider>)
   }
@@ -68,4 +68,17 @@ it("renders correctly with the initial state", () => {
   expect(allSavedGroupLabels[0].textContent).toBe("Total Count: 3")
   expect(allSavedGroupLabels[1].textContent).toBe("Total Count: 1")
 
+})
+
+it("renders the correct content with no saved groups", () => {
+  const emptyState = {
+    savedGroupsReducer: {
+      savedGroups: []
+    }
+  }
+
+  const storeWithEmptyState = createStore(reducer, emptyState)
+
+  const { getByTestId } = renderWithRedux(<SavedGroupsContainer />, storeWithEmptyState )
+  expect(getByTestId("saved-groups-empty-message").textContent).toBe("You have yet to save any groups")
 })

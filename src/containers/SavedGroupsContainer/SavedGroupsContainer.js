@@ -64,7 +64,7 @@ function SavedGroupsContainer(props){
         <ul className='saved-groups-list'>
           {listOfSavedGroups}
         </ul> :
-        <p>You have yet to save any groups</p>
+        <p data-testid="saved-groups-empty-message">You have yet to save any groups</p>
       }
     </div>
   )

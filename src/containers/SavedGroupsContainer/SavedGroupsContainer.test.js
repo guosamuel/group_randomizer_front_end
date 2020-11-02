@@ -2,6 +2,7 @@ import React from 'react'
 import SavedGroupsContainer from './SavedGroupsContainer'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import userEvent from '@testing-library/user-event'
 
 import { render } from '@testing-library/react'
 
@@ -23,9 +24,21 @@ const startingState = {
 function reducer(state = startingState, action) {
   switch(action.type) {
     case "SAVE_GROUP":
-      return { ...state, savedGroups: [ ...state.savedGroups, action.payload ] }
+      return {
+        ...state,
+        savedGroupsReducer: {
+          ...state.savedGroupsReducer,
+          savedGroups: [ ...state.savedGroupsReducer.savedGroups, action.payload ]
+        }
+      }
     case "DELETE_SAVED_GROUP":
-      return { ...state, savedGroups: [ ...state.savedGroups.slice(0, action.payload, ...state.savedGroups.slice(action.payload+1)) ] }
+      return {
+        ...state,
+        savedGroupsReducer: {
+          ...state.savedGroupsReducer,
+          savedGroups: [ ...state.savedGroupsReducer.savedGroups.slice(0, action.payload), ...state.savedGroupsReducer.savedGroups.slice(action.payload+1) ]
+        }
+      }
     default:
       return state
   }
@@ -85,4 +98,11 @@ it("renders the correct content with no saved groups", () => {
   expect(getByTestId("saved-groups-empty-message").textContent).toBe("You have yet to save any groups")
   expect(container.querySelector("saved-groups-list")).toBe(null)
 
+})
+
+it("deletes the saved group when clicked", () => {
+  const { getByTestId } = renderWithRedux(<SavedGroupsContainer />)
+
+  userEvent.click(getByTestId("remove-button-Saved Group #1"))
+  expect(getByTestId("saved-groups-container-component").querySelectorAll(".saved-group").length).toBe(1)
 })

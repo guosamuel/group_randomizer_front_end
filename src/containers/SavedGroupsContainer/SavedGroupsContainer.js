@@ -40,7 +40,7 @@ function SavedGroupsContainer(props){
         <br />
         <br />
         */}
-        <p className="remove" onClick={ () => props.deleteSavedGroup(index)}>Remove</p>
+        <p data-testid={"remove-button-" + `${savedGroup.name}`} className="remove" onClick={ () => props.deleteSavedGroup(index)}>Remove</p>
         <p className="remove" onClick={ () => handleReuseSavedGroupIndex(index)}>Re-use This Group</p>
         <label className="saved-group-label">Total Count: {savedGroup.options.length}</label>
         <ul className='options-list'>

@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
-import Heading from '../components/OptionsContainer/Heading/Heading'
-import Note from '../components/OptionsContainer/Note/Note'
-import GroupName from '../components/OptionsContainer/GroupName/GroupName'
+import Heading from '../../components/OptionsContainer/Heading/Heading'
+import Note from '../../components/OptionsContainer/Note/Note'
+import GroupName from '../../components/OptionsContainer/GroupName/GroupName'
 
-import '../css/OptionsContainer.css'
+import '../../css/OptionsContainer.css'
 
 import { connect } from 'react-redux'
-import { removeOption, clearOptions } from '../actions/optionsActions'
-import { saveGroup } from '../actions/savedGroupsActions'
-
-import '../css/OptionsContainer.css'
+import { removeOption, clearOptions } from '../../actions/optionsActions'
+import { saveGroup } from '../../actions/savedGroupsActions'
 
 function OptionsContainer(props) {
   const [ savingGroupName, setSavingGroupName ] = useState("")
@@ -93,7 +91,7 @@ function OptionsContainer(props) {
   }
 
   return (
-    <div className="Options-container">
+    <div data-testid="options-container-component" className="Options-container">
       <Heading />
       <Note />
       <label>Group Name:</label>

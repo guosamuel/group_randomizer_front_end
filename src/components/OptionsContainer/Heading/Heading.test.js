@@ -12,3 +12,9 @@ it('renders the correct content', () => {
 
   getByText("Current List of Options")
 })
+
+it('renders the correct heading', () => {
+  const { getByTestId } = render(<Heading />)
+
+  getByTestId("heading-options-container")
+})

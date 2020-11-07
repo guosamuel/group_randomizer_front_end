@@ -67,3 +67,9 @@ it("renders with redux", () => {
   const { getByTestId } = renderWithRedux(<OptionsContainer />)
   expect(getByTestId("options-container-component"))
 })
+
+it("renders correctly with initial state", () => {
+  const { getByTestId } = renderWithRedux(<OptionsContainer />)
+  getByTestId("heading-options-container")
+  getByTestId("note")
+})

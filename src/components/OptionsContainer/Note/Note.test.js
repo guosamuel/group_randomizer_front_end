@@ -15,3 +15,9 @@ it("renders the correct content", () => {
 
   getByText(`Note: You have the option of creating a group name for your current list of options. If you do not choose to do so, the default name will be "Saved Group #(Last Group Number)"`)
 })
+
+it("render with test data id", () => {
+  const { getByTestId } = render(<Note />)
+
+  getByTestId("note")
+})

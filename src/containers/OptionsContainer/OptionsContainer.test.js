@@ -72,4 +72,5 @@ it("renders correctly with initial state", () => {
   const { getByTestId } = renderWithRedux(<OptionsContainer />)
   getByTestId("heading-options-container")
   getByTestId("note")
+  getByTestId("group-name-label")
 })

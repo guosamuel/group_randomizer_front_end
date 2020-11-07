@@ -94,7 +94,7 @@ function OptionsContainer(props) {
     <div data-testid="options-container-component" className="Options-container">
       <Heading />
       <Note />
-      <label>Group Name:</label>
+      <label data-testid="group-name-label">Group Name:</label>
       <br />
       <GroupName
         handleSavingGroupNameInput={handleSavingGroupNameInput}

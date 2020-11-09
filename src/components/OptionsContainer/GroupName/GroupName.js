@@ -9,6 +9,7 @@ function GroupName(props) {
       style={{
         border: '1px solid'
       }}
+      data-testid="group-name"
     >
     </input>
   )

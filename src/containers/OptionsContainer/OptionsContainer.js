@@ -102,7 +102,7 @@ function OptionsContainer(props) {
       />
       <br />
       <br />
-      <label>Total Count: {props.options.length}</label>
+      <label data-testid="options-counter">Total Count: {props.options.length}</label>
       {/*
       <div className="options-list">
         <ol style={{wordBreak: 'break-all'}}>{listOfOptions}</ol>
@@ -121,6 +121,7 @@ function OptionsContainer(props) {
         style={{
         border: '1px solid'
         }}
+        data-testid="clear-options-button"
       >
         Clear Options
       </button>
@@ -130,6 +131,7 @@ function OptionsContainer(props) {
         style={{
           border: '1px solid'
         }}
+        data-testid="save-group-button"
       >
         Save Group
       </button>

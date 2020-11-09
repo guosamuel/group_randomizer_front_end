@@ -73,4 +73,8 @@ it("renders correctly with initial state", () => {
   getByTestId("heading-options-container")
   getByTestId("note")
   getByTestId("group-name-label")
+  getByTestId("group-name")
+  getByTestId("options-counter")
+  getByTestId("clear-options-button")
+  getByTestId("save-group-button")
 })

@@ -77,4 +77,5 @@ it("renders correctly with initial state", () => {
   getByTestId("options-counter")
   getByTestId("clear-options-button")
   getByTestId("save-group-button")
+  getByTestId("table-options")
 })

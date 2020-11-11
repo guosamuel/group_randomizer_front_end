@@ -110,7 +110,7 @@ function OptionsContainer(props) {
       */}
       <br />
       <br />
-      <table>
+      <table data-testid="table-options">
         {tabularOptions}
       </table>
       <br />

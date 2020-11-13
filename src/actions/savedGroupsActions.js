@@ -1,21 +1,21 @@
-export const deleteSavedGroup = index => {
+export const deleteSavedGroup = (index) => {
   return {
     type: "DELETE_SAVED_GROUP",
-    payload: index
-  }
-}
+    payload: index,
+  };
+};
 
-export const saveGroup = group => {
+export const saveGroup = (group) => {
   return {
     type: "SAVE_GROUP",
-    payload: group
-  }
-}
+    payload: group,
+  };
+};
 
 // goes to the optionsReducer
-export const reuseSavedGroup = savedGroup => {
+export const reuseSavedGroup = (savedGroup) => {
   return {
     type: "REUSE_SAVED_GROUP",
-    payload: savedGroup
-  }
-}
+    payload: savedGroup,
+  };
+};

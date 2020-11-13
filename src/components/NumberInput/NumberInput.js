@@ -1,20 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-import { connect } from 'react-redux'
-import { handleNumber } from '../../actions/optionsActions'
+import { connect } from "react-redux";
+import { handleNumber } from "../../actions/optionsActions";
 
 function NumberInput(props) {
-  const [ number, setNumber ] = useState("1")
+  const [number, setNumber] = useState("1");
 
-  const handleNumber = e => {
-    setNumber(e.target.value)
-    props.handleNumber(e.target.value)
-  }
+  const handleNumber = (e) => {
+    setNumber(e.target.value);
+    props.handleNumber(e.target.value);
+  };
 
   return (
     <div data-testid="number-input-component">
-      <h2 data-testid="number-input-header">Number of {props.isGroups ? "Groups" : "People"}</h2>
-      {parseInt(number, 10) <= 0 || !number ? <p data-testid="number-input-error-message">The number of {props.isGroups ? "groups" : "people"} must be filled in or greater than 0</p> : null}
+      <h2 data-testid="number-input-header">
+        Number of {props.isGroups ? "Groups" : "People"}
+      </h2>
+      {parseInt(number, 10) <= 0 || !number ? (
+        <p data-testid="number-input-error-message">
+          The number of {props.isGroups ? "groups" : "people"} must be filled in
+          or greater than 0
+        </p>
+      ) : null}
       <input
         type="number"
         min="1"
@@ -22,25 +29,24 @@ function NumberInput(props) {
         onChange={handleNumber}
         value={number}
         style={{
-          border: '1px solid'
+          border: "1px solid",
         }}
         data-testid="number-input"
-      >
-      </input>
+      ></input>
     </div>
-  )
+  );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    maxNumber: state.optionsReducer.options.length
-  }
-}
+    maxNumber: state.optionsReducer.options.length,
+  };
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleNumber: number => dispatch(handleNumber(number))
-  }
-}
+    handleNumber: (number) => dispatch(handleNumber(number)),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(NumberInput)
+export default connect(mapStateToProps, mapDispatchToProps)(NumberInput);

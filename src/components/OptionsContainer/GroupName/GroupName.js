@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 function GroupName(props) {
   return (
@@ -7,12 +7,11 @@ function GroupName(props) {
       onChange={props.handleSavingGroupNameInput}
       value={props.savingGroupName}
       style={{
-        border: '1px solid'
+        border: "1px solid",
       }}
       data-testid="group-name"
-    >
-    </input>
-  )
+    ></input>
+  );
 }
 
-export default GroupName
+export default GroupName;

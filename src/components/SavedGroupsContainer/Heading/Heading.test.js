@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 // import ReactDOM from 'react-dom'
-import Heading from './Heading'
+import Heading from "./Heading";
 
 // import { getQueriesForElement } from "@testing-library/dom"
-import { render } from "@testing-library/react"
+import { render } from "@testing-library/react";
 
 // const render = (component) => {
 //   const div = document.createElement("div")
@@ -12,11 +12,11 @@ import { render } from "@testing-library/react"
 // }
 
 it("renders without crashing", () => {
-  render(<Heading />)
-})
+  render(<Heading />);
+});
 
 it("renders the correct content", () => {
-  const { getByText } = render(<Heading />)
+  const { getByText } = render(<Heading />);
 
-  getByText("Saved Groups")
-})
+  getByText("Saved Groups");
+});

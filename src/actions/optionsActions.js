@@ -1,26 +1,26 @@
-export const removeOption = index => {
+export const removeOption = (index) => {
   return {
     type: "REMOVE_OPTION",
-    payload: index
-  }
-}
+    payload: index,
+  };
+};
 
 export const clearOptions = () => {
   return {
-    type: "CLEAR_OPTIONS"
-  }
-}
+    type: "CLEAR_OPTIONS",
+  };
+};
 
-export const addOption = option => {
+export const addOption = (option) => {
   return {
     type: "ADD_OPTION",
-    payload: option
-  }
-}
+    payload: option,
+  };
+};
 
-export const handleNumber = number => {
+export const handleNumber = (number) => {
   return {
     type: "HANDLE_NUMBER",
-    payload: number
-  }
-}
+    payload: number,
+  };
+};

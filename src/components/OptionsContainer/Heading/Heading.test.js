@@ -1,20 +1,20 @@
-import React from 'react'
-import Heading from './Heading'
+import React from "react";
+import Heading from "./Heading";
 
-import { render } from '@testing-library/react'
+import { render } from "@testing-library/react";
 
-it('renders the component properly', () => {
-  render(<Heading />)
-})
+it("renders the component properly", () => {
+  render(<Heading />);
+});
 
-it('renders the correct content', () => {
-  const { getByText } = render(<Heading />)
+it("renders the correct content", () => {
+  const { getByText } = render(<Heading />);
 
-  getByText("Current List of Options")
-})
+  getByText("Current List of Options");
+});
 
-it('renders the correct heading', () => {
-  const { getByTestId } = render(<Heading />)
+it("renders the correct heading", () => {
+  const { getByTestId } = render(<Heading />);
 
-  getByTestId("heading-options-container")
-})
+  getByTestId("heading-options-container");
+});

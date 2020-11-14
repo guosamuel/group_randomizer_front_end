@@ -121,4 +121,7 @@ it("renders correctly with initial state", () => {
   expect(getByTestId("table-options").getElementsByTagName("tr").length).toBe(
     6
   );
+  expect(getByTestId("table-options").getElementsByClassName("remove").length).toBe(
+    6
+  );
 });

@@ -27,6 +27,7 @@ function OptionsContainer(props) {
           style={{
             border: "1px solid",
           }}
+          className="remove-option-button"
         >
           X
         </button>

@@ -124,4 +124,5 @@ it("renders correctly with initial state", () => {
   expect(getByTestId("table-options").getElementsByClassName("remove").length).toBe(
     6
   );
+  expect(getByTestId("heading-options-container").getElementsByClassName("remove-option-button").length).toBe(6)
 });

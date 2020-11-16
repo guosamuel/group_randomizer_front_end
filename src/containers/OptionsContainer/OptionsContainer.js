@@ -18,6 +18,7 @@ function OptionsContainer(props) {
     setSavingGroupName(e.target.value);
   };
 
+  /*
   const listOfOptions = props.options.map((option, index) => {
     return (
       <li key={uuidv4()} style={{ marginTop: "10px", marginBottom: "10px" }}>
@@ -34,6 +35,7 @@ function OptionsContainer(props) {
       </li>
     );
   });
+  */
 
   const tabularOptions = props.options.map((option, index) => {
     let longWordCSS = option.includes(" ")

@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import userEvent from "@testing-library/user-event";
 
 import { render } from "@testing-library/react";
+import { clearOptions } from "../../actions/optionsActions"
 
 const startingState = {
   optionsReducer: {
@@ -125,3 +126,16 @@ it("renders correctly with initial state", () => {
     6
   );
 });
+
+it("clears all options", () => {
+  const { getByTestId } = renderWithRedux(<OptionsContainer />)
+  const clearOptionsButton = getByTestId("clear-options-button")
+  userEvent.click(clearOptionsButton)
+  expect(getByTestId("options-counter").textContent).toBe("Total Count: 0");
+  expect(getByTestId("table-options").getElementsByTagName("tr").length).toBe(
+    0
+  );
+  expect(getByTestId("table-options").getElementsByClassName("remove").length).toBe(
+    0
+  );
+})

@@ -139,3 +139,12 @@ it("clears all options", () => {
     0
   );
 })
+
+it("removes one option", () => {
+  renderWithRedux(<OptionsContainer />)
+  const removes = document.getElementsByClassName("remove")
+  userEvent.click(removes[0])
+  expect(removes.length).toBe(5)
+  userEvent.click(removes[0])
+  expect(removes.length).toBe(4)
+})

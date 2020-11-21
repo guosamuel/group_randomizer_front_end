@@ -141,10 +141,14 @@ it("clears all options", () => {
 })
 
 it("removes one option", () => {
-  renderWithRedux(<OptionsContainer />)
+  const { getByTestId } = renderWithRedux(<OptionsContainer />)
   const removes = document.getElementsByClassName("remove")
   userEvent.click(removes[0])
   expect(removes.length).toBe(5)
   userEvent.click(removes[0])
   expect(removes.length).toBe(4)
+  expect(getByTestId("options-counter").textContent).toBe("Total Count: 4");
+  expect(getByTestId("table-options").getElementsByTagName("tr").length).toBe(
+    4
+  );
 })

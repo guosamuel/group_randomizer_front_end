@@ -125,6 +125,7 @@ it("renders correctly with initial state", () => {
   expect(getByTestId("table-options").getElementsByClassName("remove").length).toBe(
     6
   );
+  expect(getByTestId("group-name").textContent).toBe("")
 });
 
 it("clears all options", () => {
@@ -151,4 +152,11 @@ it("removes one option", () => {
   expect(getByTestId("table-options").getElementsByTagName("tr").length).toBe(
     4
   );
+})
+
+it("updates group name", () => {
+  const { getByTestId } = renderWithRedux(<OptionsContainer />)
+  const groupInput = getByTestId("group-name")
+  userEvent.type(groupInput, 'Testing Saving Group')
+  expect(groupInput.value).toBe('Testing Saving Group')
 })

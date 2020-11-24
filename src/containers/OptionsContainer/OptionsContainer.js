@@ -54,22 +54,22 @@ function OptionsContainer(props) {
     );
   });
 
-  const handleSaveGroup = () => {
-    if (props.savedGroups.length === 0) {
+  const handleSaveGroup = (savedGroups, options) => {
+    if (savedGroups.length === 0) {
       props.saveGroup({
         name: savingGroupName ? savingGroupName : `Saved Group #1`,
-        options: props.options,
+        options: options,
       });
       setSavingGroupName("");
     } else {
       // we want to stop as soon as we discover an existing saved group
       let i = 0;
       let savedGroupExist = false;
-      while (i < props.savedGroups.length && !savedGroupExist) {
-        if (sameGroup(props.savedGroups[i].options)) {
+      while (i < savedGroups.length && !savedGroupExist) {
+        if (sameGroup(savedGroups[i].options, options)) {
           savedGroupExist = true;
           alert(
-            `A saved group with your current list of options already exist. It is ${props.savedGroups[i].name}`
+            `A saved group with your current list of options already exist. It is ${savedGroups[i].name}`
           );
         }
         i++;
@@ -78,18 +78,18 @@ function OptionsContainer(props) {
         props.saveGroup({
           name: savingGroupName
             ? savingGroupName
-            : `Saved Group #${props.savedGroups.length + 1}`,
-          options: props.options,
+            : `Saved Group #${savedGroups.length + 1}`,
+          options: options,
         });
         setSavingGroupName("");
       }
     }
   };
 
-  const sameGroup = (savingGroup) => {
+  const sameGroup = (savingGroup, options) => {
     const savingGroupHash = {};
 
-    if (savingGroup.length !== props.options.length) {
+    if (savingGroup.length !== options.length) {
       return false;
     }
 
@@ -97,8 +97,8 @@ function OptionsContainer(props) {
       savingGroupHash[savingGroup[j].toLowerCase()] = true;
     }
 
-    for (let k = 0; k < props.options.length; k++) {
-      if (!savingGroupHash.hasOwnProperty(props.options[k].toLowerCase())) {
+    for (let k = 0; k < options.length; k++) {
+      if (!savingGroupHash.hasOwnProperty(options[k].toLowerCase())) {
         return false;
       }
     }
@@ -147,7 +147,7 @@ function OptionsContainer(props) {
         Clear Options
       </button>
       <button
-        onClick={handleSaveGroup}
+        onClick={() => handleSaveGroup(props.savedGroups, props.options)}
         disabled={props.options.length === 0 ? true : false}
         style={{
           border: "1px solid",

@@ -3,6 +3,7 @@ import OptionsContainer from "./OptionsContainer";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import userEvent from "@testing-library/user-event";
+import { sameGroup } from "./OptionsContainer"
 
 import { render } from "@testing-library/react";
 import { clearOptions } from "../../actions/optionsActions"
@@ -159,4 +160,12 @@ it("updates group name", () => {
   const groupInput = getByTestId("group-name")
   userEvent.type(groupInput, 'Testing Saving Group')
   expect(groupInput.value).toBe('Testing Saving Group')
+})
+
+it("executes sameGroup properly", () => {
+  const options = ["Bob", "Sam", "Gavin"]
+  expect(sameGroup(startingState.savedGroupsReducer.savedGroups[0].options, options)).toBe(true)
+  expect(sameGroup(startingState.savedGroupsReducer.savedGroups[1].options, options)).toBe(false)
+  expect(sameGroup(startingState.savedGroupsReducer.savedGroups[0].options, startingState.optionsReducer.options)).toBe(false)
+  expect(sameGroup(startingState.savedGroupsReducer.savedGroups[1].options, startingState.optionsReducer.options)).toBe(false)
 })

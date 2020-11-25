@@ -9,6 +9,26 @@ import { connect } from "react-redux";
 import { removeOption, clearOptions } from "../../actions/optionsActions";
 import { saveGroup } from "../../actions/savedGroupsActions";
 
+export const sameGroup = (savingGroup, options) => {
+  const savingGroupHash = {};
+
+  if (savingGroup.length !== options.length) {
+    return false;
+  }
+
+  for (let j = 0; j < savingGroup.length; j++) {
+    savingGroupHash[savingGroup[j].toLowerCase()] = true;
+  }
+
+  for (let k = 0; k < options.length; k++) {
+    if (!savingGroupHash.hasOwnProperty(options[k].toLowerCase())) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
 function OptionsContainer(props) {
   const [savingGroupName, setSavingGroupName] = useState("");
 
@@ -84,26 +104,6 @@ function OptionsContainer(props) {
         setSavingGroupName("");
       }
     }
-  };
-
-  const sameGroup = (savingGroup, options) => {
-    const savingGroupHash = {};
-
-    if (savingGroup.length !== options.length) {
-      return false;
-    }
-
-    for (let j = 0; j < savingGroup.length; j++) {
-      savingGroupHash[savingGroup[j].toLowerCase()] = true;
-    }
-
-    for (let k = 0; k < options.length; k++) {
-      if (!savingGroupHash.hasOwnProperty(options[k].toLowerCase())) {
-        return false;
-      }
-    }
-
-    return true;
   };
 
   return (

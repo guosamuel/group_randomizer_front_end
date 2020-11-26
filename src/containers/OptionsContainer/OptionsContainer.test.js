@@ -169,3 +169,12 @@ it("executes sameGroup properly", () => {
   expect(sameGroup(startingState.savedGroupsReducer.savedGroups[0].options, startingState.optionsReducer.options)).toBe(false)
   expect(sameGroup(startingState.savedGroupsReducer.savedGroups[1].options, startingState.optionsReducer.options)).toBe(false)
 })
+
+it("execute handleSaveGRoup properly", () => {
+
+})
+// it("saves using default group name", () => {
+//   const { getByTestId } = renderWithRedux(<OptionsContainer {...props}/>)
+//   const saveGroupButton = getByTestId("save-group-button")
+//
+// })

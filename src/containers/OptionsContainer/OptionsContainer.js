@@ -29,6 +29,38 @@ export const sameGroup = (savingGroup, options) => {
   return true;
 };
 
+export const handleSaveGroup = (savedGroups, options) => {
+  if (savedGroups.length === 0) {
+    props.saveGroup({
+      name: savingGroupName ? savingGroupName : `Saved Group #1`,
+      options: options,
+    });
+    setSavingGroupName("");
+  } else {
+    // we want to stop as soon as we discover an existing saved group
+    let i = 0;
+    let savedGroupExist = false;
+    while (i < savedGroups.length && !savedGroupExist) {
+      if (sameGroup(savedGroups[i].options, options)) {
+        savedGroupExist = true;
+        alert(
+          `A saved group with your current list of options already exist. It is ${savedGroups[i].name}`
+        );
+      }
+      i++;
+    }
+    if (!savedGroupExist) {
+      props.saveGroup({
+        name: savingGroupName
+          ? savingGroupName
+          : `Saved Group #${savedGroups.length + 1}`,
+        options: options,
+      });
+      setSavingGroupName("");
+    }
+  }
+};
+
 function OptionsContainer(props) {
   const [savingGroupName, setSavingGroupName] = useState("");
 
@@ -74,37 +106,37 @@ function OptionsContainer(props) {
     );
   });
 
-  const handleSaveGroup = (savedGroups, options) => {
-    if (savedGroups.length === 0) {
-      props.saveGroup({
-        name: savingGroupName ? savingGroupName : `Saved Group #1`,
-        options: options,
-      });
-      setSavingGroupName("");
-    } else {
-      // we want to stop as soon as we discover an existing saved group
-      let i = 0;
-      let savedGroupExist = false;
-      while (i < savedGroups.length && !savedGroupExist) {
-        if (sameGroup(savedGroups[i].options, options)) {
-          savedGroupExist = true;
-          alert(
-            `A saved group with your current list of options already exist. It is ${savedGroups[i].name}`
-          );
-        }
-        i++;
-      }
-      if (!savedGroupExist) {
-        props.saveGroup({
-          name: savingGroupName
-            ? savingGroupName
-            : `Saved Group #${savedGroups.length + 1}`,
-          options: options,
-        });
-        setSavingGroupName("");
-      }
-    }
-  };
+  // const handleSaveGroup = (savedGroups, options) => {
+  //   if (savedGroups.length === 0) {
+  //     props.saveGroup({
+  //       name: savingGroupName ? savingGroupName : `Saved Group #1`,
+  //       options: options,
+  //     });
+  //     setSavingGroupName("");
+  //   } else {
+  //     // we want to stop as soon as we discover an existing saved group
+  //     let i = 0;
+  //     let savedGroupExist = false;
+  //     while (i < savedGroups.length && !savedGroupExist) {
+  //       if (sameGroup(savedGroups[i].options, options)) {
+  //         savedGroupExist = true;
+  //         alert(
+  //           `A saved group with your current list of options already exist. It is ${savedGroups[i].name}`
+  //         );
+  //       }
+  //       i++;
+  //     }
+  //     if (!savedGroupExist) {
+  //       props.saveGroup({
+  //         name: savingGroupName
+  //           ? savingGroupName
+  //           : `Saved Group #${savedGroups.length + 1}`,
+  //         options: options,
+  //       });
+  //       setSavingGroupName("");
+  //     }
+  //   }
+  // };
 
   return (
     <div

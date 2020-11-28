@@ -3,7 +3,7 @@ import OptionsContainer from "./OptionsContainer";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import userEvent from "@testing-library/user-event";
-import { sameGroup } from "./OptionsContainer"
+import { sameGroup, handleSaveGroup } from "./OptionsContainer"
 
 import { render } from "@testing-library/react";
 import { clearOptions } from "../../actions/optionsActions"
@@ -170,7 +170,12 @@ it("executes sameGroup properly", () => {
   expect(sameGroup(startingState.savedGroupsReducer.savedGroups[1].options, startingState.optionsReducer.options)).toBe(false)
 })
 
-it("execute handleSaveGRoup properly", () => {
+it("execute handleSaveGroup properly", () => {
+  const { getByTestId } = renderWithRedux(<OptionsContainer />)
+  const savedGroups = startingState.savedGroupsReducer.savedGroups
+  const options = startingState.optionsReducer.options
+  handleSaveGroup(savedGroups, options)
+  expect(getByTestId("group-name").value).toBe('')
 
 })
 // it("saves using default group name", () => {

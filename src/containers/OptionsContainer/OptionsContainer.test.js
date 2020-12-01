@@ -176,10 +176,4 @@ it("execute handleSaveGroup properly", () => {
   const options = startingState.optionsReducer.options
   handleSaveGroup(savedGroups, options)
   expect(getByTestId("group-name").value).toBe('')
-
 })
-// it("saves using default group name", () => {
-//   const { getByTestId } = renderWithRedux(<OptionsContainer {...props}/>)
-//   const saveGroupButton = getByTestId("save-group-button")
-//
-// })
